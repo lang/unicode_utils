@@ -7,6 +7,7 @@ module UnicodeFunctions
                          :simple_lowercase_mapping,
                          :simple_uppercase_mapping)
 
+=begin load table from unicode_data.rb
   CODEPOINT_TABLE = {}
 
   def self.read_unicode_data(io)
@@ -31,6 +32,7 @@ module UnicodeFunctions
   File.open(data_fn, "r:US-ASCII:UTF-8") do |io|
     read_unicode_data(io)
   end
+=end
 
   # Get the Unicode name of the single codepoint in str.
   def name(str)

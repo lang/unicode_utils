@@ -1,6 +1,6 @@
 # encoding: UTF-8
 
-module UnicodeFunctions
+module UnicodeUtils
 
   Codepoint = Struct.new(:codepoint,
                          :name,
@@ -50,8 +50,8 @@ module UnicodeFunctions
   #
   # Examples:
   #
-  #     UnicodeFunctions.simple_upcase("ümit: 123") => "ÜMIT: 123"
-  #     UnicodeFunctions.simple_upcase("weiß") => "WEIß"
+  #     UnicodeUtils.simple_upcase("ümit: 123") => "ÜMIT: 123"
+  #     UnicodeUtils.simple_upcase("weiß") => "WEIß"
   def simple_upcase(str)
     res = String.new.force_encoding(str.encoding)
     str.each_codepoint { |cp|
@@ -71,8 +71,8 @@ module UnicodeFunctions
   #
   # Examples:
   #
-  #     UnicodeFunctions.simple_downcase("ÜMIT: 123") => "ümit: 123"
-  #     UnicodeFunctions.simple_downcase("STRASSE") => "strasse"
+  #     UnicodeUtils.simple_downcase("ÜMIT: 123") => "ümit: 123"
+  #     UnicodeUtils.simple_downcase("STRASSE") => "strasse"
   def simple_downcase(str)
     res = String.new.force_encoding(str.encoding)
     str.each_codepoint { |cp|

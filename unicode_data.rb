@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-module UnicodeFunctions
+module UnicodeUtils
   CODEPOINT_TABLE = {
     0 => [0, '<control>', nil, nil],
     1 => [1, '<control>', nil, nil],

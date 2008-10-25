@@ -4,7 +4,7 @@ File.open "UnicodeData.txt", "r:US-ASCII:UTF-8" do |input|
   File.open "unicode_data.rb", "w:UTF-8" do |output|
     output.puts "# encoding: utf-8"
     output.puts
-    output.puts "module UnicodeFunctions"
+    output.puts "module UnicodeUtils"
     output.puts "  CODEPOINT_TABLE = {"
     input.each_line { |line|
       fields = line.split(";")

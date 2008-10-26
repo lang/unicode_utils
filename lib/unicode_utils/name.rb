@@ -21,6 +21,10 @@ module UnicodeUtils
   NAME_MAP = Impl.read_names
 
   # Get the Unicode name of the single codepoint in str.
+  #
+  # Example:
+  #
+  #     UnicodeUtils.name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   def name(str)
     NAME_MAP[str.codepoints.first].encode
   end

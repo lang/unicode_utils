@@ -23,6 +23,11 @@ task "doc" do
   sh "rdoc19 -o doc lib"
 end
 
+desc "Compile Unicode data files from data/ to cdata/."
+task "compile-data" do
+  sh "ruby19 data/compile.rb"
+end
+
 desc "Remove generated packages and documentation."
 task "clean" do
   rm_r "pkg" if File.exist? "pkg"

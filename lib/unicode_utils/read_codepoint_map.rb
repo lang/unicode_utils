@@ -5,7 +5,7 @@ module UnicodeUtils
   module Impl # :nodoc:
 
     def self.read_codepoint_map(filename)
-      path = File.join(File.dirname(__FILE__), filename)
+      path = File.join(File.dirname(__FILE__), "..", "..", "cdata", filename)
       Hash.new.tap { |map|
         File.open(path, "r:US-ASCII") do |input|
           buffer = "x" * 6

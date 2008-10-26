@@ -13,7 +13,7 @@ module UnicodeUtils
       @basedir =
         File.absolute_path(File.join(File.dirname(__FILE__), ".."))
       @datadir = File.join(@basedir, "data")
-      @libdir = File.join(@basedir, "lib", "unicode_utils")
+      @cdatadir = File.join(@basedir, "cdata")
     end
 
     def each_codepoint
@@ -44,11 +44,11 @@ module UnicodeUtils
 
     def run
       uc_file =
-        File.open(File.join(@libdir, "simple_uc_map"), "w:US-ASCII")
+        File.open(File.join(@cdatadir, "simple_uc_map"), "w:US-ASCII")
       lc_file =
-        File.open(File.join(@libdir, "simple_lc_map"), "w:US-ASCII")
+        File.open(File.join(@cdatadir, "simple_lc_map"), "w:US-ASCII")
       name_file =
-        File.open(File.join(@libdir, "names"), "w:US-ASCII")
+        File.open(File.join(@cdatadir, "names"), "w:US-ASCII")
       begin
         each_codepoint { |cp|
           if cp.simple_uppercase_mapping

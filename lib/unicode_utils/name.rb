@@ -5,7 +5,7 @@ module UnicodeUtils
   module Impl # :nodoc:
 
     def self.read_names
-      path = File.join(File.dirname(__FILE__), "names")
+      path = File.join(File.dirname(__FILE__), "..", "..", "cdata", "names")
       Hash.new.tap { |map|
         File.open(path, "r:US-ASCII") do |input|
           buffer = "x" * 6

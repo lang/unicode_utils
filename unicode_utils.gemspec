@@ -2,13 +2,16 @@
 
 require "#{File.dirname(__FILE__)}/lib/unicode_utils/version"
 
+files = Dir["lib/**/*.rb"] + Dir["cdata/*"]
+files.reject! { |fn| fn.end_with?("~") }
+
 Gem::Specification.new do |g|
   g.name = "unicode_utils"
   g.version = UnicodeUtils::VERSION
   g.platform = Gem::Platform::RUBY
   g.summary = "additional Unicode aware functions for Ruby 1.9"
   g.require_paths = ["lib"]
-  g.files = Dir["lib/**/*"].reject { |fn| fn.end_with?("~") }
+  g.files = files
   g.required_ruby_version = ">= 1.9.0"
   g.author = "Stefan Lang"
   g.email = "langstefan@gmx.at"

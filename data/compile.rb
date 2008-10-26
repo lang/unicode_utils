@@ -7,6 +7,12 @@ module UnicodeUtils
                          :simple_lowercase_mapping,
                          :simple_uppercase_mapping)
 
+  SpecialCasing = Struct.new(:codepoint,
+                             :uppercase_mapping,
+                             :lowercase_mapping,
+                             :titlecase_mapping,
+                             :conditions)
+
   class Compiler
 
     def initialize
@@ -42,7 +48,36 @@ module UnicodeUtils
       }
     end
 
-    def run
+    def each_special_casing
+      data_fn = File.join(@datadir, "SpecialCasing.txt")
+      File.open(data_fn, "r:US-ASCII") do |input|
+        input.each_line { |line|
+          if line =~ /^([^#]*)#/
+            line = $1 || ""
+          end
+          line.strip!
+          next if line.empty?
+          yield parse_special_casing_line(line)
+        }
+      end
+    end
+
+    def parse_special_casing_line(line)
+      SpecialCasing.new.tap { |sc|
+        fields = line.split(";").map(&:strip)
+        sc.codepoint = fields[0].to_i(16)
+        sc.lowercase_mapping = fields[1].split(" ").map { |x| x.to_i(16) }
+        sc.titlecase_mapping = fields[2].split(" ").map { |x| x.to_i(16) }
+        sc.uppercase_mapping = fields[3].split(" ").map { |x| x.to_i(16) }
+        if fields[4]
+          sc.conditions = fields[4].split(" ")
+        else
+          sc.conditions = []
+        end
+      }
+    end
+
+    def compile_unicode_data
       uc_file =
         File.open(File.join(@cdatadir, "simple_uc_map"), "w:US-ASCII")
       lc_file =
@@ -67,6 +102,42 @@ module UnicodeUtils
         lc_file.close
         name_file.close
       end
+    end
+
+    def compile_special_casing
+      uc_file =
+        File.open(File.join(@cdatadir, "special_uc_map"), "w:US-ASCII")
+      lc_file =
+        File.open(File.join(@cdatadir, "special_lc_map"), "w:US-ASCII")
+      begin
+        each_special_casing { |sc|
+          next unless sc.conditions.empty? # can't handle conditions atm
+          uc = sc.uppercase_mapping
+          if uc.length != 1 || uc.first != sc.codepoint
+            uc_file.write(format_codepoint(sc.codepoint))
+            uc.each { |cp|
+              uc_file.write(format_codepoint(cp))
+            }
+            uc_file.write("x" * 6) # end of entry marker
+          end
+          lc = sc.lowercase_mapping
+          if lc.length != 1 || lc.first != sc.codepoint
+            lc_file.write(format_codepoint(sc.codepoint))
+            lc.each { |cp|
+              lc_file.write(format_codepoint(cp))
+            }
+            lc_file.write("x" * 6)
+          end
+        }
+      ensure
+        uc_file.close
+        lc_file.close
+      end
+    end
+
+    def run
+      compile_unicode_data
+      compile_special_casing
     end
 
     def format_codepoint(cp)

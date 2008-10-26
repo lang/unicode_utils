@@ -20,4 +20,13 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "strasse", UnicodeUtils.simple_downcase("STRASSE")
   end
 
+  def test_upcase
+    assert_equal "WEISS 123", UnicodeUtils.upcase("Weiß 123")
+  end
+
+  def test_downcase
+    # LATIN CAPITAL LETTER I WITH DOT ABOVE
+    assert_equal "\u0069\u0307", UnicodeUtils.downcase("\u0130")
+  end
+
 end

@@ -1,0 +1,38 @@
+= Unicode Utils
+
+More Unicode aware string manipulation for Ruby 1.9.
+
+== Installing
+
+Install with RubyGems:
+
+    gem install unicode_utils # (as soon as the rubyforge project page is up!)
+
+Or get the source from Github: http://github.com/lang/unicode_utils
+
+Currently Unicode Utils works only with recent builds of Ruby 1.9.
+
+== Synopsis
+
+    require "unicode_utils"
+
+    UnicodeUtils.name "æ" => "LATIN SMALL LETTER AE"
+    
+    UnicodeUtils.upcase "Straße" => "STRASSE"
+
+    UnicodeUtils.downcase "Ümit" => "ümit"
+
+Start with the UnicodeUtils module in the API documentation for
+complete documentation.
+
+Since some functions need significant amounts of data that is loaded
+at require time, the library is split up into separate files for
+each function. The +unicode_utils+ library loads them all. If you
+need only a specific function, e.g. +upcase+, you can require only
+the file <tt>unicode_utils/upcase</tt> to save memory and reduce
+startup time.
+
+== License
+
+unicode_utils is licensed under the BSD license. Read the file
+LICENSE.txt in the unicode_utils package for details.

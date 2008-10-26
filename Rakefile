@@ -20,7 +20,7 @@ end
 
 desc "Run rdoc to generate html documentation."
 task "doc" do
-  sh "rdoc19 -o doc lib"
+  sh "rdoc19 -o doc --charset=UTF-8 --main=README.txt lib README.txt"
 end
 
 desc "Compile Unicode data files from data/ to cdata/."

@@ -3,7 +3,9 @@
 require "#{File.dirname(__FILE__)}/lib/unicode_utils/version"
 
 test_files = Dir["test/**/test_*.rb"]
-files = Dir["lib/**/*.rb"] + Dir["cdata/*"] + test_files
+files =
+  Dir["lib/**/*.rb"] + Dir["cdata/*"] + test_files +
+  ["README.txt", "LICENSE.txt"]
 files.reject! { |fn| fn.end_with?("~") }
 
 Gem::Specification.new do |g|
@@ -18,7 +20,8 @@ Gem::Specification.new do |g|
   g.author = "Stefan Lang"
   g.email = "langstefan@gmx.at"
   g.has_rdoc = true
-  g.rdoc_options = []
+  g.extra_rdoc_files = ["README.txt"]
+  g.rdoc_options = ["--main=README.txt", "--charset=UTF-8"]
   g.homepage = "http://github.com/lang/unicode_utils"
   #g.rubyforge_project = "unicode_utils"
 end

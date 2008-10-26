@@ -1,7 +1,15 @@
+# encoding: utf-8
 
 require "#{File.dirname(__FILE__)}/lib/unicode_utils/version"
 
 gem_filename = "unicode_utils-#{UnicodeUtils::VERSION}.gem"
+
+task "default" => "test"
+
+desc "Run unit tests."
+task "test" do
+  sh "ruby19 -I lib #{Dir["test/**/test_*.rb"].join(' ')}"
+end
 
 desc "Build unicode_utils gem."
 task "gem" do

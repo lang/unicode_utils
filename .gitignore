@@ -4,3 +4,4 @@ doc
 Session.vim
 .*.swp
 *~
+.test-result

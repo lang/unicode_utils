@@ -20,7 +20,13 @@ end
 
 desc "Run rdoc to generate html documentation."
 task "doc" do
-  sh "rdoc19 -o doc --charset=UTF-8 --main=README.txt lib README.txt"
+  sh "rdoc19 -o doc --charset=UTF-8 --title=UnicodeUtils --main=README.txt lib README.txt"
+end
+
+desc "Publish doc/ on unicode-utils.rubyfore.org. " +
+     "Note: scp will prompt for rubyforge password."
+task "publish-doc" => "doc" do
+    sh "scp -r doc/* langi@rubyforge.org:/var/www/gforge-projects/unicode-utils/"
 end
 
 desc "Compile Unicode data files from data/ to cdata/."

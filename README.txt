@@ -6,7 +6,7 @@ More Unicode aware string manipulation for Ruby 1.9.
 
 Install with RubyGems:
 
-    gem install unicode_utils # (as soon as the rubyforge project page is up!)
+    gem install unicode_utils
 
 Or get the source from Github: http://github.com/lang/unicode_utils
 
@@ -36,3 +36,15 @@ startup time.
 
 unicode_utils is licensed under the BSD license. Read the file
 LICENSE.txt in the unicode_utils package for details.
+
+== Links
+
+Sources on Github:: http://github.com/lang/unicode_utils
+Rubyforge project:: http://rubyforge.org/projects/unicode-utils
+Online documentation:: http://unicode-utils.rubyforge.org
+Home of the Unicode Consortium:: http://unicode.org/
+
+== Who?
+
+UnicodeUtils is written by Stefan Lang. You can contact me at
+<tt>langstefan AT gmx.at</tt>. Contributions welcome!

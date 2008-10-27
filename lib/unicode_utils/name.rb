@@ -26,7 +26,7 @@ module UnicodeUtils
   #
   #     UnicodeUtils.name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   def name(str)
-    NAME_MAP[str.codepoints.first].encode
+    NAME_MAP[str.codepoints.first] # .encode
   end
   module_function :name
 

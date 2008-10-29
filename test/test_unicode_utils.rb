@@ -8,6 +8,7 @@ class TestUnicodeUtils < Test::Unit::TestCase
 
   def test_name
     assert_equal "LATIN SMALL LETTER F", UnicodeUtils.name("f")
+    assert_equal Encoding::US_ASCII, UnicodeUtils.name("f").encoding
   end
 
   def test_simple_upcase

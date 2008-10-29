@@ -7,7 +7,7 @@ module UnicodeUtils
     def self.read_names
       path = File.join(File.dirname(__FILE__), "..", "..", "cdata", "names")
       Hash.new.tap { |map|
-        File.open(path, "r:US-ASCII") do |input|
+        File.open(path, "r:US-ASCII:-") do |input|
           buffer = "x" * 6
           while input.read(6, buffer)
             map[buffer.to_i(16)] = input.gets.tap { |x| x.chomp! }
@@ -26,7 +26,7 @@ module UnicodeUtils
   #
   #     UnicodeUtils.name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   def name(str)
-    NAME_MAP[str.codepoints.first] # .encode
+    NAME_MAP[str.codepoints.first]
   end
   module_function :name
 

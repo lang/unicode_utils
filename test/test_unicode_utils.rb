@@ -23,11 +23,19 @@ class TestUnicodeUtils < Test::Unit::TestCase
 
   def test_upcase
     assert_equal "WEISS 123", UnicodeUtils.upcase("Weiß 123")
+    assert_equal "WEISS 123", UnicodeUtils.upcase("Weiß 123", :de)
+    assert_equal "I", UnicodeUtils.upcase("i")
+    assert_equal "I", UnicodeUtils.upcase("i", :de)
+    assert_equal "\u{130}", UnicodeUtils.upcase("i", :tr)
+    assert_equal "\u{130}", UnicodeUtils.upcase("i", :az)
   end
 
   def test_downcase
     # LATIN CAPITAL LETTER I WITH DOT ABOVE
     assert_equal "\u0069\u0307", UnicodeUtils.downcase("\u0130")
+    assert_equal "\u0069\u0307", UnicodeUtils.downcase("\u0130", :de)
+    assert_equal "\u0069", UnicodeUtils.downcase("\u0130", :tr)
+    assert_equal "\u0069", UnicodeUtils.downcase("\u0130", :az)
   end
 
   def test_downcase_final_sigma

@@ -2,6 +2,7 @@
 
 require "unicode_utils/simple_downcase"
 require "unicode_utils/read_special_casing_map"
+require "unicode_utils/conditional_casing"
 
 module UnicodeUtils
 
@@ -22,13 +23,17 @@ module UnicodeUtils
   # fully supported according to the Unicode standard.
   def downcase(str, language_id = nil)
     String.new.force_encoding(str.encoding).tap { |res|
+      pos = 0
       str.each_codepoint { |cp|
-        special_mapping = SPECIAL_DOWNCASE_MAP[cp]
+        special_mapping =
+          Impl.conditional_downcase_mapping(cp, str, pos, language_id) ||
+          SPECIAL_DOWNCASE_MAP[cp]
         if special_mapping
           special_mapping.each { |m| res << m }
         else
           res << (SIMPLE_DOWNCASE_MAP[cp] || cp)
         end
+        pos += 1
       }
     }
   end

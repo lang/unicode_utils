@@ -30,4 +30,9 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "\u0069\u0307", UnicodeUtils.downcase("\u0130")
   end
 
+  def test_downcase_final_sigma
+    assert_equal "abi\u{3c3}\u{df}\u{3c2}/\u{5ffff}\u{1042d}",
+      UnicodeUtils.downcase("aBI\u{3a3}\u{df}\u{3a3}/\u{5ffff}\u{10405}")
+  end
+
 end

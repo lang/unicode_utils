@@ -7,11 +7,57 @@ module UnicodeUtils
                          :simple_lowercase_mapping,
                          :simple_uppercase_mapping)
 
-  SpecialCasing = Struct.new(:codepoint,
-                             :uppercase_mapping,
-                             :lowercase_mapping,
-                             :titlecase_mapping,
-                             :conditions)
+  class SpecialCasing
+
+    attr_accessor :codepoint,
+                  :uppercase_mapping,
+                  :lowercase_mapping,
+                  :titlecase_mapping,
+                  :conditions
+
+    def initialize
+      @codepoint = nil
+      @uppercase_mapping = nil
+      @lowercase_mapping = nil
+      @titlecase_mapping = nil
+      @conditions = nil
+    end
+
+    def has_lowercase?
+      conditional? ||
+        @lowercase_mapping.length != 1 ||
+        @lowercase_mapping.first != @codepoint
+    end
+
+    def has_uppercase?
+      conditional? ||
+        @uppercase_mapping.length != 1 ||
+        @uppercase_mapping.first != @codepoint
+    end
+
+    def language
+      # The current Unicode standard has at most one language condition
+      # per special casing. Might change in a future standard.
+      @conditions.find { |c| language_condition?(c)  }
+    end
+
+    def context
+      # The current Unicode standard has at most one context condition
+      # per special casing. Might change in a future standard.
+      @conditions.find { |c| !language_condition?(c) }
+    end
+
+    def conditional?
+      !@conditions.empty?
+    end
+
+    private
+
+    def language_condition?(condition)
+      condition =~ /^[a-z]+$/
+    end
+
+  end
 
   class Compiler
 
@@ -109,29 +155,60 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "special_uc_map"), "w:US-ASCII")
       lc_file =
         File.open(File.join(@cdatadir, "special_lc_map"), "w:US-ASCII")
+      cond_uc_file =
+        File.open(File.join(@cdatadir, "cond_uc_map"), "w:US-ASCII")
+      cond_lc_file =
+        File.open(File.join(@cdatadir, "cond_lc_map"), "w:US-ASCII")
       begin
         each_special_casing { |sc|
-          next unless sc.conditions.empty? # can't handle conditions atm
-          uc = sc.uppercase_mapping
-          if uc.length != 1 || uc.first != sc.codepoint
-            uc_file.write(format_codepoint(sc.codepoint))
-            uc.each { |cp|
-              uc_file.write(format_codepoint(cp))
-            }
-            uc_file.write("x" * 6) # end of entry marker
-          end
-          lc = sc.lowercase_mapping
-          if lc.length != 1 || lc.first != sc.codepoint
-            lc_file.write(format_codepoint(sc.codepoint))
-            lc.each { |cp|
-              lc_file.write(format_codepoint(cp))
-            }
-            lc_file.write("x" * 6)
+          if sc.conditional?
+            # format: codepoint;[mapped_codepoint1,...];[language_id];[context]
+            if sc.has_uppercase?
+              cond_uc_file.write(format_codepoint(sc.codepoint))
+              cond_uc_file.write(";")
+              cond_uc_file.write(
+                sc.uppercase_mapping.map { |c| format_codepoint(c) }.join(","))
+              cond_uc_file.write(";")
+              cond_uc_file.write(sc.language || "")
+              cond_uc_file.write(";")
+              cond_uc_file.write(sc.context || "")
+              cond_uc_file.puts
+            end
+            if sc.has_lowercase?
+              cond_lc_file.write(format_codepoint(sc.codepoint))
+              cond_lc_file.write(";")
+              cond_lc_file.write(
+                sc.lowercase_mapping.map { |c| format_codepoint(c) }.join(","))
+              cond_lc_file.write(";")
+              cond_lc_file.write(sc.language || "")
+              cond_lc_file.write(";")
+              cond_lc_file.write(sc.context || "")
+              cond_lc_file.puts
+            end
+          else
+            if sc.has_uppercase?
+              uc = sc.uppercase_mapping
+              uc_file.write(format_codepoint(sc.codepoint))
+              uc.each { |cp|
+                uc_file.write(format_codepoint(cp))
+              }
+              uc_file.write("x" * 6) # end of entry marker
+            end
+            if sc.has_lowercase?
+              lc = sc.lowercase_mapping
+              lc_file.write(format_codepoint(sc.codepoint))
+              lc.each { |cp|
+                lc_file.write(format_codepoint(cp))
+              }
+              lc_file.write("x" * 6)
+            end
           end
         }
       ensure
         uc_file.close
         lc_file.close
+        cond_uc_file.close
+        cond_lc_file.close
       end
     end
 

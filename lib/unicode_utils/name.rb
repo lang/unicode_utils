@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 module UnicodeUtils
 
@@ -19,7 +19,7 @@ module UnicodeUtils
 
   end
 
-  NAME_MAP = Impl.read_names
+  NAME_MAP = Impl.read_names # :nodoc:
 
   # Get the Unicode name of the single codepoint in str.
   #

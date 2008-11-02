@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/simple_downcase"
 require "unicode_utils/read_special_casing_map"
@@ -6,7 +6,7 @@ require "unicode_utils/conditional_casing"
 
 module UnicodeUtils
 
-  SPECIAL_DOWNCASE_MAP = Impl.read_special_casing_map("special_lc_map")
+  SPECIAL_DOWNCASE_MAP = Impl.read_special_casing_map("special_lc_map") # :nodoc:
 
   # Perform a full case-conversion of +str+ to lowercase according to
   # the Unicode standard.

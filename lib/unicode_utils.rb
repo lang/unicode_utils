@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/version"
 require "unicode_utils/name"

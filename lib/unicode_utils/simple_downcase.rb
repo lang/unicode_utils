@@ -1,10 +1,10 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/read_codepoint_map"
 
 module UnicodeUtils
 
-  SIMPLE_DOWNCASE_MAP = Impl.read_codepoint_map("simple_lc_map")
+  SIMPLE_DOWNCASE_MAP = Impl.read_codepoint_map("simple_lc_map") # :nodoc:
 
   # Map each codepoint in +str+ that has a single codepoint
   # lowercase-mapping to that lowercase mapping. +str+ is assumed to be

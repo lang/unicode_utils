@@ -1,10 +1,10 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/read_codepoint_set"
 
 module UnicodeUtils
 
-  TITLECASE_LETTER_SET = Impl.read_codepoint_set("cat_set_titlecase")
+  TITLECASE_LETTER_SET = Impl.read_codepoint_set("cat_set_titlecase") # :nodoc:
 
   # True if the given character has the General_Category
   # Titlecase_Letter (Lt).

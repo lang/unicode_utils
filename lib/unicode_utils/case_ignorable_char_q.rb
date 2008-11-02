@@ -1,10 +1,10 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/read_codepoint_set"
 
 module UnicodeUtils
 
-  CASE_IGNORABLE_SET = Impl.read_codepoint_set("case_ignorable_set")
+  CASE_IGNORABLE_SET = Impl.read_codepoint_set("case_ignorable_set") # :nodoc:
 
   # Returns true if the given character is case-ignorable as defined
   # by Unicode 5.0, section 3.13.

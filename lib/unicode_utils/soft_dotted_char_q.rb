@@ -1,10 +1,10 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/read_codepoint_set"
 
 module UnicodeUtils
 
-  SOFT_DOTTED_SET = Impl.read_codepoint_set("soft_dotted_set")
+  SOFT_DOTTED_SET = Impl.read_codepoint_set("soft_dotted_set") # :nodoc:
 
   # Returns true if the given character has the Unicode property
   # Soft_Dotted.

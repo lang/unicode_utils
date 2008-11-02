@@ -1,10 +1,10 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/read_codepoint_set"
 
 module UnicodeUtils
 
-  PROP_UPPERCASE_SET = Impl.read_codepoint_set("prop_set_uppercase")
+  PROP_UPPERCASE_SET = Impl.read_codepoint_set("prop_set_uppercase") # :nodoc:
 
   # True if the given character has the Unicode property Uppercase.
   def uppercase_char?(char)

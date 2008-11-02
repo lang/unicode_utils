@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/cased_char_q"
 require "unicode_utils/case_ignorable_char_q"
@@ -9,7 +9,7 @@ module UnicodeUtils
 
   module Impl # :nodoc:
 
-    class ConditionalCasing
+    class ConditionalCasing # :nodoc:
 
       attr_reader :mapping
 
@@ -23,7 +23,7 @@ module UnicodeUtils
 
     end
 
-    class BeforeDotConditionalCasing < ConditionalCasing
+    class BeforeDotConditionalCasing < ConditionalCasing # :nodoc:
 
       def context_match?(str, pos)
         (pos + 1).upto(str.length - 1) { |i|
@@ -37,7 +37,7 @@ module UnicodeUtils
 
     end
 
-    class NotBeforeDotConditionalCasing < BeforeDotConditionalCasing
+    class NotBeforeDotConditionalCasing < BeforeDotConditionalCasing # :nodoc:
 
       def context_match?(str, pos)
         !super
@@ -45,7 +45,7 @@ module UnicodeUtils
 
     end
 
-    class MoreAboveConditionalCasing < ConditionalCasing
+    class MoreAboveConditionalCasing < ConditionalCasing # :nodoc:
 
       def context_match?(str, pos)
         (pos + 1).upto(str.length - 1) { |i|
@@ -59,7 +59,7 @@ module UnicodeUtils
 
     end
 
-    class AfterIConditionalCasing < ConditionalCasing
+    class AfterIConditionalCasing < ConditionalCasing # :nodoc:
 
       def context_match?(str, pos)
         (pos - 1).downto(0) { |i|
@@ -73,7 +73,7 @@ module UnicodeUtils
 
     end
 
-    class AfterSoftDottedConditionalCasing < ConditionalCasing
+    class AfterSoftDottedConditionalCasing < ConditionalCasing # :nodoc:
 
       def context_match?(str, pos)
         (pos - 1).downto(0) { |i|
@@ -87,7 +87,7 @@ module UnicodeUtils
 
     end
 
-    class FinalSigmaConditionalCasing < ConditionalCasing
+    class FinalSigmaConditionalCasing < ConditionalCasing # :nodoc:
 
       def context_match?(str, pos)
         before_match?(str, pos) && !after_match?(str, pos)

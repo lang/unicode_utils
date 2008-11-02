@@ -20,7 +20,7 @@ end
 
 desc "Run rdoc to generate html documentation."
 task "doc" do
-  sh "rdoc19 -o doc --charset=UTF-8 --title=UnicodeUtils --main=README.txt lib README.txt"
+  sh "rdoc19 -o doc --inline-source --charset=UTF-8 --title=UnicodeUtils --main=README.txt lib README.txt"
 end
 
 desc "Publish doc/ on unicode-utils.rubyfore.org. " +

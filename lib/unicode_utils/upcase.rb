@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/simple_upcase"
 require "unicode_utils/read_special_casing_map"
@@ -6,7 +6,7 @@ require "unicode_utils/conditional_casing"
 
 module UnicodeUtils
 
-  SPECIAL_UPCASE_MAP = Impl.read_special_casing_map("special_uc_map")
+  SPECIAL_UPCASE_MAP = Impl.read_special_casing_map("special_uc_map") # :nodoc:
 
   # Perform a full case-conversion of +str+ to uppercase according to
   # the Unicode standard.

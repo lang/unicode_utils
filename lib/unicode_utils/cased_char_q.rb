@@ -1,4 +1,4 @@
-# encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 require "unicode_utils/lowercase_char_q"
 require "unicode_utils/uppercase_char_q"

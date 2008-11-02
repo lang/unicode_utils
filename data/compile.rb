@@ -4,6 +4,7 @@ module UnicodeUtils
 
   Codepoint = Struct.new(:codepoint,
                          :name,
+                         :general_category,
                          :simple_lowercase_mapping,
                          :simple_uppercase_mapping)
 
@@ -83,6 +84,7 @@ module UnicodeUtils
         fields = line.split(";")
         cp.codepoint = fields[0].to_i(16)
         cp.name = fields[1]
+        cp.general_category = fields[2]
         uc_mapping = fields[12]
         unless uc_mapping.empty?
           cp.simple_uppercase_mapping = uc_mapping.to_i(16)
@@ -130,6 +132,8 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "simple_lc_map"), "w:US-ASCII")
       name_file =
         File.open(File.join(@cdatadir, "names"), "w:US-ASCII")
+      cat_set_titlecase_file =
+        File.open(File.join(@cdatadir, "cat_set_titlecase"), "w:US-ASCII")
       begin
         each_codepoint { |cp|
           if cp.simple_uppercase_mapping
@@ -140,6 +144,9 @@ module UnicodeUtils
             lc_file.write(format_codepoint(cp.codepoint))
             lc_file.write(format_codepoint(cp.simple_lowercase_mapping))
           end
+          if cp.general_category == "Lt"
+            cat_set_titlecase_file.write(format_codepoint(cp.codepoint))
+          end
           name_file.write(format_codepoint(cp.codepoint))
           name_file.puts(cp.name)
         }
@@ -147,6 +154,7 @@ module UnicodeUtils
         uc_file.close
         lc_file.close
         name_file.close
+        cat_set_titlecase_file.close
       end
     end
 

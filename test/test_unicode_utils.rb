@@ -43,4 +43,9 @@ class TestUnicodeUtils < Test::Unit::TestCase
       UnicodeUtils.downcase("aBI\u{3a3}\u{df}\u{3a3}/\u{5ffff}\u{10405}")
   end
 
+  def test_titlecase?
+    assert_equal true, UnicodeUtils.titlecase?("\u{01F2}")
+    assert_equal false, UnicodeUtils.titlecase?("\u{0041}")
+  end
+
 end

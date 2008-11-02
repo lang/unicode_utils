@@ -99,12 +99,7 @@ module UnicodeUtils
     def each_special_casing
       data_fn = File.join(@datadir, "SpecialCasing.txt")
       File.open(data_fn, "r:US-ASCII") do |input|
-        input.each_line { |line|
-          if line =~ /^([^#]*)#/
-            line = $1 || ""
-          end
-          line.strip!
-          next if line.empty?
+        each_significant_line(input) { |line|
           yield parse_special_casing_line(line)
         }
       end
@@ -218,6 +213,8 @@ module UnicodeUtils
         cond_uc_file.close
         cond_lc_file.close
       end
+      sort_file(File.join(@cdatadir, "cond_uc_map"))
+      sort_file(File.join(@cdatadir, "cond_lc_map"))
     end
 
     def run
@@ -227,6 +224,24 @@ module UnicodeUtils
 
     def format_codepoint(cp)
       sprintf("%06x", cp)
+    end
+
+    def each_significant_line(io)
+        io.each_line { |line|
+          if line =~ /^([^#]*)#/
+            line = $1 || ""
+          end
+          line.strip!
+          yield(line) unless line.empty?
+        }
+    end
+
+    def sort_file(path)
+      lines = File.open(path, "rb") do |io| io.readlines end
+      lines.sort!
+      File.open(path, "wb") do |io|
+        lines.each { |line| io.print line }
+      end
     end
 
   end

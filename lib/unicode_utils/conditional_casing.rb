@@ -1,5 +1,8 @@
 # encoding: utf-8
 
+require "unicode_utils/cased_char_q"
+require "unicode_utils/case_ignorable_char_q"
+
 module UnicodeUtils
 
   module Impl # :nodoc:
@@ -57,7 +60,26 @@ module UnicodeUtils
     class FinalSigmaConditionalCasing < ConditionalCasing
 
       def context_match?(str, pos)
-        # TODO
+        before_match?(str, pos) && !after_match?(str, pos)
+      end
+
+      private
+
+      def before_match?(str, pos)
+        (pos - 1).downto(0) { |i|
+          c = str[i]
+          return true if UnicodeUtils.cased_char?(c)
+          return false unless UnicodeUtils.case_ignorable_char?(c)
+        }
+        false # no cased char
+      end
+
+      def after_match?(str, pos)
+        (pos + 1).upto(str.length - 1) { |i|
+          c = str[i]
+          return true if UnicodeUtils.cased_char?(c)
+          return false unless UnicodeUtils.case_ignorable_char?(c)
+        }
         false
       end
 

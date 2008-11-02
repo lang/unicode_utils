@@ -8,9 +8,9 @@ module UnicodeUtils
 
   # True if the given character has the General_Category
   # Titlecase_Letter (Lt).
-  def titlecase?(char)
+  def titlecase_char?(char)
     TITLECASE_LETTER_SET.include?(char.ord)
   end
-  module_function :titlecase?
+  module_function :titlecase_char?
 
 end

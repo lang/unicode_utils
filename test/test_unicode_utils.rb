@@ -44,8 +44,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
   end
 
   def test_titlecase?
-    assert_equal true, UnicodeUtils.titlecase?("\u{01F2}")
-    assert_equal false, UnicodeUtils.titlecase?("\u{0041}")
+    assert_equal true, UnicodeUtils.titlecase_char?("\u{01F2}")
+    assert_equal false, UnicodeUtils.titlecase_char?("\u{0041}")
   end
 
   def test_lowercase_char?

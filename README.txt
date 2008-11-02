@@ -31,8 +31,8 @@ each function. The +unicode_utils+ library loads them all. If you
 need only a specific function, e.g. +upcase+, you can require only
 the file <tt>unicode_utils/upcase</tt> to save memory and reduce
 startup time. Methods that end in a ? are in a file suffixed with
-+_q+, e.g. <tt>titlecase?</tt> can be required with
-<tt>unicode_utils/titlecase_q</tt>.
++_q+, e.g. <tt>lowercase_char?</tt> can be required with
+<tt>unicode_utils/lowercase_char_q</tt>.
 
 == License
 

@@ -56,8 +56,13 @@ module UnicodeUtils
     class AfterIConditionalCasing < ConditionalCasing
 
       def context_match?(str, pos)
-        # TODO
-        false
+        (pos - 1).downto(0) { |i|
+          c = str[i]
+          return true if c.ord == 0x49 # uppercase I
+          cc = UnicodeUtils.combining_class(c)
+          return false if cc == 0 || cc == 230
+        }
+        false # uppercase I not found
       end
 
     end

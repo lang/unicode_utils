@@ -69,4 +69,15 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal false, UnicodeUtils.cased_char?("2")
   end
 
+  def test_case_ignorable_char?
+    assert_equal true, UnicodeUtils.case_ignorable_char?(":")
+    assert_equal true, UnicodeUtils.case_ignorable_char?("\u{302}")
+    assert_equal true, UnicodeUtils.case_ignorable_char?("\u{20dd}")
+    assert_equal true, UnicodeUtils.case_ignorable_char?("\u{600}")
+    assert_equal true, UnicodeUtils.case_ignorable_char?("\u{2b0}")
+    assert_equal true, UnicodeUtils.case_ignorable_char?("\u{2c2}")
+    assert_equal false, UnicodeUtils.case_ignorable_char?("a")
+    assert_equal false, UnicodeUtils.case_ignorable_char?("1")
+  end
+
 end

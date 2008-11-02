@@ -60,8 +60,8 @@ module UnicodeUtils
 
   end
 
-  DerivedCoreProperty = Struct.new(:codepoint,
-                                   :property)
+  Property = Struct.new(:codepoint,
+                        :property)
 
   class Compiler
 
@@ -123,18 +123,18 @@ module UnicodeUtils
       }
     end
 
-    def each_derived_core_property
-      data_fn = File.join(@datadir, "DerivedCoreProperties.txt")
+    def each_property(filename)
+      data_fn = File.join(@datadir, filename)
       File.open(data_fn, "r:US-ASCII") do |input|
         each_significant_line(input) { |line|
           fields = line.split(";").map(&:strip)
           property = fields[1]
           if fields[0] =~ /^([\dA-F]+)\.{2}([\dA-F]+)$/ # codepoint-range?
             $1.to_i(16).upto($2.to_i(16)) { |cp|
-              yield DerivedCoreProperty.new(cp, property)
+              yield Property.new(cp, property)
             }
           else
-            yield DerivedCoreProperty.new(fields[0].to_i(16), property)
+            yield Property.new(fields[0].to_i(16), property)
           end
         }
       end
@@ -243,7 +243,7 @@ module UnicodeUtils
       lc_file =
         File.open(File.join(@cdatadir, "prop_set_lowercase"), "w:US-ASCII")
       begin
-        each_derived_core_property { |dcp|
+        each_property("DerivedCoreProperties.txt") { |dcp|
           case dcp.property
           when "Uppercase"
             uc_file.write(format_codepoint(dcp.codepoint))
@@ -257,10 +257,28 @@ module UnicodeUtils
       end
     end
 
+    def compile_case_ignorable_set
+      # See Section 3.13, Unicode 5.0
+      path = File.join(@cdatadir, "case_ignorable_set")
+      File.open(path, "w:US-ASCII") do |output|
+        each_property("WordBreakProperty.txt") { |prop|
+          if prop.property == "MidLetter"
+            output.write(format_codepoint(prop.codepoint))
+          end
+        }
+        each_codepoint { |cp|
+          if cp.general_category =~ /^(Mn|Me|Cf|Lm|Sk)$/
+            output.write(format_codepoint(cp.codepoint))
+          end
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
       compile_derived_core_properties
+      compile_case_ignorable_set
     end
 
     def format_codepoint(cp)

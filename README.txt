@@ -10,17 +10,21 @@ Install with RubyGems:
 
 Or get the source from Github: http://github.com/lang/unicode_utils
 
-Currently Unicode Utils works only with recent builds of Ruby 1.9.
+UnicodeUtils works with Ruby 1.9.1-preview1 or later. Though a bug
+(http://redmine.ruby-lang.org/issues/show/692) in
+1.9.1-preview1 prevents UnicodeUtils from loading when
+Encoding.default_internal is set (e.g. with -U or -E).
 
 == Synopsis
 
     require "unicode_utils"
 
-    UnicodeUtils.name "æ" => "LATIN SMALL LETTER AE"
+    UnicodeUtils.name("æ") => "LATIN SMALL LETTER AE"
     
-    UnicodeUtils.upcase "Straße" => "STRASSE"
+    UnicodeUtils.upcase("Straße") => "STRASSE"
+    UnicodeUtils.upcase("i", :tr) => "İ"
 
-    UnicodeUtils.downcase "Ümit" => "ümit"
+    UnicodeUtils.downcase("Ümit") => "ümit"
 
 Start with the UnicodeUtils module in the API documentation for
 complete documentation.

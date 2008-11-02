@@ -2,6 +2,7 @@
 
 require "unicode_utils/cased_char_q"
 require "unicode_utils/case_ignorable_char_q"
+require "unicode_utils/combining_class"
 
 module UnicodeUtils
 
@@ -21,18 +22,31 @@ module UnicodeUtils
 
     end
 
-    class NotBeforeDotConditionalCasing < ConditionalCasing
+    class BeforeDotConditionalCasing < ConditionalCasing
 
-      def context_match?(str, post)
-        # TODO
-        false
+      def context_match?(str, pos)
+        (pos + 1).upto(str.length - 1) { |i|
+          c = str[i]
+          return true if c.ord == 0x0307
+          cc = UnicodeUtils.combining_class(c)
+          return false if cc == 0 || cc == 230
+        }
+        false # "combining dot above" not found
+      end
+
+    end
+
+    class NotBeforeDotConditionalCasing < BeforeDotConditionalCasing
+
+      def context_match?(str, pos)
+        !super
       end
 
     end
 
     class MoreAboveConditionalCasing < ConditionalCasing
 
-      def context_match?(str, post)
+      def context_match?(str, pos)
         # TODO
         false
       end

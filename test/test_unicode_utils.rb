@@ -36,6 +36,10 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "\u0069\u0307", UnicodeUtils.downcase("\u0130", :de)
     assert_equal "\u0069", UnicodeUtils.downcase("\u0130", :tr)
     assert_equal "\u0069", UnicodeUtils.downcase("\u0130", :az)
+    assert_equal "ab\u{131}\u{3c3}\u{df}\u{3c2}/\u{5ffff}\u{1042d}",
+      UnicodeUtils.downcase("aBI\u{3a3}\u{df}\u{3a3}/\u{5ffff}\u{10405}", :tr)
+    # tests After_I and Not_Before_Dot
+    assert_equal "abi", UnicodeUtils.downcase("aBI\u{307}", :tr)
   end
 
   def test_downcase_final_sigma
@@ -78,6 +82,11 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal true, UnicodeUtils.case_ignorable_char?("\u{2c2}")
     assert_equal false, UnicodeUtils.case_ignorable_char?("a")
     assert_equal false, UnicodeUtils.case_ignorable_char?("1")
+  end
+
+  def test_combining_class
+    assert_equal 0, UnicodeUtils.combining_class("a")
+    assert_equal 230, UnicodeUtils.combining_class("\u{1b6e}")
   end
 
 end

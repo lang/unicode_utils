@@ -274,11 +274,26 @@ module UnicodeUtils
       end
     end
 
+    def compile_combining_class
+      path = File.join(@cdatadir, "combining_class_map")
+      File.open(path, "w:US-ASCII") do |output|
+        each_property("DerivedCombiningClass.txt") { |prop|
+          class_int = prop.property.to_i
+          next if class_int == 0 # default value
+          output.write(format_codepoint(prop.codepoint))
+          # class_int is a value in range 0..255
+          # two hex-digits are enough
+          output.write(sprintf("%02x", class_int))
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
       compile_derived_core_properties
       compile_case_ignorable_set
+      compile_combining_class
     end
 
     def format_codepoint(cp)

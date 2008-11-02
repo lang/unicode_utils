@@ -238,16 +238,21 @@ module UnicodeUtils
     end
 
     def compile_derived_core_properties
+      uc_file =
+        File.open(File.join(@cdatadir, "prop_set_uppercase"), "w:US-ASCII")
       lc_file =
         File.open(File.join(@cdatadir, "prop_set_lowercase"), "w:US-ASCII")
       begin
         each_derived_core_property { |dcp|
           case dcp.property
+          when "Uppercase"
+            uc_file.write(format_codepoint(dcp.codepoint))
           when "Lowercase"
             lc_file.write(format_codepoint(dcp.codepoint))
           end
         }
       ensure
+        uc_file.close
         lc_file.close
       end
     end

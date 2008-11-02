@@ -55,4 +55,11 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal false, UnicodeUtils.lowercase_char?("2")
   end
 
+  def test_uppercase_char?
+    assert_equal true, UnicodeUtils.uppercase_char?("C")
+    assert_equal true, UnicodeUtils.uppercase_char?("Ö")
+    assert_equal false, UnicodeUtils.uppercase_char?("2")
+    assert_equal false, UnicodeUtils.uppercase_char?("c")
+  end
+
 end

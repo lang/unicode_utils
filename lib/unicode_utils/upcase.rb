@@ -11,15 +11,18 @@ module UnicodeUtils
   # Perform a full case-conversion of +str+ to uppercase according to
   # the Unicode standard.
   #
+  # Some conversion rules are language dependent, these are in effect
+  # when a non-nil +language_id+ is given. If non-nil, the
+  # +language_id+ must be a two letter language code as defined in BCP
+  # 47 (http://tools.ietf.org/rfc/bcp/bcp47.txt) as a symbol. If a
+  # language doesn't have a two letter code, the three letter code is
+  # to be used.
+  #
   # Examples:
   #
-  #     UnicodeUtils.upcase "weiß" => "WEISS"
-  #
-  # Note: The current implementation ignores the +language_id+
-  # argument and doesn't deal with language and context specific
-  # cases. This affects text in the languages Lithuanian, Turkish and
-  # Azeri. A future version of UnicodeUtils will fix this. All other
-  # languages are fully supported according to the Unicode standard.
+  #     UnicodeUtils.upcase("weiß") => "WEISS"
+  #     UnicodeUtils.upcase("i", :en) => "I"
+  #     UnicodeUtils.upcase("i", :tr) => "İ"
   def upcase(str, language_id = nil)
     String.new.force_encoding(str.encoding).tap { |res|
       pos = 0

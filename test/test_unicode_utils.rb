@@ -89,4 +89,10 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal 230, UnicodeUtils.combining_class("\u{1b6e}")
   end
 
+  def test_soft_dotted_char?
+    assert_equal true, UnicodeUtils.soft_dotted_char?("j")
+    assert_equal true, UnicodeUtils.soft_dotted_char?("\u{2c7c}")
+    assert_equal false, UnicodeUtils.soft_dotted_char?("a")
+  end
+
 end

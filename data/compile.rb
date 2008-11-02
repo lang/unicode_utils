@@ -288,12 +288,24 @@ module UnicodeUtils
       end
     end
 
+    def compile_soft_dotted_set
+      path = File.join(@cdatadir, "soft_dotted_set")
+      File.open(path, "w:US-ASCII") do |output|
+        each_property("PropList.txt") { |prop|
+          if prop.property == "Soft_Dotted"
+            output.write(format_codepoint(prop.codepoint))
+          end
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
       compile_derived_core_properties
       compile_case_ignorable_set
       compile_combining_class
+      compile_soft_dotted_set
     end
 
     def format_codepoint(cp)

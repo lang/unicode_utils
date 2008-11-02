@@ -28,6 +28,12 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "I", UnicodeUtils.upcase("i", :de)
     assert_equal "\u{130}", UnicodeUtils.upcase("i", :tr)
     assert_equal "\u{130}", UnicodeUtils.upcase("i", :az)
+    assert_equal "ABI\u{3a3}SS\u{3a3}/FFI\u{5ffff}\u{10405}",
+      UnicodeUtils.upcase("aBi\u{3c3}\u{df}\u{3c2}/\u{fb03}\u{5ffff}\u{1042d}")
+    assert_equal "AB\u{130}\u{3a3}SS\u{3a3}/FFI\u{5ffff}\u{10405}",
+      UnicodeUtils.upcase("aBi\u{3c3}\u{df}\u{3c2}/\u{fb03}\u{5ffff}\u{1042d}", :az)
+    assert_equal "I\u{307}", UnicodeUtils.upcase("i\u{307}")
+    assert_equal "I", UnicodeUtils.upcase("i\u{307}", :lt)
   end
 
   def test_downcase
@@ -40,6 +46,9 @@ class TestUnicodeUtils < Test::Unit::TestCase
       UnicodeUtils.downcase("aBI\u{3a3}\u{df}\u{3a3}/\u{5ffff}\u{10405}", :tr)
     # tests After_I and Not_Before_Dot
     assert_equal "abi", UnicodeUtils.downcase("aBI\u{307}", :tr)
+    assert_equal "ia\u{300}", UnicodeUtils.downcase("Ia\u{300}", :lt)
+    # this is probably unrealistic, because I don't understand a word Lithuanian
+    assert_equal "i\u{307}\u{300}", UnicodeUtils.downcase("I\u{300}", :lt)
   end
 
   def test_downcase_final_sigma

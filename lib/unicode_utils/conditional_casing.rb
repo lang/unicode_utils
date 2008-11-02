@@ -2,6 +2,7 @@
 
 require "unicode_utils/cased_char_q"
 require "unicode_utils/case_ignorable_char_q"
+require "unicode_utils/soft_dotted_char_q"
 require "unicode_utils/combining_class"
 
 module UnicodeUtils
@@ -47,7 +48,12 @@ module UnicodeUtils
     class MoreAboveConditionalCasing < ConditionalCasing
 
       def context_match?(str, pos)
-        # TODO
+        (pos + 1).upto(str.length - 1) { |i|
+          c = str[i]
+          cc = UnicodeUtils.combining_class(c)
+          return true if cc == 230
+          return false if cc == 0
+        }
         false
       end
 
@@ -70,7 +76,12 @@ module UnicodeUtils
     class AfterSoftDottedConditionalCasing < ConditionalCasing
 
       def context_match?(str, pos)
-        # TODO
+        (pos - 1).downto(0) { |i|
+          c = str[i]
+          return true if UnicodeUtils.soft_dotted_char?(c)
+          cc = UnicodeUtils.combining_class(c)
+          return false if cc == 0 || cc == 230
+        }
         false
       end
 

@@ -113,4 +113,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "\u{1111}\u{1171}\u{11b6}", UnicodeUtils.hangul_syllable_decomposition("\u{d4db}")
   end
 
+  def test_jamo_short_name
+    assert_equal "GG", UnicodeUtils.jamo_short_name("\u{1101}")
+  end
+
 end

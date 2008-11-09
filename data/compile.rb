@@ -301,6 +301,18 @@ module UnicodeUtils
       end
     end
 
+    def compile_jamo_short_names
+      path = File.join(@cdatadir, "jamo_short_names")
+      File.open(path, "w:US-ASCII") do |output|
+        each_property("Jamo.txt") { |prop|
+          if prop.property
+            output.write(format_codepoint(prop.codepoint))
+            output.puts(prop.property)
+          end
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -308,6 +320,7 @@ module UnicodeUtils
       compile_case_ignorable_set
       compile_combining_class
       compile_soft_dotted_set
+      compile_jamo_short_names
     end
 
     def format_codepoint(cp)

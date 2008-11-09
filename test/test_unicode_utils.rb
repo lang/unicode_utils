@@ -14,6 +14,7 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "CJK UNIFIED IDEOGRAPH-4E00", UnicodeUtils.name("\u{4e00}")
     assert_equal "CJK UNIFIED IDEOGRAPH-2A6D6", UnicodeUtils.name("\u{2a6d6}")
     assert_equal "CJK UNIFIED IDEOGRAPH-2A3D6", UnicodeUtils.name("\u{2a3d6}")
+    assert_equal "HANGUL SYLLABLE PWILH", UnicodeUtils.name("\u{d4db}")
   end
 
   def test_simple_upcase

@@ -109,4 +109,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal false, UnicodeUtils.soft_dotted_char?("a")
   end
 
+  def test_hangul_syllable_decomposition
+    assert_equal "\u{1111}\u{1171}\u{11b6}", UnicodeUtils.hangul_syllable_decomposition("\u{d4db}")
+  end
+
 end

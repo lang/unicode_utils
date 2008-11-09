@@ -162,8 +162,10 @@ module UnicodeUtils
           if cp.general_category == "Lt"
             cat_set_titlecase_file.write(format_codepoint(cp.codepoint))
           end
-          name_file.write(format_codepoint(cp.codepoint))
-          name_file.puts(cp.name)
+          unless cp.name =~ /, First>$|, Last>$/
+            name_file.write(format_codepoint(cp.codepoint))
+            name_file.puts(cp.name)
+          end
         }
       ensure
         uc_file.close

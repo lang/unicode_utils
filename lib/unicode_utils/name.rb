@@ -21,11 +21,18 @@ module UnicodeUtils
 
   NAME_MAP = Impl.read_names # :nodoc:
 
-  # Get the Unicode name of the single codepoint in str.
+  # Get the normative Unicode name of the given character.
+  #
+  # Private Use codepoints have no name, this function returns nil for
+  # such codepoints.
+  #
+  # All control characters have the special name "<control>". All
+  # other characters have a unique name.
   #
   # Example:
   #
   #     UnicodeUtils.name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
+  #     UnicodeUtils.name "\t" => "<control>"
   def name(str)
     NAME_MAP[str.codepoints.first]
   end

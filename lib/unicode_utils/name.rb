@@ -34,7 +34,12 @@ module UnicodeUtils
   #     UnicodeUtils.name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   #     UnicodeUtils.name "\t" => "<control>"
   def name(str)
-    NAME_MAP[str.codepoints.first]
+    cp = str.ord
+    NAME_MAP[cp] ||
+      case cp
+      when 0x3400..0x4DB5, 0x4E00..0x9FC3, 0x20000..0x2A6D6
+        "CJK UNIFIED IDEOGRAPH-#{sprintf('%04x', cp).upcase}"
+      end
   end
   module_function :name
 

@@ -2,9 +2,29 @@
 
 module UnicodeUtils
 
+  class DecompositionMapping
+
+    attr_accessor :tag, :mapping
+
+    def initialize
+      @tag = nil
+      @mapping = nil
+    end
+
+    def canonical?
+      @tag.nil?
+    end
+
+    def compatibility?
+      !canonical?
+    end
+
+  end
+
   Codepoint = Struct.new(:codepoint,
                          :name,
                          :general_category,
+                         :decomposition_mapping,
                          :simple_lowercase_mapping,
                          :simple_uppercase_mapping)
 
@@ -88,6 +108,15 @@ module UnicodeUtils
         cp.codepoint = fields[0].to_i(16)
         cp.name = fields[1]
         cp.general_category = fields[2]
+        unless fields[5].empty?
+          dm = DecompositionMapping.new
+          parts = fields[5].split(/\s+/)
+          if parts.first =~ /^<.*>$/
+            dm.tag = parts.shift
+          end
+          dm.mapping = parts.map { |p| p.to_i(16) }
+          cp.decomposition_mapping = dm
+        end
         uc_mapping = fields[12]
         unless uc_mapping.empty?
           cp.simple_uppercase_mapping = uc_mapping.to_i(16)
@@ -149,6 +178,10 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "names"), "w:US-ASCII")
       cat_set_titlecase_file =
         File.open(File.join(@cdatadir, "cat_set_titlecase"), "w:US-ASCII")
+      canonical_dm_file =
+        File.open(File.join(@cdatadir, "canonical_decomposition_map"), "w:US-ASCII")
+      #compatibility_dm_file =
+      #  File.open(File.join(@cdatadir, "compatibility_decomposition_map"), "w:US-ASCII")
       begin
         each_codepoint { |cp|
           if cp.simple_uppercase_mapping
@@ -166,12 +199,22 @@ module UnicodeUtils
             name_file.write(format_codepoint(cp.codepoint))
             name_file.puts(cp.name)
           end
+          if cp.decomposition_mapping
+            if cp.decomposition_mapping.canonical?
+              canonical_dm_file.write(format_codepoint(cp.codepoint))
+              cp.decomposition_mapping.mapping.each { |c|
+                canonical_dm_file.write(format_codepoint(c))
+              }
+              canonical_dm_file.write("x" * 6) # end of entry marker
+            end
+          end
         }
       ensure
         uc_file.close
         lc_file.close
         name_file.close
         cat_set_titlecase_file.close
+        canonical_dm_file.close
       end
     end
 

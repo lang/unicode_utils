@@ -118,4 +118,11 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "GG", UnicodeUtils.jamo_short_name("\u{1101}")
   end
 
+  def test_canonical_decomposition
+    assert_equal "\u{61}\u{301}",
+      UnicodeUtils.canonical_decomposition("\u{E1}")
+    assert_equal "\u{61}\u{301}\u{63}\u{327}\u{301}",
+      UnicodeUtils.canonical_decomposition("\u{e1}\u{63}\u{301}\u{327}")
+  end
+
 end

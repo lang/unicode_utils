@@ -4,7 +4,7 @@ module UnicodeUtils
 
   module Impl # :nodoc:
 
-    def self.read_special_casing_map(filename)
+    def self.read_multivalued_map(filename)
       path = File.join(File.dirname(__FILE__), "..", "..", "cdata", filename)
       Hash.new.tap { |map|
         File.open(path, "r:US-ASCII:-") do |input|

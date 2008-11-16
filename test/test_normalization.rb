@@ -64,29 +64,10 @@ class TestNormalization < Test::Unit::TestCase
 
   def test_nfc
     each_testdata_record { |r|
-      begin
-        assert_equal r.c2, UnicodeUtils.nfc(r.c1)
-      rescue Exception => e
-        n = UnicodeUtils.nfc(r.c1)
-        dc = UnicodeUtils.canonical_decomposition(r.c1)
-        p r.c2.each_codepoint.map { |c| c.to_s(16) }
-        p r.c1.each_codepoint.map { |c| c.to_s(16) }
-        p dc.each_codepoint.map { |c| c.to_s(16) }
-        p n.each_codepoint.map { |c| c.to_s(16) }
-        raise e
-      end
+      assert_equal r.c2, UnicodeUtils.nfc(r.c1)
       assert_equal r.c2, UnicodeUtils.nfc(r.c2)
       assert_equal r.c2, UnicodeUtils.nfc(r.c3)
-      begin
-        assert_equal r.c4, UnicodeUtils.nfc(r.c4)
-      rescue Exception => e
-        n = UnicodeUtils.nfc(r.c4)
-        dc = UnicodeUtils.canonical_decomposition(r.c4)
-        p r.c4.each_codepoint.map { |c| c.to_s(16) }
-        p dc.each_codepoint.map { |c| c.to_s(16) }
-        p n.each_codepoint.map { |c| c.to_s(16) }
-        raise e
-      end
+      assert_equal r.c4, UnicodeUtils.nfc(r.c4)
       assert_equal r.c4, UnicodeUtils.nfc(r.c5)
     }
   end

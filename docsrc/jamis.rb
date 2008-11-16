@@ -524,7 +524,7 @@ FILE_INDEX = XHTML_PREAMBLE + <<HTML
   }
   .entries {
     margin: 0.25em 1em 0 1em;
-    font-size: x-small;
+    font-size: small;
   }
   a {
     color: #00F;

@@ -8,19 +8,19 @@ task "default" => "test"
 
 desc "Run unit tests."
 task "test" do
-  sh "ruby19 -I lib #{Dir["test/**/test_*.rb"].join(' ')}"
+  sh "ruby191 -I lib #{Dir["test/**/test_*.rb"].join(' ')}"
 end
 
 desc "Build unicode_utils gem."
 task "gem" do
-  sh "gem19 build unicode_utils.gemspec"
+  sh "gem191 build unicode_utils.gemspec"
   mkdir "pkg" unless File.directory? "pkg"
   mv gem_filename, "pkg"
 end
 
 desc "Run rdoc to generate html documentation."
 task "doc" do
-  sh "rdoc19 -o doc --inline-source --charset=UTF-8 --title=UnicodeUtils --main=README.txt lib README.txt"
+  sh "rdoc191 -o doc --inline-source --charset=UTF-8 --title=UnicodeUtils --main=README.txt lib README.txt"
 end
 
 desc "Publish doc/ on unicode-utils.rubyfore.org. " +
@@ -31,7 +31,7 @@ end
 
 desc "Compile Unicode data files from data/ to cdata/."
 task "compile-data" do
-  sh "ruby19 data/compile.rb"
+  sh "ruby191 data/compile.rb"
 end
 
 desc "Remove generated packages and documentation."

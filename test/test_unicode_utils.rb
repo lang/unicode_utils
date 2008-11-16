@@ -125,4 +125,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
       UnicodeUtils.canonical_decomposition("\u{e1}\u{63}\u{301}\u{327}")
   end
 
+  def test_nfd
+    assert_equal "\u{61}\u{301}", UnicodeUtils.nfd("\u{E1}")
+  end
+
 end

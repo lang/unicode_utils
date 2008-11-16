@@ -9,7 +9,8 @@ module UnicodeUtils
   CANONICAL_DECOMPOSITION_MAP = # :nodoc:
     Impl.read_multivalued_map("canonical_decomposition_map")
   
-  # Get the canonical decomposition of the given string.
+  # Get the canonical decomposition of the given string, also called
+  # Normalization Form D or short NFD.
   #
   # The Unicode standard has multiple representations for some
   # characters. One representation as a single codepoint and other

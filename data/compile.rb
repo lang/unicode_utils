@@ -356,6 +356,17 @@ module UnicodeUtils
       end
     end
 
+    def compile_composition_exclusion_set
+      path = File.join(@cdatadir, "composition_exclusion_set")
+      File.open(path, "w:US-ASCII") do |output|
+        each_property("DerivedNormalizationProps.txt") { |prop|
+          if prop.property == "Full_Composition_Exclusion"
+            output.write(format_codepoint(prop.codepoint))
+          end
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -364,6 +375,7 @@ module UnicodeUtils
       compile_combining_class
       compile_soft_dotted_set
       compile_jamo_short_names
+      compile_composition_exclusion_set
     end
 
     def format_codepoint(cp)

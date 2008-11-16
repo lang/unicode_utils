@@ -133,4 +133,9 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal true, UnicodeUtils.canonical_equivalents?("Äste", "A\u{308}ste")
     assert_equal false, UnicodeUtils.canonical_equivalents?("Äste", "Aste")
   end
+
+  def test_nfc
+    assert_equal "Häschen", UnicodeUtils.nfc("Ha\u{308}schen")
+  end
+
 end

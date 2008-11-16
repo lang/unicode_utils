@@ -8,7 +8,7 @@ task "default" => "test"
 
 desc "Run unit tests."
 task "test" do
-  sh "ruby191 -I lib #{Dir["test/**/test_*.rb"].join(' ')}"
+  sh "ruby191 -I lib test/suite.rb"
 end
 
 desc "Build unicode_utils gem."

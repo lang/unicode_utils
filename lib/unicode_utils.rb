@@ -19,3 +19,15 @@ require "unicode_utils/canonical_decomposition"
 require "unicode_utils/nfd"
 require "unicode_utils/canonical_equivalents_q"
 require "unicode_utils/nfc"
+
+# Read the README[link:files/README_txt.html] for an introduction.
+#
+# Highlevel functions are:
+#
+# UnicodeUtils.upcase:: full conversion to uppercase
+# UnicodeUtils.downcase:: full conversion to lowercase
+# UnicodeUtils.nfd:: Normalization Form D
+# UnicodeUtils.nfc:: Normalization Form C
+# UnicodeUtils.name:: character names
+module UnicodeUtils
+end

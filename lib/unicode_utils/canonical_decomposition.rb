@@ -6,8 +6,8 @@ require "unicode_utils/combining_class"
 
 module UnicodeUtils
 
-  CANONICAL_DECOMPOSITION_MAP = # :nodoc:
-    Impl.read_multivalued_map("canonical_decomposition_map")
+  CANONICAL_DECOMPOSITION_MAP =
+    Impl.read_multivalued_map("canonical_decomposition_map") # :nodoc:
   
   # Get the canonical decomposition of the given string, also called
   # Normalization Form D or short NFD.

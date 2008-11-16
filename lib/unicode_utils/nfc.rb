@@ -6,19 +6,19 @@ require "unicode_utils/read_codepoint_set"
 
 module UnicodeUtils
   
-  COMPOSITION_EXCLUSION_SET = # :nodoc:
-    Impl.read_codepoint_set("composition_exclusion_set")
-
-  CANONICAL_COMPOSITION_MAP = Hash.new.tap do |m|
-    CANONICAL_DECOMPOSITION_MAP.each_pair { |comp, decomp|
-      if decomp.length == 2
-        (m[decomp[0]] ||= {})[decomp[1]] = comp
-      end
-    }
-  end
-
-  module Impl
+  module Impl # :nodoc:all
     
+    COMPOSITION_EXCLUSION_SET =
+      Impl.read_codepoint_set("composition_exclusion_set")
+
+    CANONICAL_COMPOSITION_MAP = Hash.new.tap do |m|
+      CANONICAL_DECOMPOSITION_MAP.each_pair { |comp, decomp|
+        if decomp.length == 2
+          (m[decomp[0]] ||= {})[decomp[1]] = comp
+        end
+      }
+    end
+
     module NFC
 
       def self.starter?(cp)
@@ -93,7 +93,7 @@ module UnicodeUtils
             end
             ##############
             unless combined
-              map = CANONICAL_COMPOSITION_MAP[last_starter]
+              map = Impl::CANONICAL_COMPOSITION_MAP[last_starter]
               composition = map && map[cp]
               if composition && Impl::NFC.primary_composite?(composition)
                 last_starter = composition
@@ -112,7 +112,7 @@ module UnicodeUtils
           if last_non_starter && Impl::NFC.blocked?(last_non_starter, cp)
             uncomposable_non_starters << cp
           else
-            map = CANONICAL_COMPOSITION_MAP[last_starter]
+            map = Impl::CANONICAL_COMPOSITION_MAP[last_starter]
             composition = map && map[cp]
             if composition && Impl::NFC.primary_composite?(composition)
               last_starter = composition

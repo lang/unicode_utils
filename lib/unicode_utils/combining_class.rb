@@ -22,7 +22,7 @@ module UnicodeUtils
 
   end
 
-  COMBINING_CLASS_MAP = Impl.read_combining_class_map # :nodoc:
+  COMBINING_CLASS_MAP = Impl.read_combining_class_map() # :nodoc:
 
   # Get the combining class of the given character as an integer in
   # the range 0..255.

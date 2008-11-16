@@ -23,5 +23,5 @@ Gem::Specification.new do |g|
   g.extra_rdoc_files = ["README.txt"]
   g.rdoc_options = ["--main=README.txt", "--charset=UTF-8"]
   g.homepage = "http://github.com/lang/unicode_utils"
-  #g.rubyforge_project = "unicode_utils"
+  g.rubyforge_project = "unicode-utils"
 end

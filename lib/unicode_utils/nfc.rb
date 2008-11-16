@@ -25,10 +25,6 @@ module UnicodeUtils
         (COMBINING_CLASS_MAP[cp] || 0) == 0
       end
 
-      def self.nonstarter?(cp)
-        !starter(cp)
-      end
-
       # does b block c?
       def self.blocked?(b, c)
         # From the standard:

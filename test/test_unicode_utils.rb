@@ -129,4 +129,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "\u{61}\u{301}", UnicodeUtils.nfd("\u{E1}")
   end
 
+  def test_canonical_equivalents?
+    assert_equal true, UnicodeUtils.canonical_equivalents?("Äste", "A\u{308}ste")
+    assert_equal false, UnicodeUtils.canonical_equivalents?("Äste", "Aste")
+  end
 end

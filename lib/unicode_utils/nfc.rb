@@ -49,6 +49,17 @@ module UnicodeUtils
 
   end
 
+  # Get +str+ in Normalization Form C.
+  #
+  # The Unicode standard has multiple representations for some
+  # characters. One representation as a single codepoint and other
+  # representation(s) as a combination of multiple codepoints. This
+  # function "composes" these characters into the former
+  # representation.
+  #
+  # Example:
+  #
+  #   UnicodeUtils.nfc("La\u{308}mpchen") => "Lämpchen"
   def nfc(str)
     str = UnicodeUtils.canonical_decomposition(str)
 

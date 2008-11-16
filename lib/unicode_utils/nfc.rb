@@ -55,6 +55,19 @@ module UnicodeUtils
 
   def nfc(str)
     str = UnicodeUtils.canonical_decomposition(str)
+
+    ### constants for hangul composition ###
+    sbase = 0xAC00
+    lbase = 0x1100
+    vbase = 0x1161
+    tbase = 0x11A7
+    lcount = 19
+    vcount = 21
+    tcount = 28
+    ncount = vcount * tcount
+    scount = lcount * ncount
+    ########################################
+
     String.new.force_encoding(str.encoding).tap do |res|
       last_starter = nil
       uncomposable_non_starters = []
@@ -62,11 +75,34 @@ module UnicodeUtils
         if Impl::NFC.starter?(cp)
           combined = false
           if last_starter && uncomposable_non_starters.empty?
-            map = CANONICAL_COMPOSITION_MAP[last_starter]
-            composition = map && map[cp]
-            if composition && Impl::NFC.primary_composite?(composition)
-              last_starter = composition
-              combined = true
+            ### hangul ###
+            lindex = last_starter - lbase
+            if 0 <= lindex && lindex < lcount
+              vindex = cp - vbase
+              if 0 <= vindex && vindex <= vcount
+                last_starter =
+                  sbase + (lindex * vcount + vindex) * tcount
+                combined = true
+              end
+            end
+            unless combined
+              sindex = last_starter - sbase
+              if 0 <= sindex && sindex < scount && (sindex % tcount) == 0
+                tindex = cp - tbase
+                if 0 <= tindex && tindex < tcount
+                  last_starter += tindex
+                  combined = true
+                end
+              end
+            end
+            ##############
+            unless combined
+              map = CANONICAL_COMPOSITION_MAP[last_starter]
+              composition = map && map[cp]
+              if composition && Impl::NFC.primary_composite?(composition)
+                last_starter = composition
+                combined = true
+              end
             end
           end
           unless combined

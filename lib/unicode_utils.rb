@@ -19,6 +19,9 @@ require "unicode_utils/canonical_decomposition"
 require "unicode_utils/nfd"
 require "unicode_utils/canonical_equivalents_q"
 require "unicode_utils/nfc"
+require "unicode_utils/compatibility_decomposition"
+require "unicode_utils/nfkd"
+require "unicode_utils/nfkc"
 
 # Read the README[link:files/README_txt.html] for an introduction.
 #

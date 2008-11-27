@@ -72,4 +72,24 @@ class TestNormalization < Test::Unit::TestCase
     }
   end
 
+  def test_nfkd
+    each_testdata_record { |r|
+      assert_equal r.c5, UnicodeUtils.nfkd(r.c1)
+      assert_equal r.c5, UnicodeUtils.nfkd(r.c2)
+      assert_equal r.c5, UnicodeUtils.nfkd(r.c3)
+      assert_equal r.c5, UnicodeUtils.nfkd(r.c4)
+      assert_equal r.c5, UnicodeUtils.nfkd(r.c5)
+    }
+  end
+
+  def test_nfkc
+    each_testdata_record { |r|
+      assert_equal r.c4, UnicodeUtils.nfkc(r.c1)
+      assert_equal r.c4, UnicodeUtils.nfkc(r.c2)
+      assert_equal r.c4, UnicodeUtils.nfkc(r.c3)
+      assert_equal r.c4, UnicodeUtils.nfkc(r.c4)
+      assert_equal r.c4, UnicodeUtils.nfkc(r.c5)
+    }
+  end
+
 end

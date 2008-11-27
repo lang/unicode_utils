@@ -123,6 +123,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
       UnicodeUtils.canonical_decomposition("\u{E1}")
     assert_equal "\u{61}\u{301}\u{63}\u{327}\u{301}",
       UnicodeUtils.canonical_decomposition("\u{e1}\u{63}\u{301}\u{327}")
+    assert_equal "\u{fb01}",
+      UnicodeUtils.canonical_decomposition("\u{fb01}")
   end
 
   def test_nfd
@@ -136,6 +138,26 @@ class TestUnicodeUtils < Test::Unit::TestCase
 
   def test_nfc
     assert_equal "Häschen", UnicodeUtils.nfc("Ha\u{308}schen")
+  end
+
+  def test_compatibility_decomposition
+    # the following two calls have the same results with
+    # canonical_decomposition
+    assert_equal "\u{61}\u{301}",
+      UnicodeUtils.compatibility_decomposition("\u{E1}")
+    assert_equal "\u{61}\u{301}\u{63}\u{327}\u{301}",
+      UnicodeUtils.compatibility_decomposition("\u{e1}\u{63}\u{301}\u{327}")
+    # this case differs from canonical decomposition
+    assert_equal "\u{66}\u{69}",
+      UnicodeUtils.compatibility_decomposition("\u{fb01}")
+  end
+
+  def test_nfkd
+    assert_equal "\u{66}\u{69}", UnicodeUtils.nfkd("\u{fb01}")
+  end
+
+  def test_nfkc
+    assert_equal "\u{66}\u{69}\u{e4}", UnicodeUtils.nfkc("\u{fb01}\u{e4}")
   end
 
 end

@@ -180,8 +180,8 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "cat_set_titlecase"), "w:US-ASCII")
       canonical_dm_file =
         File.open(File.join(@cdatadir, "canonical_decomposition_map"), "w:US-ASCII")
-      #compatibility_dm_file =
-      #  File.open(File.join(@cdatadir, "compatibility_decomposition_map"), "w:US-ASCII")
+      compatibility_dm_file =
+        File.open(File.join(@cdatadir, "compatibility_decomposition_map"), "w:US-ASCII")
       begin
         each_codepoint { |cp|
           if cp.simple_uppercase_mapping
@@ -206,6 +206,12 @@ module UnicodeUtils
                 canonical_dm_file.write(format_codepoint(c))
               }
               canonical_dm_file.write("x" * 6) # end of entry marker
+            elsif cp.decomposition_mapping.compatibility?
+              compatibility_dm_file.write(format_codepoint(cp.codepoint))
+              cp.decomposition_mapping.mapping.each { |c|
+                compatibility_dm_file.write(format_codepoint(c))
+              }
+              compatibility_dm_file.write("x" * 6) # end of entry marker
             end
           end
         }
@@ -215,6 +221,7 @@ module UnicodeUtils
         name_file.close
         cat_set_titlecase_file.close
         canonical_dm_file.close
+        compatibility_dm_file.close
       end
     end
 

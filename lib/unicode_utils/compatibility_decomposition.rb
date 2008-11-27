@@ -1,0 +1,41 @@
+# -*- encoding: utf-8 -*-
+
+require "unicode_utils/canonical_decomposition"
+require "unicode_utils/read_multivalued_map"
+require "unicode_utils/hangul_syllable_decomposition"
+
+module UnicodeUtils
+
+  COMPATIBILITY_DECOMPOSITION_MAP =
+    Impl.read_multivalued_map("compatibility_decomposition_map") # :nodoc:
+
+  def compatibility_decomposition(str)
+    res = String.new.force_encoding(str.encoding)
+    str.each_codepoint { |cp|
+      if cp >= 0xAC00 && cp <= 0xD7A3 # hangul syllable
+        Impl.append_hangul_syllable_decomposition(res, cp)
+      else
+        Impl.append_recursive_compatibility_decomposition_mapping(res, cp)
+      end
+    }
+    Impl.put_into_canonical_order(res)
+  end
+  module_function :compatibility_decomposition
+
+  module Impl # :nodoc:
+
+    def self.append_recursive_compatibility_decomposition_mapping(str, cp)
+      mapping = COMPATIBILITY_DECOMPOSITION_MAP[cp]
+      mapping ||= CANONICAL_DECOMPOSITION_MAP[cp]
+      if mapping
+        mapping.each { |c|
+          append_recursive_compatibility_decomposition_mapping(str, c)
+        }
+      else
+        str << cp
+      end
+    end
+
+  end
+
+end

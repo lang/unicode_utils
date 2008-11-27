@@ -47,6 +47,82 @@ module UnicodeUtils
 
     end
 
+    def self.composition(str)
+      ### constants for hangul composition ###
+      sbase = 0xAC00
+      lbase = 0x1100
+      vbase = 0x1161
+      tbase = 0x11A7
+      lcount = 19
+      vcount = 21
+      tcount = 28
+      ncount = vcount * tcount
+      scount = lcount * ncount
+      ########################################
+
+      String.new.force_encoding(str.encoding).tap do |res|
+        last_starter = nil
+        uncomposable_non_starters = []
+        str.each_codepoint { |cp|
+          if Impl::NFC.starter?(cp)
+            combined = false
+            if last_starter && uncomposable_non_starters.empty?
+              ### hangul ###
+              lindex = last_starter - lbase
+              if 0 <= lindex && lindex < lcount
+                vindex = cp - vbase
+                if 0 <= vindex && vindex <= vcount
+                  last_starter =
+                    sbase + (lindex * vcount + vindex) * tcount
+                  combined = true
+                end
+              end
+              unless combined
+                sindex = last_starter - sbase
+                if 0 <= sindex && sindex < scount && (sindex % tcount) == 0
+                  tindex = cp - tbase
+                  if 0 <= tindex && tindex < tcount
+                    last_starter += tindex
+                    combined = true
+                  end
+                end
+              end
+              ##############
+              unless combined
+                map = Impl::CANONICAL_COMPOSITION_MAP[last_starter]
+                composition = map && map[cp]
+                if composition && Impl::NFC.primary_composite?(composition)
+                  last_starter = composition
+                  combined = true
+                end
+              end
+            end
+            unless combined
+              res << last_starter if last_starter
+              uncomposable_non_starters.each { |nc| res << nc }
+              uncomposable_non_starters.clear
+              last_starter = cp
+            end
+          else
+            last_non_starter = uncomposable_non_starters.last
+            if last_non_starter && Impl::NFC.blocked?(last_non_starter, cp)
+              uncomposable_non_starters << cp
+            else
+              map = Impl::CANONICAL_COMPOSITION_MAP[last_starter]
+              composition = map && map[cp]
+              if composition && Impl::NFC.primary_composite?(composition)
+                last_starter = composition
+              else
+                uncomposable_non_starters << cp
+              end
+            end
+          end
+        }
+        res << last_starter if last_starter
+        uncomposable_non_starters.each { |nc| res << nc }
+      end
+    end
+
   end
 
   # Get +str+ in Normalization Form C.
@@ -62,80 +138,7 @@ module UnicodeUtils
   #   UnicodeUtils.nfc("La\u{308}mpchen") => "Lämpchen"
   def nfc(str)
     str = UnicodeUtils.canonical_decomposition(str)
-
-    ### constants for hangul composition ###
-    sbase = 0xAC00
-    lbase = 0x1100
-    vbase = 0x1161
-    tbase = 0x11A7
-    lcount = 19
-    vcount = 21
-    tcount = 28
-    ncount = vcount * tcount
-    scount = lcount * ncount
-    ########################################
-
-    String.new.force_encoding(str.encoding).tap do |res|
-      last_starter = nil
-      uncomposable_non_starters = []
-      str.each_codepoint { |cp|
-        if Impl::NFC.starter?(cp)
-          combined = false
-          if last_starter && uncomposable_non_starters.empty?
-            ### hangul ###
-            lindex = last_starter - lbase
-            if 0 <= lindex && lindex < lcount
-              vindex = cp - vbase
-              if 0 <= vindex && vindex <= vcount
-                last_starter =
-                  sbase + (lindex * vcount + vindex) * tcount
-                combined = true
-              end
-            end
-            unless combined
-              sindex = last_starter - sbase
-              if 0 <= sindex && sindex < scount && (sindex % tcount) == 0
-                tindex = cp - tbase
-                if 0 <= tindex && tindex < tcount
-                  last_starter += tindex
-                  combined = true
-                end
-              end
-            end
-            ##############
-            unless combined
-              map = Impl::CANONICAL_COMPOSITION_MAP[last_starter]
-              composition = map && map[cp]
-              if composition && Impl::NFC.primary_composite?(composition)
-                last_starter = composition
-                combined = true
-              end
-            end
-          end
-          unless combined
-            res << last_starter if last_starter
-            uncomposable_non_starters.each { |nc| res << nc }
-            uncomposable_non_starters.clear
-            last_starter = cp
-          end
-        else
-          last_non_starter = uncomposable_non_starters.last
-          if last_non_starter && Impl::NFC.blocked?(last_non_starter, cp)
-            uncomposable_non_starters << cp
-          else
-            map = Impl::CANONICAL_COMPOSITION_MAP[last_starter]
-            composition = map && map[cp]
-            if composition && Impl::NFC.primary_composite?(composition)
-              last_starter = composition
-            else
-              uncomposable_non_starters << cp
-            end
-          end
-        end
-      }
-      res << last_starter if last_starter
-      uncomposable_non_starters.each { |nc| res << nc }
-    end
+    Impl.composition(str)
   end
   module_function :nfc
 

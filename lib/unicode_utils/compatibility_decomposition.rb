@@ -9,6 +9,19 @@ module UnicodeUtils
   COMPATIBILITY_DECOMPOSITION_MAP =
     Impl.read_multivalued_map("compatibility_decomposition_map") # :nodoc:
 
+  # Get the compatibility decomposition of the given string, also
+  # called Normalization Form KD or short NFKD.
+  #
+  # Compatibility decomposition decomposes more codepoints than
+  # canonical decomposition and contrary to Normalization Form D and
+  # C, this normalization can alter how a string is displayed.
+  #
+  # Example:
+  #
+  #   # LATIN SMALL LIGATURE FI => LATIN SMALL LETTER F, LATIN SMALL LETTER I
+  #   UnicodeUtils.compatibility_decomposition("ﬁ") => "fi"
+  #
+  # See also: UnicodeUtils.nfkd
   def compatibility_decomposition(str)
     res = String.new.force_encoding(str.encoding)
     str.each_codepoint { |cp|

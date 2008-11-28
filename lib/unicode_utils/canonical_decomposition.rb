@@ -22,6 +22,8 @@ module UnicodeUtils
   #
   #   # LATIN SMALL LETTER A WITH ACUTE => LATIN SMALL LETTER A, COMBINING ACUTE ACCENT
   #   UnicodeUtils.canonical_decomposition("\u{E1}") => "\u{61}\u{301}"
+  # 
+  # See also: UnicodeUtils.nfd
   def canonical_decomposition(str)
     res = String.new.force_encoding(str.encoding)
     str.each_codepoint { |cp|

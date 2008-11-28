@@ -31,6 +31,8 @@ require "unicode_utils/nfkc"
 # UnicodeUtils.downcase:: full conversion to lowercase
 # UnicodeUtils.nfd:: Normalization Form D
 # UnicodeUtils.nfc:: Normalization Form C
+# UnicodeUtils.nfkd:: Normalization Form KD
+# UnicodeUtils.nfkc:: Normalization Form KC
 # UnicodeUtils.name:: character names
 module UnicodeUtils
 end

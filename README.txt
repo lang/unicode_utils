@@ -1,8 +1,4 @@
-= Unicode Utils
-
-More Unicode aware string manipulation for Ruby 1.9.
-
-== Installing
+= Unicode Utils - Unicode algorithms for Ruby 1.9
 
 Install with RubyGems:
 
@@ -21,10 +17,13 @@ Encoding.default_internal is set (e.g. with -U or -E).
 
     UnicodeUtils.name("æ") => "LATIN SMALL LETTER AE"
     
-    UnicodeUtils.upcase("Straße") => "STRASSE"
+    UnicodeUtils.upcase("weiß") => "WEISS"
+
     UnicodeUtils.upcase("i", :tr) => "İ"
 
     UnicodeUtils.downcase("Ümit") => "ümit"
+
+    UnicodeUtils.nfkc("ﬁ") => "fi"
 
 Start with the UnicodeUtils module in the API documentation for
 complete documentation.
@@ -48,7 +47,7 @@ LICENSE.txt in the unicode_utils package for details.
 Sources on Github:: http://github.com/lang/unicode_utils
 Rubyforge project:: http://rubyforge.org/projects/unicode-utils
 Online documentation:: http://unicode-utils.rubyforge.org
-Home of the Unicode Consortium:: http://unicode.org/
+Home of the Unicode Consortium:: http://unicode.org
 
 == Who?
 

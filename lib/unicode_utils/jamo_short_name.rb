@@ -6,7 +6,7 @@ module UnicodeUtils
 
   JAMO_SHORT_NAME_MAP = Impl.read_names("jamo_short_names") # :nodoc:
 
-  # The the Jamo Short Name property of the given character (defaults
+  # The Jamo Short Name property of the given character (defaults
   # to nil).
   #
   # Example:

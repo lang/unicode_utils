@@ -7,14 +7,14 @@ require "unicode_utils"
 class TestUnicodeUtils < Test::Unit::TestCase
 
   def test_name
-    assert_equal "LATIN SMALL LETTER F", UnicodeUtils.name("f")
-    assert_equal Encoding::US_ASCII, UnicodeUtils.name("f").encoding
-    assert_equal nil, UnicodeUtils.name("\u{e000}") # private use
-    assert_equal "<control>", UnicodeUtils.name("\t")
-    assert_equal "CJK UNIFIED IDEOGRAPH-4E00", UnicodeUtils.name("\u{4e00}")
-    assert_equal "CJK UNIFIED IDEOGRAPH-2A6D6", UnicodeUtils.name("\u{2a6d6}")
-    assert_equal "CJK UNIFIED IDEOGRAPH-2A3D6", UnicodeUtils.name("\u{2a3d6}")
-    assert_equal "HANGUL SYLLABLE PWILH", UnicodeUtils.name("\u{d4db}")
+    assert_equal "LATIN SMALL LETTER F", UnicodeUtils.char_name("f")
+    assert_equal Encoding::US_ASCII, UnicodeUtils.char_name("f").encoding
+    assert_equal nil, UnicodeUtils.char_name("\u{e000}") # private use
+    assert_equal "<control>", UnicodeUtils.char_name("\t")
+    assert_equal "CJK UNIFIED IDEOGRAPH-4E00", UnicodeUtils.char_name("\u{4e00}")
+    assert_equal "CJK UNIFIED IDEOGRAPH-2A6D6", UnicodeUtils.char_name("\u{2a6d6}")
+    assert_equal "CJK UNIFIED IDEOGRAPH-2A3D6", UnicodeUtils.char_name("\u{2a3d6}")
+    assert_equal "HANGUL SYLLABLE PWILH", UnicodeUtils.char_name("\u{d4db}")
   end
 
   def test_simple_upcase

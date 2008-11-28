@@ -18,9 +18,9 @@ module UnicodeUtils
   #
   # Example:
   #
-  #     UnicodeUtils.name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
-  #     UnicodeUtils.name "\t" => "<control>"
-  def name(char)
+  #     UnicodeUtils.char_name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
+  #     UnicodeUtils.char_name "\t" => "<control>"
+  def char_name(char)
     cp = char.ord
     NAME_MAP[cp] ||
       case cp
@@ -34,6 +34,6 @@ module UnicodeUtils
         end
       end
   end
-  module_function :name
+  module_function :char_name
 
 end

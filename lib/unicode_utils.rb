@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 require "unicode_utils/version"
-require "unicode_utils/name"
+require "unicode_utils/char_name"
 require "unicode_utils/simple_upcase"
 require "unicode_utils/simple_downcase"
 require "unicode_utils/upcase"
@@ -33,6 +33,6 @@ require "unicode_utils/nfkc"
 # UnicodeUtils.nfc:: Normalization Form C
 # UnicodeUtils.nfkd:: Normalization Form KD
 # UnicodeUtils.nfkc:: Normalization Form KC
-# UnicodeUtils.name:: character names
+# UnicodeUtils.char_name:: character names
 module UnicodeUtils
 end

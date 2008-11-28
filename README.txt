@@ -15,7 +15,7 @@ Encoding.default_internal is set (e.g. with -U or -E).
 
     require "unicode_utils"
 
-    UnicodeUtils.name("æ") => "LATIN SMALL LETTER AE"
+    UnicodeUtils.char_name("æ") => "LATIN SMALL LETTER AE"
     
     UnicodeUtils.upcase("weiß") => "WEISS"
 

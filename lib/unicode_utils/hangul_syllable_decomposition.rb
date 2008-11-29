@@ -8,8 +8,9 @@ module UnicodeUtils
   #
   #     UnicodeUtils.hangul_syllable_decomposition("\u{d4db}") => "\u{1111}\u{1171}\u{11b6}"
   def hangul_syllable_decomposition(char)
-    Impl.append_hangul_syllable_decomposition(
-      String.new.force_encoding(char.encoding), char.ord)
+    String.new.force_encoding(char.encoding).tap do |str|
+      Impl.append_hangul_syllable_decomposition(str , char.ord)
+    end
   end
   module_function :hangul_syllable_decomposition
 

@@ -23,6 +23,7 @@ require "unicode_utils/compatibility_decomposition"
 require "unicode_utils/nfkd"
 require "unicode_utils/nfkc"
 require "unicode_utils/codepoint"
+require "unicode_utils/grep"
 
 # Read the README[link:files/README_txt.html] for an introduction.
 #

@@ -21,14 +21,21 @@ module UnicodeUtils
   #     UnicodeUtils.char_name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   #     UnicodeUtils.char_name "\t" => "<control>"
   def char_name(char)
-    cp = char.kind_of?(Integer) ? char : char.ord
+    if char.kind_of?(Integer)
+      cp = char
+      str = nil
+    else
+      cp = char.ord
+      str = char
+    end
     NAME_MAP[cp] ||
       case cp
       when 0x3400..0x4DB5, 0x4E00..0x9FC3, 0x20000..0x2A6D6
-        "CJK UNIFIED IDEOGRAPH-#{sprintf('%04x', cp).upcase}"
+        "CJK UNIFIED IDEOGRAPH-#{sprintf('%04X', cp)}"
       when 0xAC00..0xD7A3
+        str ||= cp.chr(Encoding::UTF_8)
         "HANGUL SYLLABLE ".tap do |n|
-          hangul_syllable_decomposition(char).each_char { |c|
+          hangul_syllable_decomposition(str).each_char { |c|
             n << (jamo_short_name(c) || '')
           }
         end

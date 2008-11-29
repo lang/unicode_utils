@@ -4,6 +4,7 @@ require "test/unit"
 
 require "unicode_utils"
 
+# Fast tests for allmost all UnicodeUtils functions.
 class TestUnicodeUtils < Test::Unit::TestCase
 
   def test_name

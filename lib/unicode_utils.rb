@@ -22,6 +22,7 @@ require "unicode_utils/nfc"
 require "unicode_utils/compatibility_decomposition"
 require "unicode_utils/nfkd"
 require "unicode_utils/nfkc"
+require "unicode_utils/codepoint"
 
 # Read the README[link:files/README_txt.html] for an introduction.
 #

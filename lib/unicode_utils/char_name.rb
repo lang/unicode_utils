@@ -21,7 +21,7 @@ module UnicodeUtils
   #     UnicodeUtils.char_name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   #     UnicodeUtils.char_name "\t" => "<control>"
   def char_name(char)
-    cp = char.ord
+    cp = char.kind_of?(Integer) ? char : char.ord
     NAME_MAP[cp] ||
       case cp
       when 0x3400..0x4DB5, 0x4E00..0x9FC3, 0x20000..0x2A6D6

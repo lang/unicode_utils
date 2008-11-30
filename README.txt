@@ -37,6 +37,9 @@ startup time. Methods that end in a ? are in a file suffixed with
 +_q+, e.g. <tt>lowercase_char?</tt> can be required with
 <tt>unicode_utils/lowercase_char_q</tt>.
 
+There is also a shortcut for IRB usage. See
+U[link:files/lib/unicode_utils/u_rb.html].
+
 == License
 
 unicode_utils is licensed under the BSD license. Read the file

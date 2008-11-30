@@ -3,7 +3,7 @@
 require "unicode_utils"
 
 # Shortcut for usage in irb. This shortcut is only defined when
-# <tt>unicode_utils/u</tt> is explicitely required. It is intended for
+# <tt>unicode_utils/u</tt> is explicitly required. It is intended for
 # interactive use only!
 #
 #   $ irb -r unicode_utils/u

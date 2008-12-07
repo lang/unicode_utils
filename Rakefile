@@ -8,12 +8,12 @@ task "default" => "test"
 
 desc "Run unit tests."
 task "test" do
-  sh "ruby191 -I lib test/suite.rb"
+  sh "ruby19 -I lib test/suite.rb"
 end
 
 desc "Build unicode_utils gem."
 task "gem" do
-  sh "gem191 build unicode_utils.gemspec"
+  sh "gem19 build unicode_utils.gemspec"
   mkdir "pkg" unless File.directory? "pkg"
   mv gem_filename, "pkg"
 end
@@ -33,7 +33,7 @@ end
 
 desc "Compile Unicode data files from data/ to cdata/."
 task "compile-data" do
-  sh "ruby191 data/compile.rb"
+  sh "ruby19 data/compile.rb"
 end
 
 desc "Remove generated packages and documentation."

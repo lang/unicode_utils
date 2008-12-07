@@ -2,7 +2,7 @@
 
 require "#{File.dirname(__FILE__)}/lib/unicode_utils/version"
 
-test_files = Dir["test/**/test_*.rb"]
+test_files = ["test/test_unicode_utils.rb"]
 files =
   Dir["lib/**/*.rb"] + Dir["cdata/*"] + test_files +
   ["README.txt", "LICENSE.txt"]

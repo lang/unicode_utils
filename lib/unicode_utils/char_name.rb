@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-require "unicode_utils/read_names"
+require "unicode_utils/read_cdata"
 require "unicode_utils/hangul_syllable_decomposition"
 require "unicode_utils/jamo_short_name"
 

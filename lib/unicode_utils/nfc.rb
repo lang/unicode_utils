@@ -1,8 +1,8 @@
 # -*- encoding: utf-8 -*-
 
+require "unicode_utils/read_cdata"
 require "unicode_utils/canonical_decomposition"
 require "unicode_utils/combining_class"
-require "unicode_utils/read_codepoint_set"
 
 module UnicodeUtils
   

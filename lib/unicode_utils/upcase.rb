@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
+require "unicode_utils/read_cdata"
 require "unicode_utils/simple_upcase"
-require "unicode_utils/read_multivalued_map"
 require "unicode_utils/conditional_casing"
 
 module UnicodeUtils

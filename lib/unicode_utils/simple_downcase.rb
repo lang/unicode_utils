@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 
-require "unicode_utils/read_codepoint_map"
+require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 

@@ -4,6 +4,7 @@ require "benchmark"
 
 require "unicode_utils/upcase"
 require "unicode_utils/downcase"
+require "unicode_utils/casefold"
 
 TXT_DIR = File.join(File.dirname(__FILE__), "..", "test")
 
@@ -63,5 +64,12 @@ Benchmark.bm(35) do |x|
   end
   x.report "long text: downcase, :tr" do
     1.times { UnicodeUtils.downcase(long_german_text, :tr) }
+  end
+
+  x.report "casefold" do
+    100.times { UnicodeUtils.casefold(german_text) }
+  end
+  x.report "long text: casefold" do
+    1.times { UnicodeUtils.casefold(long_german_text) }
   end
 end

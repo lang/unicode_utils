@@ -4,6 +4,7 @@ require "test/unit"
 
 require "unicode_utils/upcase"
 require "unicode_utils/downcase"
+require "unicode_utils/casefold"
 
 class TestCaseMappings < Test::Unit::TestCase
 
@@ -41,6 +42,11 @@ class TestCaseMappings < Test::Unit::TestCase
   def test_downcase_german_text_language_tr
     assert_not_equal read_txt("dreilaendereck_lc.txt"),
       UnicodeUtils.downcase(read_txt("dreilaendereck.txt"), :tr)
+  end
+
+  def test_casefold_german_text
+    assert_equal read_txt("dreilaendereck_cf.txt"),
+      UnicodeUtils.casefold(read_txt("dreilaendereck.txt"))
   end
 
 end

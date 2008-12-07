@@ -83,6 +83,10 @@ module UnicodeUtils
   Property = Struct.new(:codepoint,
                         :property)
 
+  CasefoldMapping = Struct.new(:codepoint,
+                               :status,
+                               :mapping)
+
   class Compiler
 
     def initialize
@@ -165,6 +169,21 @@ module UnicodeUtils
           else
             yield Property.new(fields[0].to_i(16), property)
           end
+        }
+      end
+    end
+
+    def each_casefold_mapping
+      path = File.join(@datadir, "CaseFolding.txt")
+      File.open(path, "r:UTF-8") do |input|
+        each_significant_line(input) { |line|
+          fields = line.split(";").map(&:strip)
+          raise unless fields[0] =~ /^[0-9A-F]+$/
+          yield CasefoldMapping.new(
+            fields[0].to_i(16),
+            fields[1],
+            fields[2].split(" ").map { |c| c.to_i(16) }
+          )
         }
       end
     end
@@ -374,6 +393,42 @@ module UnicodeUtils
       end
     end
 
+    def compile_casefold_mappings
+      c_file =
+        File.open(File.join(@cdatadir, "casefold_c_map"), "w:US-ASCII")
+      f_file =
+        File.open(File.join(@cdatadir, "casefold_f_map"), "w:US-ASCII")
+      s_file =
+        File.open(File.join(@cdatadir, "casefold_s_map"), "w:US-ASCII")
+      begin
+        each_casefold_mapping { |mapping|
+          case mapping.status
+          when "C"
+            raise unless mapping.mapping.size == 1
+            c_file.write(format_codepoint(mapping.codepoint))
+            c_file.write(format_codepoint(mapping.mapping.first))
+          when "S"
+            raise unless mapping.mapping.size == 1
+            s_file.write(format_codepoint(mapping.codepoint))
+            s_file.write(format_codepoint(mapping.mapping.first))
+          when "F"
+            f_file.write(format_codepoint(mapping.codepoint))
+            mapping.mapping.each { |cp|
+              f_file.write(format_codepoint(cp))
+            }
+            f_file.write("x" * 6) # end of entry marker
+          when "T"
+            # this is not required by the Unicode standard, we
+            # don't implement it for now
+          end
+        }
+      ensure
+        c_file.close
+        f_file.close
+        s_file.close
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -383,6 +438,7 @@ module UnicodeUtils
       compile_soft_dotted_set
       compile_jamo_short_names
       compile_composition_exclusion_set
+      compile_casefold_mappings
     end
 
     def format_codepoint(cp)

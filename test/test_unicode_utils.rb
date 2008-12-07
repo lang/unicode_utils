@@ -161,4 +161,20 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "\u{66}\u{69}\u{e4}", UnicodeUtils.nfkc("\u{fb01}\u{e4}")
   end
 
+  def test_simple_casefold
+    assert_equal "abc123", UnicodeUtils.simple_casefold("ABC123")
+    assert UnicodeUtils.simple_casefold("ÜMIT") ==
+      UnicodeUtils.simple_casefold("ümit")
+    assert UnicodeUtils.simple_casefold("WEISS") !=
+      UnicodeUtils.simple_casefold("weiß")
+  end
+
+  def test_casefold
+    assert_equal "abc123", UnicodeUtils.casefold("ABC123")
+    assert UnicodeUtils.casefold("ÜMIT") ==
+      UnicodeUtils.casefold("ümit")
+    assert UnicodeUtils.casefold("WEISS") ==
+      UnicodeUtils.casefold("weiß")
+  end
+
 end

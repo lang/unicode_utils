@@ -24,6 +24,8 @@ require "unicode_utils/nfkd"
 require "unicode_utils/nfkc"
 require "unicode_utils/codepoint"
 require "unicode_utils/grep"
+require "unicode_utils/simple_casefold"
+require "unicode_utils/casefold"
 
 # Read the README[link:files/README_txt.html] for an introduction.
 #
@@ -36,5 +38,6 @@ require "unicode_utils/grep"
 # UnicodeUtils.nfkd:: Normalization Form KD
 # UnicodeUtils.nfkc:: Normalization Form KC
 # UnicodeUtils.char_name:: character names
+# UnicodeUtils.casefold:: case folding (case insensitive string comparison)
 module UnicodeUtils
 end

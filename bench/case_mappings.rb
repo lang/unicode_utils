@@ -26,7 +26,7 @@ Benchmark.bm(35) do |x|
     100.times { UnicodeUtils.upcase(german_text, :de) }
   end
   x.report "upcase, :tr" do
-    100.times { UnicodeUtils.upcase(german_text, :de) }
+    100.times { UnicodeUtils.upcase(german_text, :tr) }
   end
   x.report "long text: String#upcase" do
     1.times { long_german_text.upcase }
@@ -51,7 +51,7 @@ Benchmark.bm(35) do |x|
     100.times { UnicodeUtils.downcase(german_text, :de) }
   end
   x.report "downcase, :tr" do
-    100.times { UnicodeUtils.downcase(german_text, :de) }
+    100.times { UnicodeUtils.downcase(german_text, :tr) }
   end
   x.report "long text: String#downcase" do
     1.times { long_german_text.downcase }

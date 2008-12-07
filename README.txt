@@ -6,10 +6,7 @@ Install with RubyGems:
 
 Or get the source from Github: http://github.com/lang/unicode_utils
 
-UnicodeUtils works with Ruby 1.9.1-preview1 or later. Though a bug
-(http://redmine.ruby-lang.org/issues/show/692) in
-1.9.1-preview1 prevents UnicodeUtils from loading when
-Encoding.default_internal is set (e.g. with -U or -E).
+UnicodeUtils works with Ruby 1.9.1-preview2 or later.
 
 == Synopsis
 

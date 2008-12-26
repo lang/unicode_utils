@@ -6,6 +6,9 @@ Install with RubyGems:
 
 Or get the source from Github: http://github.com/lang/unicode_utils
 
+For a non-RubyGems installation, read
+INSTALL.txt[link:files/INSTALL_txt.html].
+
 UnicodeUtils works with Ruby 1.9.1-preview2 or later.
 
 == Synopsis

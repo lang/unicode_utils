@@ -4,6 +4,7 @@ require "unicode_utils/cased_char_q"
 require "unicode_utils/case_ignorable_char_q"
 require "unicode_utils/soft_dotted_char_q"
 require "unicode_utils/combining_class"
+require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 
@@ -113,24 +114,6 @@ module UnicodeUtils
         false
       end
 
-    end
-
-    def self.read_conditional_casings(filename)
-      path = File.join(File.dirname(__FILE__), "..", "..", "cdata", filename)
-      Hash.new.tap { |cp_map|
-        File.open(path, "r:US-ASCII:-") do |input|
-          input.each_line { |line|
-            line.chomp!
-            record = line.split(";")
-            cp = record[0].to_i(16)
-            mapping = record[1].split(",").map { |c| c.to_i(16) }
-            language_id = record[2].empty? ? nil : record[2].to_sym
-            context = record[3] && record[3].gsub('_', '')
-            casing = Impl.const_get("#{context}ConditionalCasing").new(mapping)
-            (cp_map[cp] ||= {})[language_id] = casing
-          }
-        end
-      }
     end
 
     CONDITIONAL_UPCASE_MAP =

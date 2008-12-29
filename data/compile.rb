@@ -429,6 +429,31 @@ module UnicodeUtils
       end
     end
 
+    def compile_grapheme_break_property
+      props = {"CR" => 0x0,
+               "LF" => 0x1,
+               "Control" => 0x2,
+               "Extend" => 0x3,
+               "Prepend" => 0x4,
+               "SpacingMark" => 0x5,
+               "L" => 0x6,
+               "V" => 0x7,
+               "T" => 0x8,
+               "LV" => 0x9,
+               "LVT" => 0xA}
+      filename = File.join(@cdatadir, "grapheme_break_property")
+      File.open(filename, "w:us-ascii") do |output|
+        each_property("GraphemeBreakProperty.txt") { |prop|
+          i = props[prop.property] ||
+            raise("unknown property value #{prop.property}")
+          digit = i.to_s(16)
+          raise unless digit.length == 1
+          output.write(format_codepoint(prop.codepoint))
+          output.write(digit)
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -439,6 +464,7 @@ module UnicodeUtils
       compile_jamo_short_names
       compile_composition_exclusion_set
       compile_casefold_mappings
+      compile_grapheme_break_property
     end
 
     def format_codepoint(cp)

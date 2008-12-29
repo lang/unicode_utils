@@ -26,6 +26,7 @@ require "unicode_utils/codepoint"
 require "unicode_utils/grep"
 require "unicode_utils/simple_casefold"
 require "unicode_utils/casefold"
+require "unicode_utils/each_grapheme"
 
 # Read the README[link:files/README_txt.html] for an introduction.
 #

@@ -177,4 +177,20 @@ class TestUnicodeUtils < Test::Unit::TestCase
       UnicodeUtils.casefold("weiß")
   end
 
+  def test_each_grapheme
+    graphemes = []
+    UnicodeUtils.each_grapheme("word") { |g| graphemes << g }
+    assert_equal ["w", "o", "r", "d"], graphemes
+    UnicodeUtils.each_grapheme("") { |g| flunk }
+    graphemes = []
+    UnicodeUtils.each_grapheme("u\u{308}mit") { |g| graphemes << g }
+    # diaeresis
+    assert_equal ["u\u{308}", "m", "i", "t"], graphemes
+    # hangul syllable
+    graphemes = []
+    UnicodeUtils.each_grapheme("\u{1111}\u{1171}\u{11b6}\u{d4db}") { |g| graphemes << g }
+    assert_equal ["\u{1111}\u{1171}\u{11b6}", "\u{d4db}"], graphemes
+    assert_equal ["a", "\r\n", "b"], UnicodeUtils.each_grapheme("a\r\nb").to_a
+  end
+
 end

@@ -96,6 +96,23 @@ module UnicodeUtils
       }
     end
 
+    # Read a map whose keys are codepoints (6 hexgdigits, converted to
+    # integer) and whose values are single hexdigits (converted to
+    # integer).
+    def self.read_hexdigit_map(filename)
+      Hash.new.tap { |map|
+        open_cdata_file(filename) do |input|
+          buffer = "x" * 6
+          buffer.force_encoding(Encoding::US_ASCII)
+          val_buffer = "x"
+          val_buffer.force_encoding(Encoding::US_ASCII)
+          while input.read(6, buffer)
+            map[buffer.to_i(16)] = input.read(1, val_buffer).to_i(16)
+          end
+        end
+      }
+    end
+
   end
 
 end

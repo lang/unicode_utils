@@ -24,6 +24,10 @@ module UnicodeUtils
   #     UnicodeUtils.downcase("aBI\u{307}", :tr) => "abi"
   def downcase(str, language_id = nil)
     String.new.force_encoding(str.encoding).tap { |res|
+      if Impl::LANGS_WITH_RULES.include?(language_id)
+        # ensure O(1) lookup by index
+        str = str.encode(Encoding::UTF_32LE)
+      end
       pos = 0
       str.each_codepoint { |cp|
         special_mapping =

@@ -10,6 +10,8 @@ module UnicodeUtils
 
   module Impl # :nodoc:all
 
+    LANGS_WITH_RULES = {:tr => true, :lt => true, :az => true}
+
     class ConditionalCasing
 
       attr_reader :mapping

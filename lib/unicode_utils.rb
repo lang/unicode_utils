@@ -27,6 +27,7 @@ require "unicode_utils/grep"
 require "unicode_utils/simple_casefold"
 require "unicode_utils/casefold"
 require "unicode_utils/each_grapheme"
+require "unicode_utils/each_word"
 
 # Read the README[link:files/README_txt.html] for an introduction.
 #

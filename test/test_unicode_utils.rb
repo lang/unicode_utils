@@ -193,4 +193,26 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal ["a", "\r\n", "b"], UnicodeUtils.each_grapheme("a\r\nb").to_a
   end
 
+  def test_each_word
+    words = []
+    UnicodeUtils.each_word("two words") { |w| words << w }
+    assert_equal ["two", " ", "words"], words
+    assert_equal ["a", " ", "b"], UnicodeUtils.each_word("a b").to_a
+    assert_equal [" ", "b"], UnicodeUtils.each_word(" b").to_a
+    assert_equal ["a", " "], UnicodeUtils.each_word("a ").to_a
+    assert_equal [" "], UnicodeUtils.each_word(" ").to_a
+    assert_equal ["a"], UnicodeUtils.each_word("a").to_a
+    assert_equal [], UnicodeUtils.each_word("").to_a
+    assert_equal ["Hello", ",", " ", "world", "!"],
+      UnicodeUtils.each_word("Hello, world!").to_a
+    assert_equal ["o\u{308}12"],
+      UnicodeUtils.each_word("o\u{308}12").to_a
+    assert_equal ["o\u{308}1"],
+      UnicodeUtils.each_word("o\u{308}1").to_a
+    assert_equal ["o\u{308}"],
+      UnicodeUtils.each_word("o\u{308}").to_a
+    assert_equal ["\u{308}", "o"],
+      UnicodeUtils.each_word("\u{308}o").to_a
+  end
+
 end

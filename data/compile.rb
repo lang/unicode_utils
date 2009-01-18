@@ -454,6 +454,32 @@ module UnicodeUtils
       end
     end
 
+    def compile_word_break_property
+      props = {"CR" => 0x0,
+               "LF" => 0x1,
+               "Newline" => 0x2,
+               "Extend" => 0x3,
+               "Format" => 0x4,
+               "Katakana" => 0x5,
+               "ALetter" => 0x6,
+               "MidLetter" => 0x7,
+               "MidNum" => 0x8,
+               "MidNumLet" => 0x9,
+               "Numeric" => 0xA,
+               "ExtendNumLet" => 0xB}
+      filename = File.join(@cdatadir, "word_break_property")
+      File.open(filename, "w:us-ascii") do |output|
+        each_property("WordBreakProperty.txt") { |prop|
+          i = props[prop.property] ||
+            raise("unknown property value #{prop.property}")
+          digit = i.to_s(16)
+          raise unless digit.length == 1
+          output.write(format_codepoint(prop.codepoint))
+          output.write(digit)
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -465,6 +491,7 @@ module UnicodeUtils
       compile_composition_exclusion_set
       compile_casefold_mappings
       compile_grapheme_break_property
+      compile_word_break_property
     end
 
     def format_codepoint(cp)

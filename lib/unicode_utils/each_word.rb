@@ -93,13 +93,13 @@ module UnicodeUtils
 
       def self.wb5(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i0] == 0x6 && cs[i1] == 0x6
       end
 
       def self.wb6(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         i2 = skip_r(cs, i1 + 1)
         cs[i0] == 0x6 && (cs[i1] == 0x7 || cs[i1] == 0x9) && cs[i2] == 0x6
       end
@@ -107,57 +107,57 @@ module UnicodeUtils
       def self.wb7(cs, i)
         i0 = skip_l(cs, i)
         i_1 = skip_l(cs, i0 - 1) # i_1 = one _backwards_ from i0
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i_1] == 0x6 && (cs[i0] == 0x7 || cs[i0] == 0x9) && cs[i1] == 0x6
       end
 
       def self.wb8(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i0] == 0xA && cs[i1] == 0xA
       end
 
       def self.wb9(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i0] == 0x6 && cs[i1] == 0xA
       end
 
       def self.wb10(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i0] == 0xA && cs[i1] == 0x6
       end
 
       def self.wb11(cs, i)
         i0 = skip_l(cs, i)
         i_1 = skip_l(cs, i0 - 1)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i_1] == 0xA && (cs[i0] == 0x8 || cs[i0] == 0x9) && cs[i1] == 0xA
       end
 
       def self.wb12(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         i2 = skip_r(cs, i1 + 1)
         cs[i0] == 0xA && (cs[i1] == 0x8 || cs[i1] == 0x9) && cs[i2] == 0xA
       end
 
       def self.wb13(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i0] == 0x5 && cs[i1] == 0x5
       end
 
       def self.wb13a(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         (cs[i0] == 0x6 || cs[i0] == 0xA || cs[i0] == 0x5 || cs[i0] == 0xB) && cs[i1] == 0xB
       end
 
       def self.wb13b(cs, i)
         i0 = skip_l(cs, i)
-        i1 = skip_r(cs, i + 1)
+        i1 = i + 1
         cs[i0] == 0xB && (cs[i1] == 0x6 || cs[i1] == 0xA || cs[i1] == 0x5)
       end
 

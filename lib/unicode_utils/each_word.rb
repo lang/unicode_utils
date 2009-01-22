@@ -18,8 +18,8 @@ module UnicodeUtils
   #   UnicodeUtils.each_word("Hello, world!").to_a => ["Hello", ",", " ", "world", "!"]
   def each_word(str)
     return enum_for(__method__, str) unless block_given?
-    cs = Impl::EachWord::CustomArray.new
-    str.each_codepoint { |c| cs << WORD_BREAK_MAP[c] }
+    cs = str.each_codepoint.map { |c| WORD_BREAK_MAP[c] }
+    cs << nil << nil # for negative indices
     word = String.new.force_encoding(str.encoding)
     i = 0
     str.each_codepoint { |c|
@@ -38,14 +38,6 @@ module UnicodeUtils
   module Impl # :nodoc:all
 
     module EachWord
-
-      class CustomArray < Array
-        
-        def [](i)
-          i < 0 ? nil : super
-        end
-
-      end
 
       def self.word_break?(cs, i)
         case

@@ -7,7 +7,39 @@ module UnicodeUtils
   # Maps codepoints to integer codes. For the integer code to property
   # mapping, see #compile_word_break_property in data/compile.rb.
   WORD_BREAK_MAP =
-    Impl.read_hexdigit_map("word_break_property") # :nodoc:
+    Impl.read_hexdigit_map_ranges("word_break_property") # :nodoc:
+
+  module Impl
+
+    module EW
+
+      def self.char_class(ranges)
+        "[" <<
+          ranges.map { |r|
+            if r.begin == r.end
+                "\\u{#{r.begin.to_s(16)}}"
+            else
+                "\\u{#{r.begin.to_s(16)}}-\\u{#{r.end.to_s(16)}}"
+            end
+          }.join << "]"
+      end
+
+      CR = char_class(WORD_BREAK_MAP[0x0])
+      LF = char_class(WORD_BREAK_MAP[0x1])
+      Newline = char_class(WORD_BREAK_MAP[0x2])
+      Extend = char_class(WORD_BREAK_MAP[0x3])
+      Format = char_class(WORD_BREAK_MAP[0x4])
+      Katakana = char_class(WORD_BREAK_MAP[0x5])
+      ALetter = char_class(WORD_BREAK_MAP[0x6])
+      MidLetter = char_class(WORD_BREAK_MAP[0x7])
+      MidNum = char_class(WORD_BREAK_MAP[0x8])
+      MidNumLet = char_class(WORD_BREAK_MAP[0x9])
+      Numeric = char_class(WORD_BREAK_MAP[0xA])
+      ExtendNumLet = char_class(WORD_BREAK_MAP[0xB])
+      
+    end
+
+  end
 
   def each_word(str)
     return enum_for(__method__, str) unless block_given?

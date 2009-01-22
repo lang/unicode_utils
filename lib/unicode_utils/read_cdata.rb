@@ -113,6 +113,24 @@ module UnicodeUtils
       }
     end
 
+    # The returned hash maps an integer to arrays of integer ranges.
+    def self.read_hexdigit_map_ranges(filename)
+      Hash.new.tap { |map|
+        open_cdata_file(filename) do |input|
+          buffer = "x" * 6
+          buffer.force_encoding(Encoding::US_ASCII)
+          val_buffer = "x"
+          val_buffer.force_encoding(Encoding::US_ASCII)
+          while input.read(6, buffer)
+            start = buffer.to_i(16)
+            ende = input.read(6, buffer).to_i(16)
+            val = input.read(1, val_buffer).to_i(16)
+            (map[val] ||= []) << (start..ende)
+          end
+        end
+      }
+    end
+
   end
 
 end

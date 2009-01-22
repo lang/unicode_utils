@@ -83,6 +83,10 @@ module UnicodeUtils
   Property = Struct.new(:codepoint,
                         :property)
 
+  PropertyRange = Struct.new(:start,
+                             :end,
+                             :property)
+
   CasefoldMapping = Struct.new(:codepoint,
                                :status,
                                :mapping)
@@ -168,6 +172,22 @@ module UnicodeUtils
             }
           else
             yield Property.new(fields[0].to_i(16), property)
+          end
+        }
+      end
+    end
+
+    def each_property_range(filename)
+      data_fn = File.join(@datadir, filename)
+      File.open(data_fn, "r:US-ASCII") do |input|
+        each_significant_line(input) { |line|
+          fields = line.split(";").map(&:strip)
+          property = fields[1]
+          if fields[0] =~ /^([\dA-F]+)\.{2}([\dA-F]+)$/ # codepoint-range?
+            yield PropertyRange.new($1.to_i(16), $2.to_i(16), property)
+          else
+            cp = fields[0].to_i(16)
+            yield PropertyRange.new(cp, cp, property)
           end
         }
       end
@@ -469,12 +489,13 @@ module UnicodeUtils
                "ExtendNumLet" => 0xB}
       filename = File.join(@cdatadir, "word_break_property")
       File.open(filename, "w:us-ascii") do |output|
-        each_property("WordBreakProperty.txt") { |prop|
+        each_property_range("WordBreakProperty.txt") { |prop|
           i = props[prop.property] ||
             raise("unknown property value #{prop.property}")
           digit = i.to_s(16)
           raise unless digit.length == 1
-          output.write(format_codepoint(prop.codepoint))
+          output.write(format_codepoint(prop.start))
+          output.write(format_codepoint(prop.end))
           output.write(digit)
         }
       end

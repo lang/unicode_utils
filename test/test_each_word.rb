@@ -29,7 +29,6 @@ class TestEachWord < Test::Unit::TestCase
   def test_each_word
     c = 0
     each_word_list { |word_list|
-      c += 1
       words = UnicodeUtils.each_word(word_list.join).to_a
       assert_equal word_list, words
     }

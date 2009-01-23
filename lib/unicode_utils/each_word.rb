@@ -40,23 +40,92 @@ module UnicodeUtils
     module EachWord
 
       def self.word_break?(cs, i)
-        case
-        when wb3(cs, i); false
-        when wb3a(cs, i); true
-        when wb3b(cs, i); true
-        when wb5(cs, i); false
-        when wb6(cs, i); false
-        when wb7(cs, i); false
-        when wb8(cs, i); false
-        when wb9(cs, i); false
-        when wb10(cs, i); false
-        when wb11(cs, i); false
-        when wb12(cs, i); false
-        when wb13(cs, i); false
-        when wb13a(cs, i); false
-        when wb13b(cs, i); false
-        else cs[i + 1] != 0x3 && cs[i + 1] != 0x4
+        # wb3
+        if cs[i] == 0x0 && cs[i + 1] == 0x1
+          return false
         end
+        # wb3a
+        c = cs[i]
+        if c == 0x2 || c == 0x0 || c == 0x1
+          return true
+        end
+        # wb3b
+        c = cs[i + 1]
+        if c == 0x2 || c == 0x0 || c == 0x1
+          return true
+        end
+        # wb5
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        if cs[i0] == 0x6 && cs[i1] == 0x6
+          return false
+        end
+        # wb6
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        i2 = skip_r(cs, i1 + 1)
+        if cs[i0] == 0x6 && (cs[i1] == 0x7 || cs[i1] == 0x9) && cs[i2] == 0x6
+          return false
+        end
+        # wb7
+        i0 = skip_l(cs, i)
+        i_1 = skip_l(cs, i0 - 1) # i_1 = one _backwards_ from i0
+        i1 = i + 1
+        if cs[i_1] == 0x6 && (cs[i0] == 0x7 || cs[i0] == 0x9) && cs[i1] == 0x6
+          return false
+        end
+        # wb8
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        if cs[i0] == 0xA && cs[i1] == 0xA
+          return false
+        end
+        # wb9
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        if cs[i0] == 0x6 && cs[i1] == 0xA
+          return false
+        end
+        # wb10
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        if cs[i0] == 0xA && cs[i1] == 0x6
+          return false
+        end
+        # wb11
+        i0 = skip_l(cs, i)
+        i_1 = skip_l(cs, i0 - 1)
+        i1 = i + 1
+        if cs[i_1] == 0xA && (cs[i0] == 0x8 || cs[i0] == 0x9) && cs[i1] == 0xA
+          return false
+        end
+        # wb12
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        i2 = skip_r(cs, i1 + 1)
+        if cs[i0] == 0xA && (cs[i1] == 0x8 || cs[i1] == 0x9) && cs[i2] == 0xA
+          return false
+        end
+        # wb13
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        if cs[i0] == 0x5 && cs[i1] == 0x5
+          return false
+        end
+        # wb13a
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        if (cs[i0] == 0x6 || cs[i0] == 0xA || cs[i0] == 0x5 || cs[i0] == 0xB) && cs[i1] == 0xB
+          return false
+        end
+        # wb13b
+        i0 = skip_l(cs, i)
+        i1 = i + 1
+        if cs[i0] == 0xB && (cs[i1] == 0x6 || cs[i1] == 0xA || cs[i1] == 0x5)
+          return false
+        end
+        # break unless next char is Extend/Format
+        cs[i + 1] != 0x3 && cs[i + 1] != 0x4
       end
 
       def self.skip_r(cs, i)
@@ -75,90 +144,6 @@ module UnicodeUtils
           i -= 1
         }
         i
-      end
-
-      def self.wb3(cs, i)
-        cs[i] == 0x0 && cs[i + 1] == 0x1
-      end
-
-      def self.wb3a(cs, i)
-        c = cs[i]
-        c == 0x2 || c == 0x0 || c == 0x1
-      end
-
-      def self.wb3b(cs, i)
-        c = cs[i + 1]
-        c == 0x2 || c == 0x0 || c == 0x1
-      end
-
-      def self.wb5(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        cs[i0] == 0x6 && cs[i1] == 0x6
-      end
-
-      def self.wb6(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        i2 = skip_r(cs, i1 + 1)
-        cs[i0] == 0x6 && (cs[i1] == 0x7 || cs[i1] == 0x9) && cs[i2] == 0x6
-      end
-
-      def self.wb7(cs, i)
-        i0 = skip_l(cs, i)
-        i_1 = skip_l(cs, i0 - 1) # i_1 = one _backwards_ from i0
-        i1 = i + 1
-        cs[i_1] == 0x6 && (cs[i0] == 0x7 || cs[i0] == 0x9) && cs[i1] == 0x6
-      end
-
-      def self.wb8(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        cs[i0] == 0xA && cs[i1] == 0xA
-      end
-
-      def self.wb9(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        cs[i0] == 0x6 && cs[i1] == 0xA
-      end
-
-      def self.wb10(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        cs[i0] == 0xA && cs[i1] == 0x6
-      end
-
-      def self.wb11(cs, i)
-        i0 = skip_l(cs, i)
-        i_1 = skip_l(cs, i0 - 1)
-        i1 = i + 1
-        cs[i_1] == 0xA && (cs[i0] == 0x8 || cs[i0] == 0x9) && cs[i1] == 0xA
-      end
-
-      def self.wb12(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        i2 = skip_r(cs, i1 + 1)
-        cs[i0] == 0xA && (cs[i1] == 0x8 || cs[i1] == 0x9) && cs[i2] == 0xA
-      end
-
-      def self.wb13(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        cs[i0] == 0x5 && cs[i1] == 0x5
-      end
-
-      def self.wb13a(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        (cs[i0] == 0x6 || cs[i0] == 0xA || cs[i0] == 0x5 || cs[i0] == 0xB) && cs[i1] == 0xB
-      end
-
-      def self.wb13b(cs, i)
-        i0 = skip_l(cs, i)
-        i1 = i + 1
-        cs[i0] == 0xB && (cs[i1] == 0x6 || cs[i1] == 0xA || cs[i1] == 0x5)
       end
 
     end

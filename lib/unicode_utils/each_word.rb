@@ -41,75 +41,77 @@ module UnicodeUtils
 
       def self.word_break?(cs, i)
         # wb3
-        if cs[i] == 0x0 && cs[i + 1] == 0x1
+        cs_i = cs[i]
+        i1 = i + 1
+        cs_i1 = cs[i1]
+        if cs_i == 0x0 && cs_i1 == 0x1
           return false
         end
         # wb3a
-        c = cs[i]
-        if c == 0x2 || c == 0x0 || c == 0x1
+        if cs_i == 0x2 || cs_i == 0x0 || cs_i == 0x1
           return true
         end
         # wb3b
-        c = cs[i + 1]
-        if c == 0x2 || c == 0x0 || c == 0x1
+        if cs_i1 == 0x2 || cs_i1 == 0x0 || cs_i1 == 0x1
           return true
         end
         # wb5
         i0 = i
         # inline skip_l
+        c = nil
         loop { c = cs[i0]; break unless c == 0x3 || c == 0x4; i0 -= 1 }
-        i1 = i + 1
-        if cs[i0] == 0x6 && cs[i1] == 0x6
+        ci0 = c
+        if ci0 == 0x6 && cs_i1 == 0x6
           return false
         end
         # wb6
         i2 = i1 + 1
         # inline skip_r
         loop { c = cs[i2]; break unless c == 0x3 || c == 0x4; i2 += 1 }
-        if cs[i0] == 0x6 && (cs[i1] == 0x7 || cs[i1] == 0x9) && cs[i2] == 0x6
+        if ci0 == 0x6 && (cs_i1 == 0x7 || cs_i1 == 0x9) && cs[i2] == 0x6
           return false
         end
         # wb7
         i_1 = i0 - 1
         # inline skip_l
         loop { c = cs[i_1]; break unless c == 0x3 || c == 0x4; i_1 -= 1 }
-        if cs[i_1] == 0x6 && (cs[i0] == 0x7 || cs[i0] == 0x9) && cs[i1] == 0x6
+        if cs[i_1] == 0x6 && (ci0 == 0x7 || ci0 == 0x9) && cs_i1 == 0x6
           return false
         end
         # wb8
-        if cs[i0] == 0xA && cs[i1] == 0xA
+        if ci0 == 0xA && cs_i1 == 0xA
           return false
         end
         # wb9
-        if cs[i0] == 0x6 && cs[i1] == 0xA
+        if ci0 == 0x6 && cs_i1 == 0xA
           return false
         end
         # wb10
-        if cs[i0] == 0xA && cs[i1] == 0x6
+        if ci0 == 0xA && cs_i1 == 0x6
           return false
         end
         # wb11
-        if cs[i_1] == 0xA && (cs[i0] == 0x8 || cs[i0] == 0x9) && cs[i1] == 0xA
+        if cs[i_1] == 0xA && (ci0 == 0x8 || ci0 == 0x9) && cs_i1 == 0xA
           return false
         end
         # wb12
-        if cs[i0] == 0xA && (cs[i1] == 0x8 || cs[i1] == 0x9) && cs[i2] == 0xA
+        if ci0 == 0xA && (cs_i1 == 0x8 || cs_i1 == 0x9) && cs[i2] == 0xA
           return false
         end
         # wb13
-        if cs[i0] == 0x5 && cs[i1] == 0x5
+        if ci0 == 0x5 && cs_i1 == 0x5
           return false
         end
         # wb13a
-        if (cs[i0] == 0x6 || cs[i0] == 0xA || cs[i0] == 0x5 || cs[i0] == 0xB) && cs[i1] == 0xB
+        if (ci0 == 0x6 || ci0 == 0xA || ci0 == 0x5 || ci0 == 0xB) && cs_i1 == 0xB
           return false
         end
         # wb13b
-        if cs[i0] == 0xB && (cs[i1] == 0x6 || cs[i1] == 0xA || cs[i1] == 0x5)
+        if ci0 == 0xB && (cs_i1 == 0x6 || cs_i1 == 0xA || cs_i1 == 0x5)
           return false
         end
         # break unless next char is Extend/Format
-        cs[i + 1] != 0x3 && cs[i + 1] != 0x4
+        cs_i1 != 0x3 && cs_i1 != 0x4
       end
 
     end

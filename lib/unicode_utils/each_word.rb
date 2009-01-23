@@ -55,71 +55,63 @@ module UnicodeUtils
           return true
         end
         # wb5
-        i0 = skip_l(cs, i)
+        i0 = i
+        # inline skip_l
+        loop { c = cs[i0]; break unless c == 0x3 || c == 0x4; i0 -= 1 }
         i1 = i + 1
         if cs[i0] == 0x6 && cs[i1] == 0x6
           return false
         end
         # wb6
-        i0 = skip_l(cs, i)
         i1 = i + 1
         i2 = skip_r(cs, i1 + 1)
         if cs[i0] == 0x6 && (cs[i1] == 0x7 || cs[i1] == 0x9) && cs[i2] == 0x6
           return false
         end
         # wb7
-        i0 = skip_l(cs, i)
         i_1 = skip_l(cs, i0 - 1) # i_1 = one _backwards_ from i0
         i1 = i + 1
         if cs[i_1] == 0x6 && (cs[i0] == 0x7 || cs[i0] == 0x9) && cs[i1] == 0x6
           return false
         end
         # wb8
-        i0 = skip_l(cs, i)
         i1 = i + 1
         if cs[i0] == 0xA && cs[i1] == 0xA
           return false
         end
         # wb9
-        i0 = skip_l(cs, i)
         i1 = i + 1
         if cs[i0] == 0x6 && cs[i1] == 0xA
           return false
         end
         # wb10
-        i0 = skip_l(cs, i)
         i1 = i + 1
         if cs[i0] == 0xA && cs[i1] == 0x6
           return false
         end
         # wb11
-        i0 = skip_l(cs, i)
         i_1 = skip_l(cs, i0 - 1)
         i1 = i + 1
         if cs[i_1] == 0xA && (cs[i0] == 0x8 || cs[i0] == 0x9) && cs[i1] == 0xA
           return false
         end
         # wb12
-        i0 = skip_l(cs, i)
         i1 = i + 1
         i2 = skip_r(cs, i1 + 1)
         if cs[i0] == 0xA && (cs[i1] == 0x8 || cs[i1] == 0x9) && cs[i2] == 0xA
           return false
         end
         # wb13
-        i0 = skip_l(cs, i)
         i1 = i + 1
         if cs[i0] == 0x5 && cs[i1] == 0x5
           return false
         end
         # wb13a
-        i0 = skip_l(cs, i)
         i1 = i + 1
         if (cs[i0] == 0x6 || cs[i0] == 0xA || cs[i0] == 0x5 || cs[i0] == 0xB) && cs[i1] == 0xB
           return false
         end
         # wb13b
-        i0 = skip_l(cs, i)
         i1 = i + 1
         if cs[i0] == 0xB && (cs[i1] == 0x6 || cs[i1] == 0xA || cs[i1] == 0x5)
           return false

@@ -70,7 +70,9 @@ module UnicodeUtils
           return false
         end
         # wb7
-        i_1 = skip_l(cs, i0 - 1) # i_1 = one _backwards_ from i0
+        i_1 = i0 - 1
+        # inline skip_l
+        loop { c = cs[i_1]; break unless c == 0x3 || c == 0x4; i_1 -= 1 }
         if cs[i_1] == 0x6 && (cs[i0] == 0x7 || cs[i0] == 0x9) && cs[i1] == 0x6
           return false
         end
@@ -87,7 +89,6 @@ module UnicodeUtils
           return false
         end
         # wb11
-        i_1 = skip_l(cs, i0 - 1)
         if cs[i_1] == 0xA && (cs[i0] == 0x8 || cs[i0] == 0x9) && cs[i1] == 0xA
           return false
         end
@@ -109,15 +110,6 @@ module UnicodeUtils
         end
         # break unless next char is Extend/Format
         cs[i + 1] != 0x3 && cs[i + 1] != 0x4
-      end
-
-      def self.skip_l(cs, i)
-        loop {
-          c = cs[i]
-          break unless c == 0x3 || c == 0x4
-          i -= 1
-        }
-        i
       end
 
     end

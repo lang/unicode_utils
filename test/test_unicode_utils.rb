@@ -215,4 +215,10 @@ class TestUnicodeUtils < Test::Unit::TestCase
       UnicodeUtils.each_word("\u{308}o").to_a
   end
 
+  def test_titlecase
+    assert_equal "Hello, World!", UnicodeUtils.titlecase("heLlo, world!")
+    assert_equal "Find", UnicodeUtils.titlecase("ﬁnD")
+    assert_equal "Ümit Huber Jandl", UnicodeUtils.titlecase("ümit huber jandl")
+  end
+
 end

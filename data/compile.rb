@@ -26,7 +26,8 @@ module UnicodeUtils
                          :general_category,
                          :decomposition_mapping,
                          :simple_lowercase_mapping,
-                         :simple_uppercase_mapping)
+                         :simple_uppercase_mapping,
+                         :simple_titlecase_mapping)
 
   class SpecialCasing
 
@@ -54,6 +55,12 @@ module UnicodeUtils
       conditional? ||
         @uppercase_mapping.length != 1 ||
         @uppercase_mapping.first != @codepoint
+    end
+
+    def has_titlecase?
+      conditional? ||
+        @titlecase_mapping.length != 1 ||
+        @titlecase_mapping.first != @codepoint
     end
 
     def language
@@ -108,7 +115,7 @@ module UnicodeUtils
 
     def parse_line(line)
       Codepoint.new.tap { |cp|
-        fields = line.split(";")
+        fields = line.chomp.split(";")
         cp.codepoint = fields[0].to_i(16)
         cp.name = fields[1]
         cp.general_category = fields[2]
@@ -122,12 +129,16 @@ module UnicodeUtils
           cp.decomposition_mapping = dm
         end
         uc_mapping = fields[12]
-        unless uc_mapping.empty?
+        unless uc_mapping.nil? || uc_mapping.empty?
           cp.simple_uppercase_mapping = uc_mapping.to_i(16)
         end
         lc_mapping = fields[13]
-        unless lc_mapping.empty?
+        unless lc_mapping.nil? || lc_mapping.empty?
           cp.simple_lowercase_mapping = lc_mapping.to_i(16)
+        end
+        tc_mapping = fields[14]
+        unless tc_mapping.nil? || tc_mapping.empty?
+          cp.simple_titlecase_mapping = tc_mapping.to_i(16)
         end
       }
     end
@@ -193,6 +204,8 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "simple_uc_map"), "w:US-ASCII")
       lc_file =
         File.open(File.join(@cdatadir, "simple_lc_map"), "w:US-ASCII")
+      tc_file =
+        File.open(File.join(@cdatadir, "simple_tc_map"), "w:US-ASCII")
       name_file =
         File.open(File.join(@cdatadir, "names"), "w:US-ASCII")
       cat_set_titlecase_file =
@@ -210,6 +223,10 @@ module UnicodeUtils
           if cp.simple_lowercase_mapping
             lc_file.write(format_codepoint(cp.codepoint))
             lc_file.write(format_codepoint(cp.simple_lowercase_mapping))
+          end
+          if cp.simple_titlecase_mapping
+            tc_file.write(format_codepoint(cp.codepoint))
+            tc_file.write(format_codepoint(cp.simple_titlecase_mapping))
           end
           if cp.general_category == "Lt"
             cat_set_titlecase_file.write(format_codepoint(cp.codepoint))
@@ -237,6 +254,7 @@ module UnicodeUtils
       ensure
         uc_file.close
         lc_file.close
+        tc_file.close
         name_file.close
         cat_set_titlecase_file.close
         canonical_dm_file.close
@@ -249,10 +267,14 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "special_uc_map"), "w:US-ASCII")
       lc_file =
         File.open(File.join(@cdatadir, "special_lc_map"), "w:US-ASCII")
+      tc_file =
+        File.open(File.join(@cdatadir, "special_tc_map"), "w:US-ASCII")
       cond_uc_file =
         File.open(File.join(@cdatadir, "cond_uc_map"), "w:US-ASCII")
       cond_lc_file =
         File.open(File.join(@cdatadir, "cond_lc_map"), "w:US-ASCII")
+      cond_tc_file =
+        File.open(File.join(@cdatadir, "cond_tc_map"), "w:US-ASCII")
       begin
         each_special_casing { |sc|
           if sc.conditional?
@@ -279,6 +301,17 @@ module UnicodeUtils
               cond_lc_file.write(sc.context || "")
               cond_lc_file.puts
             end
+            if sc.has_titlecase?
+              cond_tc_file.write(format_codepoint(sc.codepoint))
+              cond_tc_file.write(";")
+              cond_tc_file.write(
+                sc.titlecase_mapping.map { |c| format_codepoint(c) }.join(","))
+              cond_tc_file.write(";")
+              cond_tc_file.write(sc.language || "")
+              cond_tc_file.write(";")
+              cond_tc_file.write(sc.context || "")
+              cond_tc_file.puts
+            end
           else
             if sc.has_uppercase?
               uc = sc.uppercase_mapping
@@ -296,13 +329,23 @@ module UnicodeUtils
               }
               lc_file.write("x" * 6)
             end
+            if sc.has_titlecase?
+              tc = sc.titlecase_mapping
+              tc_file.write(format_codepoint(sc.codepoint))
+              tc.each { |cp|
+                tc_file.write(format_codepoint(cp))
+              }
+              tc_file.write("x" * 6)
+            end
           end
         }
       ensure
         uc_file.close
         lc_file.close
+        tc_file.close
         cond_uc_file.close
         cond_lc_file.close
+        cond_tc_file.close
       end
       sort_file(File.join(@cdatadir, "cond_uc_map"))
       sort_file(File.join(@cdatadir, "cond_lc_map"))

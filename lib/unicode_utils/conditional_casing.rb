@@ -124,6 +124,9 @@ module UnicodeUtils
     CONDITIONAL_DOWNCASE_MAP =
       read_conditional_casings("cond_lc_map")
 
+    CONDITIONAL_TITLECASE_MAP =
+      read_conditional_casings("cond_tc_map")
+
     def self.conditional_upcase_mapping(cp, str, pos, language_id)
       lang_map = CONDITIONAL_UPCASE_MAP[cp]
       if lang_map
@@ -136,6 +139,16 @@ module UnicodeUtils
 
     def self.conditional_downcase_mapping(cp, str, pos, language_id)
       lang_map = CONDITIONAL_DOWNCASE_MAP[cp]
+      if lang_map
+        casing = lang_map[language_id] || lang_map[nil]
+        if casing && casing.context_match?(str, pos)
+          casing.mapping
+        end
+      end
+    end
+
+    def self.conditional_titlecase_mapping(cp, str, pos, language_id)
+      lang_map = CONDITIONAL_TITLECASE_MAP[cp]
       if lang_map
         casing = lang_map[language_id] || lang_map[nil]
         if casing && casing.context_match?(str, pos)

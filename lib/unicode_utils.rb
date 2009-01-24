@@ -28,6 +28,7 @@ require "unicode_utils/simple_casefold"
 require "unicode_utils/casefold"
 require "unicode_utils/each_grapheme"
 require "unicode_utils/each_word"
+require "unicode_utils/titlecase"
 
 # Read the README[link:files/README_txt.html] for an introduction.
 #

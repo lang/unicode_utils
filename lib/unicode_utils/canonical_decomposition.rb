@@ -53,31 +53,32 @@ module UnicodeUtils
     def self.put_into_canonical_order(str)
       reorder_needed = false
       last_cp = nil
+      last_cc = nil
       str.each_codepoint { |cp|
-        if last_cp
-          cc = COMBINING_CLASS_MAP[cp]
-          if cc != 0
-            if COMBINING_CLASS_MAP[last_cp] > cc
-              reorder_needed = true
-              break
-            end
-          end
+        cc = COMBINING_CLASS_MAP[cp]
+        if last_cp && cc != 0 && last_cc > cc
+          reorder_needed = true
+          break
         end
         last_cp = cp
+        last_cc = cc
       }
       return str unless reorder_needed
       res = String.new.force_encoding(str.encoding)
       last_cp = nil
+      last_cc = nil
       str.each_codepoint { |cp|
+        cc = COMBINING_CLASS_MAP[cp]
         if last_cp
-          cc = COMBINING_CLASS_MAP[cp]
-          if cc != 0 && COMBINING_CLASS_MAP[last_cp] > cc
+          if cc != 0 && last_cc > cc
             res << cp
             cp = nil
+            cc = nil
           end
           res << last_cp
         end
         last_cp = cp
+        last_cc = cc
       }
       res << last_cp if last_cp
       put_into_canonical_order(res)

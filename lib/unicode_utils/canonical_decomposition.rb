@@ -55,9 +55,9 @@ module UnicodeUtils
       last_cp = nil
       str.each_codepoint { |cp|
         if last_cp
-          cc = COMBINING_CLASS_MAP[cp] || 0
+          cc = COMBINING_CLASS_MAP[cp]
           if cc != 0
-            if (COMBINING_CLASS_MAP[last_cp] || 0) > cc
+            if COMBINING_CLASS_MAP[last_cp] > cc
               reorder_needed = true
               break
             end
@@ -70,8 +70,8 @@ module UnicodeUtils
       last_cp = nil
       str.each_codepoint { |cp|
         if last_cp
-          cc = COMBINING_CLASS_MAP[cp] || 0
-          if cc != 0 && (COMBINING_CLASS_MAP[last_cp] || 0) > cc
+          cc = COMBINING_CLASS_MAP[cp]
+          if cc != 0 && COMBINING_CLASS_MAP[last_cp] > cc
             res << cp
             cp = nil
           end

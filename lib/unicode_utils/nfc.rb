@@ -29,7 +29,7 @@ module UnicodeUtils
         # at only the immediately preceding character."
         # cpary is in canonical order (since it comes out of
         # canonical_decomposition).
-        (COMBINING_CLASS_MAP[b] || 0) >= (COMBINING_CLASS_MAP[c] || 0)
+        COMBINING_CLASS_MAP[b] >= COMBINING_CLASS_MAP[c]
       end
 
       def self.primary_composite?(cp)
@@ -60,7 +60,7 @@ module UnicodeUtils
         last_starter = nil
         uncomposable_non_starters = []
         str.each_codepoint { |cp|
-          if (COMBINING_CLASS_MAP[cp] || 0) == 0 # starter?
+          if COMBINING_CLASS_MAP[cp] == 0 # starter?
             combined = false
             if last_starter && uncomposable_non_starters.empty?
               ### hangul ###

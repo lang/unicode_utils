@@ -21,10 +21,6 @@ module UnicodeUtils
 
     module NFC
 
-      def self.starter?(cp)
-        (COMBINING_CLASS_MAP[cp] || 0) == 0
-      end
-
       # does b block c?
       def self.blocked?(b, c)
         # From the standard:
@@ -64,7 +60,7 @@ module UnicodeUtils
         last_starter = nil
         uncomposable_non_starters = []
         str.each_codepoint { |cp|
-          if Impl::NFC.starter?(cp)
+          if (COMBINING_CLASS_MAP[cp] || 0) == 0 # starter?
             combined = false
             if last_starter && uncomposable_non_starters.empty?
               ### hangul ###

@@ -3,6 +3,6 @@
 module UnicodeUtils
 
   # Corresponds to the unicode_utils gem version.
-  VERSION = "0.5.0"
+  VERSION = "1.0.0"
 
 end

@@ -7,10 +7,8 @@ module UnicodeUtils
   SIMPLE_DOWNCASE_MAP = Impl.read_codepoint_map("simple_lc_map") # :nodoc:
 
   # Map each codepoint in +str+ that has a single codepoint
-  # lowercase-mapping to that lowercase mapping. +str+ is assumed to be
-  # in a unicode encoding. The original string is not modified. The
-  # returned string has the same encoding and same length as the
-  # original string.
+  # lowercase-mapping to that lowercase mapping. The returned string
+  # has the same length as the original string.
   #
   # This function is locale independent.
   #

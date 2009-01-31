@@ -16,7 +16,9 @@ module UnicodeUtils
   # +language_id+ must be a two letter language code as defined in BCP
   # 47 (http://tools.ietf.org/rfc/bcp/bcp47.txt) as a symbol. If a
   # language doesn't have a two letter code, the three letter code is
-  # to be used.
+  # to be used. If locale independent behaviour is required, +nil+
+  # should be passed explicitely, because a later version of
+  # UnicodeUtils may default to something else.
   #
   # Examples:
   #

@@ -30,18 +30,42 @@ require "unicode_utils/each_grapheme"
 require "unicode_utils/each_word"
 require "unicode_utils/titlecase"
 
-# Read the README[link:files/README_txt.html] for an introduction.
+# This version of UnicodeUtils implements algorithms as defined by
+# version 5.1.0 of the Unicode standard. Each public method is
+# declared as a +module_function+ of the UnicodeUtils module and
+# defined in a separate file under the +unicode_utils+ directory.
 #
-# Highlevel functions are:
+# As a convenience, the toplevel +unicode_utils+ file loads all
+# methods (needs lots of memory!). Also as a convenience for irb
+# usage, the file <tt>unicode_utils/u</tt> assigns the UnicodeUtils
+# module to the toplevel U constant and loads all methods:
+#
+#   $ irb -r unicode_utils/u
+#   irb(main):001:0> U.grep /angstrom/
+#   => [#<U+212B "Å" ANGSTROM SIGN utf8:e2,84,ab>]
+#
+# If a method takes a character as argument (usually named +char+),
+# that argument can be an integer or a string (in which case the
+# first codepoint counts) or any other object that responds to +ord+
+# by returning an integer.
+#
+# All methods are non-destructive, string return values are in the
+# same encoding as strings passed as arguments, which must be in one
+# of the Unicode encodings.
+#
+# Highlevel methods are:
 #
 # UnicodeUtils.upcase:: full conversion to uppercase
 # UnicodeUtils.downcase:: full conversion to lowercase
 # UnicodeUtils.titlecase:: full conversion to titlecase
+# UnicodeUtils.casefold:: case folding (case insensitive string comparison)
 # UnicodeUtils.nfd:: Normalization Form D
 # UnicodeUtils.nfc:: Normalization Form C
 # UnicodeUtils.nfkd:: Normalization Form KD
 # UnicodeUtils.nfkc:: Normalization Form KC
+# UnicodeUtils.each_grapheme:: grapheme boundaries
+# UnicodeUtils.each_word:: word boundaries
 # UnicodeUtils.char_name:: character names
-# UnicodeUtils.casefold:: case folding (case insensitive string comparison)
+# UnicodeUtils.grep:: find codepoints by character name
 module UnicodeUtils
 end

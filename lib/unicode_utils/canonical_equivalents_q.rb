@@ -9,8 +9,9 @@ module UnicodeUtils
   #
   # Example:
   #
-  #     UnicodeUtils.canonical_equivalents?("Äste", "A\u{308}ste") => true
-  #     UnicodeUtils.canonical_equivalents?("Äste", "Aste") => false
+  #   require "unicode_utils/canonical_equivalents_q"
+  #   UnicodeUtils.canonical_equivalents?("Äste", "A\u{308}ste") => true
+  #   UnicodeUtils.canonical_equivalents?("Äste", "Aste") => false
   def canonical_equivalents?(a, b)
     UnicodeUtils.canonical_decomposition(a) ==
       UnicodeUtils.canonical_decomposition(b)

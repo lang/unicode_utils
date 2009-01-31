@@ -11,7 +11,8 @@ module UnicodeUtils
   #
   # Example:
   #
-  #     UnicodeUtils.jamo_short_name("\u{1101}") => "GG"
+  #   require "unicode_utils/jamo_short_name"
+  #   UnicodeUtils.jamo_short_name("\u{1101}") => "GG"
   def jamo_short_name(char)
     JAMO_SHORT_NAME_MAP[char.ord]
   end

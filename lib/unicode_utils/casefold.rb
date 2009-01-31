@@ -13,6 +13,7 @@ module UnicodeUtils
   #
   # Examples:
   #
+  #   require "unicode_utils/casefold"
   #   UnicodeUtils.casefold("Ümit") == UnicodeUtils.casefold("ümit") => true
   #   UnicodeUtils.casefold("WEISS") == UnicodeUtils.casefold("weiß") => true
   def casefold(str)

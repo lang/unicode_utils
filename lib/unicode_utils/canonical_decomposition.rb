@@ -20,6 +20,7 @@ module UnicodeUtils
   #
   # Example:
   #
+  #   require "unicode_utils/canonical_decomposition"
   #   # LATIN SMALL LETTER A WITH ACUTE => LATIN SMALL LETTER A, COMBINING ACUTE ACCENT
   #   UnicodeUtils.canonical_decomposition("\u{E1}") => "\u{61}\u{301}"
   # 

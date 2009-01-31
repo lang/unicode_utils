@@ -131,6 +131,7 @@ module UnicodeUtils
   #
   # Example:
   #
+  #   require "unicode_utils/nfc"
   #   UnicodeUtils.nfc("La\u{308}mpchen") => "Lämpchen"
   def nfc(str)
     str = UnicodeUtils.canonical_decomposition(str)

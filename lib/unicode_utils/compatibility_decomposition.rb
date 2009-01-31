@@ -18,6 +18,7 @@ module UnicodeUtils
   #
   # Example:
   #
+  #   require "unicode_utils/compatibility_decomposition"
   #   # LATIN SMALL LIGATURE FI => LATIN SMALL LETTER F, LATIN SMALL LETTER I
   #   UnicodeUtils.compatibility_decomposition("ﬁ") => "fi"
   #

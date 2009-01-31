@@ -16,8 +16,9 @@ module UnicodeUtils
   #
   # Examples:
   #
-  #     UnicodeUtils.simple_downcase("ÜMIT: 123") => "ümit: 123"
-  #     UnicodeUtils.simple_downcase("STRASSE") => "strasse"
+  #   require "unicode_utils/simple_downcase"
+  #   UnicodeUtils.simple_downcase("ÜMIT: 123") => "ümit: 123"
+  #   UnicodeUtils.simple_downcase("STRASSE") => "strasse"
   def simple_downcase(str)
     String.new.force_encoding(str.encoding).tap { |res|
       str.each_codepoint { |cp|

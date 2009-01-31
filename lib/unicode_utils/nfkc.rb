@@ -13,6 +13,7 @@ module UnicodeUtils
   #
   # Example:
   #
+  #   require "unicode_utils/nfkc"
   #   # LATIN SMALL LIGATURE FI => LATIN SMALL LETTER F, LATIN SMALL LETTER I
   #   UnicodeUtils.nfkc("ﬁ") => "fi"
   #

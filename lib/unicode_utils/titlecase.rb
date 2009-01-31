@@ -25,6 +25,7 @@ module UnicodeUtils
   #
   # Example:
   #
+  #   require "unicode_utils/titlecase"
   #   UnicodeUtils.titlecase("hello, world!") => "Hello, World!"
   def titlecase(str, language_id = nil)
     String.new.force_encoding(str.encoding).tap do |res|

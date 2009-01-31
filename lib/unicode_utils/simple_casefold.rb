@@ -16,6 +16,7 @@ module UnicodeUtils
   #
   # Examples:
   #
+  #   require "unicode_utils/simple_casefold"
   #   UnicodeUtils.simple_casefold("Ümit") == UnicodeUtils.simple_casefold("ümit") => true
   #   UnicodeUtils.simple_casefold("WEISS") == UnicodeUtils.simple_casefold("weiß") => false
   #

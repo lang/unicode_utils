@@ -20,6 +20,7 @@ module UnicodeUtils
   #
   # Examples:
   #
+  #   require "unicode_utils/each_grapheme"
   #   UnicodeUtils.each_grapheme("a\r\nb") { |g| p g }
   #
   # prints:

@@ -7,6 +7,7 @@ module UnicodeUtils
   # Get an array of all Codepoint instances in Codepoint::RANGE whose
   # name matches regexp. Matching is case insensitive.
   #
+  #   require "unicode_utils/grep"
   #   UnicodeUtils.grep(/angstrom/) => [#<U+212B "Å" ANGSTROM SIGN utf8:e2,84,ab>]
   def grep(regexp)
     unless regexp.casefold?

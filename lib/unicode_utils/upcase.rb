@@ -20,9 +20,10 @@ module UnicodeUtils
   #
   # Examples:
   #
-  #     UnicodeUtils.upcase("weiß") => "WEISS"
-  #     UnicodeUtils.upcase("i", :en) => "I"
-  #     UnicodeUtils.upcase("i", :tr) => "İ"
+  #   require "unicode_utils/upcase"
+  #   UnicodeUtils.upcase("weiß") => "WEISS"
+  #   UnicodeUtils.upcase("i", :en) => "I"
+  #   UnicodeUtils.upcase("i", :tr) => "İ"
   def upcase(str, language_id = nil)
     String.new.force_encoding(str.encoding).tap { |res|
       if Impl::LANGS_WITH_RULES.include?(language_id)

@@ -16,8 +16,9 @@ module UnicodeUtils
   #
   # Examples:
   #
-  #     UnicodeUtils.simple_upcase("ümit: 123") => "ÜMIT: 123"
-  #     UnicodeUtils.simple_upcase("weiß") => "WEIß"
+  #   require "unicode_utils/simple_upcase"
+  #   UnicodeUtils.simple_upcase("ümit: 123") => "ÜMIT: 123"
+  #   UnicodeUtils.simple_upcase("weiß") => "WEIß"
   def simple_upcase(str)
     String.new.force_encoding(str.encoding).tap { |res|
       str.each_codepoint { |cp|

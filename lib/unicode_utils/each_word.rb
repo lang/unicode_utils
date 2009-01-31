@@ -15,6 +15,7 @@ module UnicodeUtils
   #
   # Example:
   #
+  #   require "unicode_utils/each_word"
   #   UnicodeUtils.each_word("Hello, world!").to_a => ["Hello", ",", " ", "world", "!"]
   def each_word(str)
     return enum_for(__method__, str) unless block_given?

@@ -20,8 +20,9 @@ module UnicodeUtils
   #
   # Examples:
   #
-  #     UnicodeUtils.downcase("ᾈ") => "ᾀ"
-  #     UnicodeUtils.downcase("aBI\u{307}", :tr) => "abi"
+  #   require "unicode_utils/downcase"
+  #   UnicodeUtils.downcase("ᾈ") => "ᾀ"
+  #   UnicodeUtils.downcase("aBI\u{307}", :tr) => "abi"
   def downcase(str, language_id = nil)
     String.new.force_encoding(str.encoding).tap { |res|
       if Impl::LANGS_WITH_RULES.include?(language_id)

@@ -18,8 +18,9 @@ module UnicodeUtils
   #
   # Example:
   #
-  #     UnicodeUtils.char_name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
-  #     UnicodeUtils.char_name "\t" => "<control>"
+  #   require "unicode_utils/char_name"
+  #   UnicodeUtils.char_name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
+  #   UnicodeUtils.char_name "\t" => "<control>"
   def char_name(char)
     if char.kind_of?(Integer)
       cp = char

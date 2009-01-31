@@ -30,7 +30,12 @@ module UnicodeUtils
       if cp >= 0xAC00 && cp <= 0xD7A3 # hangul syllable
         Impl.append_hangul_syllable_decomposition(res, cp)
       else
-        Impl.append_recursive_canonical_decomposition_mapping(res, cp)
+        mapping = CANONICAL_DECOMPOSITION_MAP[cp]
+        if mapping
+          Impl.append_recursive_canonical_decomposition_mapping(res, mapping)
+        else
+          res << cp
+        end
       end
     }
     Impl.put_into_canonical_order(res)
@@ -39,15 +44,15 @@ module UnicodeUtils
 
   module Impl # :nodoc:
 
-    def self.append_recursive_canonical_decomposition_mapping(str, cp)
-      mapping = CANONICAL_DECOMPOSITION_MAP[cp]
-      if mapping
-        mapping.each { |c|
-          append_recursive_canonical_decomposition_mapping(str, c)
-        }
-      else
-        str << cp
-      end
+    def self.append_recursive_canonical_decomposition_mapping(str, mapping)
+      mapping.each { |cp|
+        mapping_ = CANONICAL_DECOMPOSITION_MAP[cp]
+        if mapping_
+          append_recursive_canonical_decomposition_mapping(str, mapping_)
+        else
+          str << cp
+        end
+      }
     end
 
     def self.put_into_canonical_order(str)

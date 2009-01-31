@@ -16,7 +16,7 @@ Gem::Specification.new do |g|
   g.require_paths = ["lib"]
   g.files = files
   g.test_files = test_files
-  g.required_ruby_version = ">= 1.9.0"
+  g.required_ruby_version = ">= 1.9.1"
   g.author = "Stefan Lang"
   g.email = "langstefan@gmx.at"
   g.has_rdoc = true

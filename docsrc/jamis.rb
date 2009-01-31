@@ -16,7 +16,7 @@ a:hover {
 
 body, td, p {
   font-family: %fonts%;
-  background: #FFF;
+  background: #EEEEEE;
   color: #000;
   margin: 0px;
   font-size: small;
@@ -117,8 +117,6 @@ h1 a:hover, h2 a:hover, .sectiontitle a:hover, .banner a:hover {
 
 .description pre {
   padding: 0.5em;
-  border: 1px dotted black;
-  background: #FFE;
 }
 
 .method .title {
@@ -150,21 +148,20 @@ h1 a:hover, h2 a:hover, .sectiontitle a:hover, .banner a:hover {
 }
 
 h1 {
-  padding: 1em;
-  border: 1px solid black;
+  padding: 0 0 0.5em 0;
   font-size: x-large;
   font-weight: bold;
-  color: #FFF;
-  background: #007;
+  color: #003D7A;
 }
 
 h2 {
-  padding: 0.5em 1em 0.5em 1em;
-  border: 1px solid black;
+  padding: 0.2em;
+  border: 2px solid #FEFEFE;
+  /* border-top: 1px solid #003D7A; */
+  background: #FEFEFE;
   font-size: large;
   font-weight: bold;
-  color: #FFF;
-  background: #009;
+  color: #003D7A;
 }
 
 h3, h4, h5, h6 {

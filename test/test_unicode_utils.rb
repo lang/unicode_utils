@@ -219,6 +219,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal "Hello, World!", UnicodeUtils.titlecase("heLlo, world!")
     assert_equal "Find", UnicodeUtils.titlecase("ﬁnD")
     assert_equal "Ümit Huber Jandl", UnicodeUtils.titlecase("ümit huber jandl")
+    assert_equal "İ Can Has 1Kg Cheesburger",
+      UnicodeUtils.titlecase("i can has 1kg CHEESBURGER", :tr)
   end
 
 end

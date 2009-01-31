@@ -11,6 +11,21 @@ module UnicodeUtils
   SIMPLE_TITLECASE_MAP = Impl.read_codepoint_map("simple_tc_map") # :nodoc:
   SPECIAL_TITLECASE_MAP = Impl.read_multivalued_map("special_tc_map") # :nodoc:
 
+  # Convert the first cased character after each word boundary to
+  # titlecase and all other cased characters to lowercase. For many,
+  # but not all characters, the titlecase mapping is the same as the
+  # uppercase mapping.
+  #
+  # Some conversion rules are language dependent, these are in effect
+  # when a non-nil +language_id+ is given. If non-nil, the
+  # +language_id+ must be a two letter language code as defined in BCP
+  # 47 (http://tools.ietf.org/rfc/bcp/bcp47.txt) as a symbol. If a
+  # language doesn't have a two letter code, the three letter code is
+  # to be used.
+  #
+  # Example:
+  #
+  #   UnicodeUtils.titlecase("hello, world!") => "Hello, World!"
   def titlecase(str, language_id = nil)
     String.new.force_encoding(str.encoding).tap do |res|
       # ensure O(1) lookup by index

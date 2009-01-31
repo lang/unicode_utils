@@ -36,6 +36,7 @@ require "unicode_utils/titlecase"
 #
 # UnicodeUtils.upcase:: full conversion to uppercase
 # UnicodeUtils.downcase:: full conversion to lowercase
+# UnicodeUtils.titlecase:: full conversion to titlecase
 # UnicodeUtils.nfd:: Normalization Form D
 # UnicodeUtils.nfc:: Normalization Form C
 # UnicodeUtils.nfkd:: Normalization Form KD

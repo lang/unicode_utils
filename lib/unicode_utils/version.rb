@@ -3,6 +3,14 @@
 module UnicodeUtils
 
   # Corresponds to the unicode_utils gem version.
-  VERSION = "1.0.0"
+  #
+  # MAJOR.MINOR.PATCHLEVEL
+  # - A backwards incompatible change causes a change in MAJOR
+  # - New features or non-bugfix improvals cause a change in MINOR
+  # - Bugfixes increase only PATCHLEVEL.
+  #
+  # A release always has an even PATCHLEVEL. PATCHLEVEL is uneven
+  # during development.
+  VERSION = "1.1.1"
 
 end

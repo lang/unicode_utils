@@ -34,4 +34,12 @@ class TestUnicode_6_0_0 < Test::Unit::TestCase
     assert_equal [0x1F35C], UnicodeUtils.grep(/Steaming Bowl/).map(&:ord)
   end
 
+  def test_simple_upcase
+    assert_equal "\u{2c7e}", UnicodeUtils.simple_upcase("\u{23f}")
+  end
+
+  def test_simple_downcase
+    assert_equal "\u{23f}", UnicodeUtils.simple_downcase("\u{2c7e}")
+  end
+
 end

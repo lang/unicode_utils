@@ -11,6 +11,6 @@ module UnicodeUtils
   #
   # A release always has an even PATCHLEVEL. PATCHLEVEL is uneven
   # during development.
-  VERSION = "1.1.1"
+  VERSION = "1.1.2"
 
 end

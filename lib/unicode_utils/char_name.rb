@@ -22,6 +22,7 @@ module UnicodeUtils
   #   UnicodeUtils.char_name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   #   UnicodeUtils.char_name "\t" => "<control>"
   def char_name(char)
+    # TODO: improve with code point labels, see section 4.8 in Unicode 6.0.0
     if char.kind_of?(Integer)
       cp = char
       str = nil

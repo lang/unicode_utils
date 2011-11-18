@@ -20,9 +20,7 @@ end
 
 desc "Run rdoc to generate html documentation."
 task "doc" do
-  # Note: current Ruby 1.9.1 rdoc fails when a custom template
-  # is given. rdoc must be Ruby 1.8 version.
-  sh "rdoc -o doc --inline-source --template=docsrc/jamis.rb --charset=UTF-8 --title=UnicodeUtils --main=README.txt lib README.txt INSTALL.txt"
+  sh "rdoc1.9.1 -o doc --inline-source --charset=UTF-8 --title=UnicodeUtils --main=README.txt lib README.txt INSTALL.txt CHANGES.txt LICENSE.txt"
 end
 
 desc "Publish doc/ on unicode-utils.rubyfore.org. " +

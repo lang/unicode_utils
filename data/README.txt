@@ -1,2 +1,2 @@
 The data files in this directory were obtained from
-http://www.unicode.org/Public/UNIDATA/ on 2008-10-23.
+http://www.unicode.org/Public/6.0.0/ucd/ on 2011-11-16.

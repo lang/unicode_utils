@@ -30,4 +30,8 @@ class TestUnicode_6_0_0 < Test::Unit::TestCase
       UnicodeUtils.char_name("\u{2b81d}")
   end
 
+  def test_grep
+    assert_equal [0x1F35C], UnicodeUtils.grep(/Steaming Bowl/).map(&:ord)
+  end
+
 end

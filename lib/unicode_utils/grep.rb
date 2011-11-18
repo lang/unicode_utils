@@ -10,6 +10,7 @@ module UnicodeUtils
   #   require "unicode_utils/grep"
   #   UnicodeUtils.grep(/angstrom/) => [#<U+212B "Å" ANGSTROM SIGN utf8:e2,84,ab>]
   def grep(regexp)
+    # TODO: enhance behaviour by searching aliases in NameAliases.txt
     unless regexp.casefold?
       regexp = Regexp.new(regexp.source, Regexp::IGNORECASE)
     end

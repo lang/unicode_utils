@@ -31,7 +31,7 @@ module UnicodeUtils
     end
     NAME_MAP[cp] ||
       case cp
-      when 0x3400..0x4DB5, 0x4E00..0x9FC3, 0x20000..0x2A6D6
+      when 0x3400..0x4DB5, 0x4E00..0x9FC3, 0x20000..0x2A6D6, 0x2A700..0x2B734, 0x2B740..0x2B81D
         "CJK UNIFIED IDEOGRAPH-#{sprintf('%04X', cp)}"
       when 0xAC00..0xD7A3
         str ||= cp.chr(Encoding::UTF_8)

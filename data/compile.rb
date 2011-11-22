@@ -167,16 +167,19 @@ module UnicodeUtils
       }
     end
 
-    def each_property(filename)
+    def each_property(filename, opts = {flatten_ranges: true})
       data_fn = File.join(@datadir, filename)
       File.open(data_fn, "r:US-ASCII") do |input|
         each_significant_line(input) { |line|
           fields = line.split(";").map(&:strip)
           property = fields[1]
           if fields[0] =~ /^([\dA-F]+)\.{2}([\dA-F]+)$/ # codepoint-range?
-            $1.to_i(16).upto($2.to_i(16)) { |cp|
-              yield Property.new(cp, property)
-            }
+            range = Range.new($1.to_i(16), $2.to_i(16))
+            if opts[:flatten_ranges]
+              range.each { |cp| yield Property.new(cp, property) }
+            else
+              yield Property.new(range, property)
+            end
           else
             yield Property.new(fields[0].to_i(16), property)
           end
@@ -523,6 +526,68 @@ module UnicodeUtils
       end
     end
 
+    def compile_east_asian_width_property
+      # must be in sync with EAST_ASIAN_SYMBOL_MAP in read_cdata.rb
+      # "N" is default, and not written to the cdata file
+      props = {"A" => 0x1,
+               "H" => 0x2,
+               "W" => 0x3,
+               "F" => 0x4,
+               "Na" => 0x5}
+      range_props = []
+      per_cp_file =
+        File.open(File.join(@cdatadir, "east_asian_width_property_per_cp"),
+                  "w:us-ascii")
+      range_file =
+        File.open(File.join(@cdatadir, "east_asian_width_property_ranges"),
+                  "w:us-ascii")
+      each_property("EastAsianWidth.txt", flatten_ranges: false) { |prop|
+        next if prop.property == "N"
+        i = props[prop.property] ||
+          raise("unknown property value #{prop.property}")
+        if prop.codepoint.kind_of?(Range)
+          range_props << prop
+        else
+          per_cp_file.write(format_codepoint(prop.codepoint))
+          per_cp_file.write(i.to_s(16))
+        end
+      }
+      range_props.sort_by! { |rp| rp.codepoint.begin }
+      # try to join ranges
+      range_props2 = []
+      range_props.each { |rp|
+        if range_props2.empty?
+          range_props2 << rp
+        else
+          previous = range_props2.last
+          if previous.codepoint.end.succ == rp.codepoint.begin &&
+              previous.property == rp.property
+            previous.codepoint =
+              Range.new(previous.codepoint.begin, rp.codepoint.end)
+          else
+            range_props2 << rp
+          end
+        end
+      }
+      range_props2.each { |rp|
+        i = props[rp.property] ||
+          raise("unknown property value #{prop.property}")
+        # flatten small ranges
+        if (rp.codepoint.end - rp.codepoint.begin) <= 100
+          rp.codepoint.begin.upto(rp.codepoint.end) { |cp|
+            per_cp_file.write(format_codepoint(cp))
+            per_cp_file.write(i.to_s(16))
+          }
+        else
+          range_file.write(format_codepoint(rp.codepoint.begin))
+          range_file.write(format_codepoint(rp.codepoint.end))
+          range_file.write(i.to_s(16))
+        end
+      }
+      per_cp_file.close
+      range_file.close
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -535,6 +600,7 @@ module UnicodeUtils
       compile_casefold_mappings
       compile_grapheme_break_property
       compile_word_break_property
+      compile_east_asian_width_property
     end
 
     def format_codepoint(cp)

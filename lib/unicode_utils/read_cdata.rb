@@ -8,6 +8,14 @@ module UnicodeUtils
 
   module Impl # :nodoc:
 
+    EAST_ASIAN_WIDTH_SYMBOL_MAP = {
+      1 => :Ambiguous,
+      2 => :Halfwidth,
+      3 => :Wide,
+      4 => :Fullwidth,
+      5 => :Narrow
+    }.freeze
+
     def self.open_cdata_file(filename, &block)
       File.open(File.join(CDATA_DIR, filename), "r:US-ASCII:-", &block)
     end
@@ -110,6 +118,49 @@ module UnicodeUtils
             map[buffer.to_i(16)] = input.read(1, val_buffer).to_i(16)
           end
         end
+      }
+    end
+
+    # Returns a list (array) of pairs (two element Arrays) of Range
+    # (codepoints) and associated integer value.
+    def self.read_range_to_hexdigit_list(filename)
+      Array.new.tap { |list|
+        open_cdata_file(filename) do |input|
+          cp_buffer = "x" * 6
+          cp_buffer.force_encoding(Encoding::US_ASCII)
+          val_buffer = "x"
+          val_buffer.force_encoding(Encoding::US_ASCII)
+          while input.read(6, cp_buffer)
+            list << [
+              Range.new(cp_buffer.to_i(16), input.read(6, cp_buffer).to_i(16)),
+              input.read(1, val_buffer).to_i(16)
+            ]
+          end
+        end
+      }
+    end
+
+    def self.read_east_asian_width_per_cp(filename)
+      # like read_hexdigit_map, but with translation to symbol values
+      Hash.new(:Neutral).tap { |map|
+        open_cdata_file(filename) do |input|
+          buffer = "x" * 6
+          buffer.force_encoding(Encoding::US_ASCII)
+          val_buffer = "x"
+          val_buffer.force_encoding(Encoding::US_ASCII)
+          while input.read(6, buffer)
+            map[buffer.to_i(16)] =
+              EAST_ASIAN_WIDTH_SYMBOL_MAP[input.read(1, val_buffer).to_i(16)]
+          end
+        end
+      }
+    end
+
+    def self.read_east_asian_width_ranges(filename)
+      read_range_to_hexdigit_list(filename).tap { |list|
+        list.each { |pair|
+          pair[1] = EAST_ASIAN_WIDTH_SYMBOL_MAP[pair[1]]
+        }
       }
     end
 

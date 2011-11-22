@@ -29,6 +29,7 @@ require "unicode_utils/casefold"
 require "unicode_utils/each_grapheme"
 require "unicode_utils/each_word"
 require "unicode_utils/titlecase"
+require "unicode_utils/east_asian_width"
 
 # This version of UnicodeUtils implements algorithms as defined by
 # version 6.0.0 of the Unicode standard. Each public method is

@@ -12,7 +12,10 @@ module UnicodeUtils
   #
   # Converts str into Normalization Form C and counts codepoints,
   # where codepoints with an East Asian Width of Wide or Fullwidth
-  # count double, all other codepoints count one.
+  # count double, codepoints with a General Category of Mn or Me count
+  # zero and all other codepoints count one. This implementation can't
+  # account for all possibilities, especially when Control characters
+  # are involved, all bets are off.
   #
   # Examples:
   #

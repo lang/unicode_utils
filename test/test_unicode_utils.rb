@@ -272,6 +272,11 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal 6, UnicodeUtils.display_width("Straße")
     assert_equal 1, UnicodeUtils.display_width("a\u{308}")
     assert_equal 5, UnicodeUtils.display_width("Now！")
+    assert_equal 2, UnicodeUtils.display_width("a̦b") # General Category Mn
+    assert_equal 4, UnicodeUtils.display_width("a\u{93b}bc") # General Category Mc
+    assert_equal 3, UnicodeUtils.display_width("ab\u{20dd}c") # General Category Me
+    assert_equal 4, UnicodeUtils.display_width("ab\u{a8}c") # General Category Sk
+    assert_equal 4, UnicodeUtils.display_width("ab\u{2000}c") # General Category Zs
   end
 
 end

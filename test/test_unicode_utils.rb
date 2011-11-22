@@ -279,4 +279,20 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal 4, UnicodeUtils.display_width("ab\u{2000}c") # General Category Zs
   end
 
+  def test_default_ignorable_char?
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0xad)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0x34f)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0x115f)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0x1160)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0x2065)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0x2069)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0xe008a)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0xffa0)
+    assert_equal true, UnicodeUtils.default_ignorable_char?(0xe0fff)
+    assert_equal false, UnicodeUtils.default_ignorable_char?("a")
+    assert_equal false, UnicodeUtils.default_ignorable_char?("語")
+    assert_equal false, UnicodeUtils.default_ignorable_char?(" ")
+    assert_equal false, UnicodeUtils.default_ignorable_char?("\u{308}")
+  end
+
 end

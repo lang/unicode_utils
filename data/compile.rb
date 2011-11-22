@@ -359,6 +359,8 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "prop_set_uppercase"), "w:US-ASCII")
       lc_file =
         File.open(File.join(@cdatadir, "prop_set_lowercase"), "w:US-ASCII")
+      di_file =
+        File.open(File.join(@cdatadir, "prop_set_default_ignorable"), "w:US-ASCII")
       begin
         each_property("DerivedCoreProperties.txt") { |dcp|
           case dcp.property
@@ -366,11 +368,14 @@ module UnicodeUtils
             uc_file.write(format_codepoint(dcp.codepoint))
           when "Lowercase"
             lc_file.write(format_codepoint(dcp.codepoint))
+          when "Default_Ignorable_Code_Point"
+            di_file.write(format_codepoint(dcp.codepoint))
           end
         }
       ensure
         uc_file.close
         lc_file.close
+        di_file.close
       end
     end
 

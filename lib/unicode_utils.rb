@@ -31,6 +31,7 @@ require "unicode_utils/each_word"
 require "unicode_utils/titlecase"
 require "unicode_utils/east_asian_width"
 require "unicode_utils/display_width"
+require "unicode_utils/default_ignorable_char_q"
 
 # This version of UnicodeUtils implements algorithms as defined by
 # version 6.0.0 of the Unicode standard. Each public method is

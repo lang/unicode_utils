@@ -217,7 +217,13 @@ module UnicodeUtils
         File.open(File.join(@cdatadir, "canonical_decomposition_map"), "w:US-ASCII")
       compatibility_dm_file =
         File.open(File.join(@cdatadir, "compatibility_decomposition_map"), "w:US-ASCII")
+      general_category_ranges_file =
+        File.open(File.join(@cdatadir, "general_category_ranges"), "w:US-ASCII")
+      general_category_per_cp_file =
+        File.open(File.join(@cdatadir, "general_category_per_cp"), "w:US-ASCII")
       begin
+        current_range_name = nil
+        current_range_first = nil
         each_codepoint { |cp|
           if cp.simple_uppercase_mapping
             uc_file.write(format_codepoint(cp.codepoint))
@@ -234,9 +240,28 @@ module UnicodeUtils
           if cp.general_category == "Lt"
             cat_set_titlecase_file.write(format_codepoint(cp.codepoint))
           end
-          unless cp.name =~ /, First>$|, Last>$/
+          if cp.name =~ /^<([^,]+), (First|Last)>$/
+            case $2
+            when "First"
+              raise "range error" if current_range_name || current_range_first
+              current_range_name = $1
+              current_range_first = cp.codepoint
+            when "Last"
+              raise "range error" if current_range_name != $1
+              general_category_ranges_file.write(format_codepoint(current_range_first))
+              general_category_ranges_file.write(format_codepoint(cp.codepoint))
+              raise cp.general_category unless cp.general_category.bytesize == 2
+              general_category_ranges_file.write(cp.general_category)
+              current_range_name = nil
+              current_range_first = nil
+            else raise $2
+            end
+          else
             name_file.write(format_codepoint(cp.codepoint))
             name_file.puts(cp.name)
+            raise cp.general_category unless cp.general_category.bytesize == 2
+            general_category_per_cp_file.write(format_codepoint(cp.codepoint))
+            general_category_per_cp_file.write(cp.general_category)
           end
           if cp.decomposition_mapping
             if cp.decomposition_mapping.canonical?

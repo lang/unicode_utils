@@ -265,4 +265,13 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal :Narrow, UnicodeUtils.east_asian_width(0x2986)
   end
 
+  def test_display_width
+    assert_equal 0, UnicodeUtils.display_width("")
+    assert_equal 18, UnicodeUtils.display_width("別れる時に発する語")
+    assert_equal 18, UnicodeUtils.display_width("123456789aBcDeFgHi")
+    assert_equal 6, UnicodeUtils.display_width("Straße")
+    assert_equal 1, UnicodeUtils.display_width("a\u{308}")
+    assert_equal 5, UnicodeUtils.display_width("Now！")
+  end
+
 end

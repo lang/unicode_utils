@@ -11,6 +11,7 @@ module UnicodeUtils
   #
   # Examples:
   #
+  #   require "unicode_utils/char_display_width"
   #   UnicodeUtils.char_display_width("別")  # => 2
   #   UnicodeUtils.char_display_width(0x308) # => 0
   #   UnicodeUtils.char_display_width("a")   # => 1

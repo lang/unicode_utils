@@ -281,6 +281,12 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal 3, UnicodeUtils.display_width("a\u{1680}b") # Zs
   end
 
+  def test_char_display_width
+    assert_equal 2, UnicodeUtils.char_display_width("別")
+    assert_equal 0, UnicodeUtils.char_display_width(0x308)
+    assert_equal 1, UnicodeUtils.char_display_width("a")
+  end
+
   def test_default_ignorable_char?
     assert_equal true, UnicodeUtils.default_ignorable_char?(0xad)
     assert_equal true, UnicodeUtils.default_ignorable_char?(0x34f)

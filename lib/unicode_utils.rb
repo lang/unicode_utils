@@ -36,6 +36,7 @@ require "unicode_utils/gc"
 require "unicode_utils/graphic_char_q"
 require "unicode_utils/general_category"
 require "unicode_utils/char_type"
+require "unicode_utils/char_display_width"
 
 # This version of UnicodeUtils implements algorithms as defined by
 # version 6.0.0 of the Unicode standard. Each public method is

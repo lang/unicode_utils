@@ -195,6 +195,19 @@ module UnicodeUtils
       }
     end
 
+    def self.read_symbol_map(filename)
+      Hash.new.tap { |map|
+        open_cdata_file(filename) do |input|
+          input.each_line { |line|
+            parts = line.split(";")
+            parts[0].strip!
+            parts[1].strip!
+            map[parts[0].to_sym] = parts[1].to_sym
+          }
+        end
+      }
+    end
+
   end
 
 end

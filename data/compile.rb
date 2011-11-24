@@ -404,6 +404,25 @@ module UnicodeUtils
       end
     end
 
+    def compile_property_value_aliases
+      gc_file =
+        File.open(File.join(@cdatadir, "general_category_aliases"), "w:US-ASCII")
+      begin
+        data_fn = File.join(@datadir, "PropertyValueAliases.txt")
+        File.open(data_fn, "r:US-ASCII") do |input|
+          each_significant_line(input) { |line|
+            fields = line.split(";").map(&:strip)
+            case fields[0]
+            when "gc"
+              gc_file.puts "#{fields[1]};#{fields[2]}"
+            end
+          }
+        end
+      ensure
+        gc_file.close
+      end
+    end
+
     def compile_case_ignorable_set
       # See Section 3.13, Unicode 5.0
       path = File.join(@cdatadir, "case_ignorable_set")
@@ -631,6 +650,7 @@ module UnicodeUtils
       compile_grapheme_break_property
       compile_word_break_property
       compile_east_asian_width_property
+      compile_property_value_aliases
     end
 
     def format_codepoint(cp)

@@ -1,39 +1,26 @@
 # -*- encoding: utf-8 -*-
 
 require "unicode_utils/read_cdata"
+require "unicode_utils/gc"
 
 module UnicodeUtils
 
-  GENERAL_CATEGORY_PER_CP_MAP =
-    Impl.read_general_category_per_cp("general_category_per_cp") # :nodoc:
+  GENERAL_CATEGORY_ALIAS_MAP =
+    Impl.read_symbol_map("general_category_aliases") # :nodoc:
 
-  GENERAL_CATEGORY_RANGES =
-    Impl.read_general_category_ranges("general_category_ranges") # :nodoc:
-
-  # Get the two letter general category alias of the given char. The
-  # first letter denotes a major class, the second letter a subclass
-  # of the major class.
-  #
-  # See section 4.5 in Unicode 6.0.0.
+  # Get the long general category alias of char.
   #
   # Example:
   #
   #   require "unicode_utils/general_category"
-  #   UnicodeUtils.general_category("A") # => :Lu (Letter, uppercase)
+  #   UnicodeUtils.general_category("A") # => :Uppercase_Letter
   #
-  # Returns nil for ordinals outside the Unicode codepoint range, a
-  # two letter symbol otherwise.
+  # Returns a symbol if char is in the Unicode codepoint range, nil
+  # otherwise.
+  #
+  # See also: UnicodeUtils.gc, UnicodeUtils.char_type
   def general_category(char)
-    cp = char.ord
-    cat = GENERAL_CATEGORY_PER_CP_MAP[cp] and return cat
-    GENERAL_CATEGORY_RANGES.each { |pair|
-      return pair[1] if pair[0].cover?(cp)
-    }
-    if cp >= 0x0 && cp <= 0x10FFFF
-      :Cn # Other, not assigned
-    else
-      nil
-    end
+    GENERAL_CATEGORY_ALIAS_MAP[UnicodeUtils.gc(char)]
   end
   module_function :general_category
 

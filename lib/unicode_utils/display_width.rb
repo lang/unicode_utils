@@ -1,21 +1,29 @@
 # -*- encoding: utf-8 -*-
 
 require "unicode_utils/east_asian_width"
-require "unicode_utils/nfc"
+require "unicode_utils/gc"
+require "unicode_utils/graphic_char_q"
 
 module UnicodeUtils
 
-  # Fixed pitch fonts display certain east asian characters with
-  # double the width of other characters (e.g. latin characters or
-  # a space). This function calculates a display width for +str+ based
-  # on the EastAsianWidth property of its codepoints.
+  #--
+  GENERAL_CATEGORY_BASIC_WIDTH_MAP = Hash.new.tap do |h|
+    GENERAL_CATEGORY_IS_GRAPHIC_MAP.each_pair { |key, value|
+      if value && key != :Mn && key != :Me
+        h[key] = 1
+      else
+        h[key] = 0
+      end
+    }
+  end
+  #++
+
+  # Get the width of +str+ when displayed with a fixed pitch font.
   #
-  # Converts str into Normalization Form C and counts codepoints,
-  # where codepoints with an East Asian Width of Wide or Fullwidth
-  # count double, codepoints with a General Category of Mn or Me count
-  # zero and all other codepoints count one. This implementation can't
-  # account for all possibilities, especially when Control characters
-  # are involved, all bets are off.
+  # Counts codepoints, where codepoints with an east asian width of
+  # +Wide+ or +Fullwidth+ count for two, non-graphic codepoints (e.g.
+  # control characters, including newline!) and non-spacing marks
+  # count for zero and all others count for one.
   #
   # Examples:
   #
@@ -24,14 +32,20 @@ module UnicodeUtils
   #   UnicodeUtils.display_width("別れ") => 4
   #   "12".length => 2
   #   UnicodeUtils.display_width("12") => 2
+  #   "a\u{308}".length => 2
+  #   UnicodeUtils.display_width("a\u{308}") => 1
   #
-  # See also: UnicodeUtils.east_asian_width
+  # Unicode assigns some reserved codepoints an east asian width of
+  # +Wide+. Some systems correctly display a double width replacement
+  # character, others not.
+  #
+  # See also: UnicodeUtils.graphic_char?, UnicodeUtils.east_asian_width
   def display_width(str)
-    UnicodeUtils.nfc(str).each_codepoint.reduce(0) { |sum, cp|
+    str.each_codepoint.reduce(0) { |sum, cp|
       sum +
         case UnicodeUtils.east_asian_width(cp)
         when :Wide, :Fullwidth then 2
-        else 1
+        else GENERAL_CATEGORY_BASIC_WIDTH_MAP[UnicodeUtils.gc(cp)]
         end
     }
   end

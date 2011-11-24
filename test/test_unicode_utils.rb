@@ -277,6 +277,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal 3, UnicodeUtils.display_width("ab\u{20dd}c") # General Category Me
     assert_equal 4, UnicodeUtils.display_width("ab\u{a8}c") # General Category Sk
     assert_equal 4, UnicodeUtils.display_width("ab\u{2000}c") # General Category Zs
+    assert_equal 3, UnicodeUtils.display_width("a b") # Zs
+    assert_equal 3, UnicodeUtils.display_width("a\u{1680}b") # Zs
   end
 
   def test_default_ignorable_char?
@@ -295,95 +297,117 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal false, UnicodeUtils.default_ignorable_char?("\u{308}")
   end
 
-  def test_general_category
-    assert_equal :Lu, UnicodeUtils.general_category("A")
-    assert_equal :Ll, UnicodeUtils.general_category("a")
-    assert_equal :Lt, UnicodeUtils.general_category(0x1cb)
-    assert_equal :Lm, UnicodeUtils.general_category(0x2b5)
-    assert_equal :Lo, UnicodeUtils.general_category(0x10923)
+  def test_gc
+    assert_equal :Lu, UnicodeUtils.gc("A")
+    assert_equal :Ll, UnicodeUtils.gc("a")
+    assert_equal :Lt, UnicodeUtils.gc(0x1cb)
+    assert_equal :Lm, UnicodeUtils.gc(0x2b5)
+    assert_equal :Lo, UnicodeUtils.gc(0x10923)
 
-    assert_equal :Mn, UnicodeUtils.general_category(0x5a0)
-    assert_equal :Mc, UnicodeUtils.general_category(0x93f)
-    assert_equal :Me, UnicodeUtils.general_category(0x20dd)
+    assert_equal :Mn, UnicodeUtils.gc(0x5a0)
+    assert_equal :Mc, UnicodeUtils.gc(0x93f)
+    assert_equal :Me, UnicodeUtils.gc(0x20dd)
 
-    assert_equal :Nd, UnicodeUtils.general_category(0xa901)
-    assert_equal :Nl, UnicodeUtils.general_category(0x10144)
-    assert_equal :No, UnicodeUtils.general_category(0x10917)
+    assert_equal :Nd, UnicodeUtils.gc(0xa901)
+    assert_equal :Nl, UnicodeUtils.gc(0x10144)
+    assert_equal :No, UnicodeUtils.gc(0x10917)
 
-    assert_equal :Pc, UnicodeUtils.general_category(0x5f)
-    assert_equal :Pd, UnicodeUtils.general_category(0x2011)
-    assert_equal :Ps, UnicodeUtils.general_category(0x2329)
-    assert_equal :Pe, UnicodeUtils.general_category(0xfe38)
-    assert_equal :Pi, UnicodeUtils.general_category(0x201c)
-    assert_equal :Pf, UnicodeUtils.general_category(0x201d)
-    assert_equal :Po, UnicodeUtils.general_category(0x2e10)
+    assert_equal :Pc, UnicodeUtils.gc(0x5f)
+    assert_equal :Pd, UnicodeUtils.gc(0x2011)
+    assert_equal :Ps, UnicodeUtils.gc(0x2329)
+    assert_equal :Pe, UnicodeUtils.gc(0xfe38)
+    assert_equal :Pi, UnicodeUtils.gc(0x201c)
+    assert_equal :Pf, UnicodeUtils.gc(0x201d)
+    assert_equal :Po, UnicodeUtils.gc(0x2e10)
 
-    assert_equal :Sm, UnicodeUtils.general_category(0xff0b)
-    assert_equal :Sc, UnicodeUtils.general_category(0xa3)
-    assert_equal :Sk, UnicodeUtils.general_category(0x2c2)
-    assert_equal :So, UnicodeUtils.general_category(0x60f)
+    assert_equal :Sm, UnicodeUtils.gc(0xff0b)
+    assert_equal :Sc, UnicodeUtils.gc(0xa3)
+    assert_equal :Sk, UnicodeUtils.gc(0x2c2)
+    assert_equal :So, UnicodeUtils.gc(0x60f)
 
-    assert_equal :Zs, UnicodeUtils.general_category(0x2001)
-    assert_equal :Zl, UnicodeUtils.general_category(0x2028)
-    assert_equal :Zp, UnicodeUtils.general_category(0x2029)
+    assert_equal :Zs, UnicodeUtils.gc(0x2001)
+    assert_equal :Zl, UnicodeUtils.gc(0x2028)
+    assert_equal :Zp, UnicodeUtils.gc(0x2029)
 
-    assert_equal :Cc, UnicodeUtils.general_category(0x0)
-    assert_equal :Cf, UnicodeUtils.general_category(0x70f)
-    assert_equal :Cs, UnicodeUtils.general_category(0xdb82)
-    assert_equal :Co, UnicodeUtils.general_category(0xf1020)
-    assert_equal :Cn, UnicodeUtils.general_category(0x10ffff)
+    assert_equal :Cc, UnicodeUtils.gc(0x0)
+    assert_equal :Cf, UnicodeUtils.gc(0x70f)
+    assert_equal :Cs, UnicodeUtils.gc(0xdb82)
+    assert_equal :Co, UnicodeUtils.gc(0xf1020)
+    assert_equal :Cn, UnicodeUtils.gc(0x10ffff)
     ### 30 general categories ###
 
-    assert_equal :Lo, UnicodeUtils.general_category(0x3400)
-    assert_equal :Lo, UnicodeUtils.general_category(0x4000)
-    assert_equal :Lo, UnicodeUtils.general_category(0x4db5)
+    assert_equal :Lo, UnicodeUtils.gc(0x3400)
+    assert_equal :Lo, UnicodeUtils.gc(0x4000)
+    assert_equal :Lo, UnicodeUtils.gc(0x4db5)
 
-    assert_equal :Lo, UnicodeUtils.general_category(0x4e00)
-    assert_equal :Lo, UnicodeUtils.general_category(0x9fcb)
-    assert_equal :Lo, UnicodeUtils.general_category(0x7111)
+    assert_equal :Lo, UnicodeUtils.gc(0x4e00)
+    assert_equal :Lo, UnicodeUtils.gc(0x9fcb)
+    assert_equal :Lo, UnicodeUtils.gc(0x7111)
 
-    assert_equal :Lo, UnicodeUtils.general_category(0xac00)
-    assert_equal :Lo, UnicodeUtils.general_category(0xd7a3)
-    assert_equal :Lo, UnicodeUtils.general_category(0xb70f)
+    assert_equal :Lo, UnicodeUtils.gc(0xac00)
+    assert_equal :Lo, UnicodeUtils.gc(0xd7a3)
+    assert_equal :Lo, UnicodeUtils.gc(0xb70f)
 
-    assert_equal :Cs, UnicodeUtils.general_category(0xd800)
-    assert_equal :Cs, UnicodeUtils.general_category(0xdb7f)
-    assert_equal :Cs, UnicodeUtils.general_category(0xda00)
+    assert_equal :Cs, UnicodeUtils.gc(0xd800)
+    assert_equal :Cs, UnicodeUtils.gc(0xdb7f)
+    assert_equal :Cs, UnicodeUtils.gc(0xda00)
 
-    assert_equal :Cs, UnicodeUtils.general_category(0xdb80)
-    assert_equal :Cs, UnicodeUtils.general_category(0xdbff)
-    assert_equal :Cs, UnicodeUtils.general_category(0xdb90)
+    assert_equal :Cs, UnicodeUtils.gc(0xdb80)
+    assert_equal :Cs, UnicodeUtils.gc(0xdbff)
+    assert_equal :Cs, UnicodeUtils.gc(0xdb90)
 
-    assert_equal :Cs, UnicodeUtils.general_category(0xdc00)
-    assert_equal :Cs, UnicodeUtils.general_category(0xdfff)
-    assert_equal :Cs, UnicodeUtils.general_category(0xdc01)
+    assert_equal :Cs, UnicodeUtils.gc(0xdc00)
+    assert_equal :Cs, UnicodeUtils.gc(0xdfff)
+    assert_equal :Cs, UnicodeUtils.gc(0xdc01)
 
-    assert_equal :Co, UnicodeUtils.general_category(0xe000)
-    assert_equal :Co, UnicodeUtils.general_category(0xf8ff)
-    assert_equal :Co, UnicodeUtils.general_category(0xf8fe)
+    assert_equal :Co, UnicodeUtils.gc(0xe000)
+    assert_equal :Co, UnicodeUtils.gc(0xf8ff)
+    assert_equal :Co, UnicodeUtils.gc(0xf8fe)
 
-    assert_equal :Lo, UnicodeUtils.general_category(0x20000)
-    assert_equal :Lo, UnicodeUtils.general_category(0x2a6d6)
-    assert_equal :Lo, UnicodeUtils.general_category(0x2b000)
+    assert_equal :Lo, UnicodeUtils.gc(0x20000)
+    assert_equal :Lo, UnicodeUtils.gc(0x2a6d6)
+    assert_equal :Lo, UnicodeUtils.gc(0x2b000)
 
-    assert_equal :Lo, UnicodeUtils.general_category(0x2a700)
-    assert_equal :Lo, UnicodeUtils.general_category(0x2b734)
-    assert_equal :Lo, UnicodeUtils.general_category(0x2b800)
+    assert_equal :Lo, UnicodeUtils.gc(0x2a700)
+    assert_equal :Lo, UnicodeUtils.gc(0x2b734)
+    assert_equal :Lo, UnicodeUtils.gc(0x2b800)
 
-    assert_equal :Lo, UnicodeUtils.general_category(0x2b740)
-    assert_equal :Lo, UnicodeUtils.general_category(0x2b81d)
-    assert_equal :Lo, UnicodeUtils.general_category(0x2b810)
+    assert_equal :Lo, UnicodeUtils.gc(0x2b740)
+    assert_equal :Lo, UnicodeUtils.gc(0x2b81d)
+    assert_equal :Lo, UnicodeUtils.gc(0x2b810)
 
-    assert_equal :Co, UnicodeUtils.general_category(0xf0000)
-    assert_equal :Co, UnicodeUtils.general_category(0xffffd)
-    assert_equal :Co, UnicodeUtils.general_category(0xffafd)
+    assert_equal :Co, UnicodeUtils.gc(0xf0000)
+    assert_equal :Co, UnicodeUtils.gc(0xffffd)
+    assert_equal :Co, UnicodeUtils.gc(0xffafd)
 
-    assert_equal :Co, UnicodeUtils.general_category(0x100000)
-    assert_equal :Co, UnicodeUtils.general_category(0x10fffd)
-    assert_equal :Co, UnicodeUtils.general_category(0x100ffd)
+    assert_equal :Co, UnicodeUtils.gc(0x100000)
+    assert_equal :Co, UnicodeUtils.gc(0x10fffd)
+    assert_equal :Co, UnicodeUtils.gc(0x100ffd)
 
+    assert_equal nil, UnicodeUtils.gc(-1)
+    assert_equal nil, UnicodeUtils.gc(0x110000)
+  end
+
+  def test_general_category
+    assert_equal :Uppercase_Letter, UnicodeUtils.general_category("B")
+    assert_equal :Lowercase_Letter, UnicodeUtils.general_category("b")
+    assert_equal :Control, UnicodeUtils.general_category(0x0)
     assert_equal nil, UnicodeUtils.general_category(-1)
-    assert_equal nil, UnicodeUtils.general_category(0x110000)
+  end
+
+  def test_char_type
+    assert_equal :Letter, UnicodeUtils.char_type("Ä")
+    assert_equal :Letter, UnicodeUtils.char_type("ä")
+    assert_equal :Other, UnicodeUtils.char_type(0x0)
+    assert_equal :Number, UnicodeUtils.char_type("1")
+    assert_equal nil, UnicodeUtils.char_type(-1)
+  end
+
+  def test_graphic_char?
+    assert_equal true, UnicodeUtils.graphic_char?("a")
+    assert_equal true, UnicodeUtils.graphic_char?(0x308)
+    assert_equal false, UnicodeUtils.graphic_char?("\n")
+    assert_equal false, UnicodeUtils.graphic_char?(0x0)
   end
 
 end

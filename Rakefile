@@ -4,11 +4,16 @@ require "#{File.dirname(__FILE__)}/lib/unicode_utils/version"
 
 gem_filename = "unicode_utils-#{UnicodeUtils::VERSION}.gem"
 
-task "default" => "test"
+task "default" => "quick-test"
 
 desc "Run unit tests."
 task "test" do
   sh "ruby -I lib -I . test/suite.rb"
+end
+
+desc "Quick test run."
+task "quick-test" do
+  sh "ruby -I lib -I . test/test_unicode_utils.rb"
 end
 
 desc "Build unicode_utils gem."

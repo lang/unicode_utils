@@ -11,8 +11,8 @@ module UnicodeUtils
   # Print a table with detailed information about each codepoint in
   # +str+. +opts+ can have the following keys:
   #
-  # +:io+ :: An IO compatible object. Receives the output.
-  #          Defaults to +$stdout+.
+  # +:io+:: An IO compatible object. Receives the output.
+  #         Defaults to <tt>$stdout</tt>.
   # 
   # Example:
   #

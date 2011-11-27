@@ -8,12 +8,17 @@ task "default" => "quick-test"
 
 desc "Run unit tests."
 task "test" do
-  sh "ruby -I lib -I . test/suite.rb"
+  sh "ruby -I lib test/suite.rb"
 end
 
 desc "Quick test run."
 task "quick-test" do
   sh "ruby -I lib -I . test/test_unicode_utils.rb"
+end
+
+desc "Run tests and generate coverage report."
+task "coverage" do
+  sh "ruby -I lib test/coverage.rb"
 end
 
 desc "Build unicode_utils gem."

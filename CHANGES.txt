@@ -1,3 +1,17 @@
+== 1.2.2, 2011-11-27
+
+New methods in UnicodeUtils:
+
+* east_asian_width
+* display_width
+* default_ignorable_char_q
+* gc
+* graphic_char_q
+* general_category
+* char_type
+* char_display_width
+* debug
+
 == 1.1.2, 2011-11-18
 
 Updated to Unicode 6.0.0. No additions to API.

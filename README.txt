@@ -10,8 +10,7 @@ Install with RubyGems:
     gem install unicode_utils
 
 Or get the source from Github: http://github.com/lang/unicode_utils
-and follow the instructions in
-INSTALL.txt[link:files/INSTALL_txt.html].
+and follow the instructions in INSTALL.txt.
 
 UnicodeUtils works with Ruby 1.9.1 or later.
 

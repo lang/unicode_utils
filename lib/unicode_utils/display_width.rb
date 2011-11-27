@@ -6,7 +6,6 @@ require "unicode_utils/graphic_char_q"
 
 module UnicodeUtils
 
-  #--
   GENERAL_CATEGORY_BASIC_WIDTH_MAP = Hash.new.tap do |h|
     GENERAL_CATEGORY_IS_GRAPHIC_MAP.each_pair { |key, value|
       if value && key != :Mn && key != :Me
@@ -15,8 +14,7 @@ module UnicodeUtils
         h[key] = 0
       end
     }
-  end
-  #++
+  end # :nodoc:
 
   # Get the width of +str+ when displayed with a fixed pitch font.
   #

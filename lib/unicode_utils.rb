@@ -38,6 +38,7 @@ require "unicode_utils/general_category"
 require "unicode_utils/char_type"
 require "unicode_utils/char_display_width"
 require "unicode_utils/debug"
+require "unicode_utils/codepoint_type"
 
 # This version of UnicodeUtils implements algorithms as defined by
 # version 6.0.0 of the Unicode standard. Each public method is

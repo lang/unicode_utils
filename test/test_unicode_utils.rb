@@ -436,4 +436,57 @@ class TestUnicodeUtils < Test::Unit::TestCase
     EOF
   end
 
+  def test_codepoint_type
+    assert_equal :Graphic, UnicodeUtils.codepoint_type("A")
+    assert_equal :Graphic, UnicodeUtils.codepoint_type("a")
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x1cb)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x2b5)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x10923)
+
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x5a0)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x93f)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x20dd)
+
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0xa901)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x10144)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x10917)
+
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x5f)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x2011)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x2329)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0xfe38)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x201c)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x201d)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x2e10)
+
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0xff0b)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0xa3)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x2c2)
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x60f)
+
+    assert_equal :Graphic, UnicodeUtils.codepoint_type(0x2001)
+    assert_equal :Format, UnicodeUtils.codepoint_type(0x2028)
+    assert_equal :Format, UnicodeUtils.codepoint_type(0x2029)
+
+    assert_equal :Control, UnicodeUtils.codepoint_type(0x0)
+    assert_equal :Format, UnicodeUtils.codepoint_type(0x70f)
+    assert_equal :Surrogate, UnicodeUtils.codepoint_type(0xdb82)
+    assert_equal :Private_Use, UnicodeUtils.codepoint_type(0xf1020)
+    assert_equal :Private_Use, UnicodeUtils.codepoint_type(0x10fffd)
+    assert_equal :Noncharacter, UnicodeUtils.codepoint_type(0x10ffff)
+    assert_equal :Noncharacter, UnicodeUtils.codepoint_type(0xfffe)
+    assert_equal :Noncharacter, UnicodeUtils.codepoint_type(0xffff)
+    assert_equal :Noncharacter, UnicodeUtils.codepoint_type(0xbfffe)
+    assert_equal :Noncharacter, UnicodeUtils.codepoint_type(0xbffff)
+    assert_equal :Reserved, UnicodeUtils.codepoint_type(0x380)
+    assert_equal :Reserved, UnicodeUtils.codepoint_type(0xeeb)
+    assert_equal :Reserved, UnicodeUtils.codepoint_type(0xfff)
+    assert_equal :Reserved, UnicodeUtils.codepoint_type(0x7fffd)
+    assert_equal :Reserved, UnicodeUtils.codepoint_type(0xeffef)
+    ### above is at least one assertion for every general category ###
+
+    assert_equal nil, UnicodeUtils.codepoint_type(-1)
+    assert_equal nil, UnicodeUtils.codepoint_type(0x110000)
+  end
+
 end

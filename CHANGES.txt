@@ -1,3 +1,9 @@
+== 1.3.0, in progress
+
+New methods in UnicodeUtils:
+
+* codepoint_type
+
 == 1.2.2, 2011-11-27
 
 New methods in UnicodeUtils:

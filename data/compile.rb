@@ -637,6 +637,44 @@ module UnicodeUtils
       range_file.close
     end
 
+    def compile_name_aliases
+      type_label_to_bytecode = {
+        "correction" => 1,
+        "control" => 2,
+        "alternate" => 3,
+        "figment" => 4,
+        "abbreviation" => 5
+      }
+      cp_aliases = {}
+      data_fn = File.join(@datadir, "NameAliases.txt")
+      File.open(data_fn, "r:US-ASCII") do |input|
+        each_significant_line(input) { |line|
+          fields = line.split(";").map(&:strip)
+          aliases = (cp_aliases[fields[0].to_i(16)] ||= [])
+          aliases << [fields[1], type_label_to_bytecode[fields[2]]]
+        }
+      end
+
+      alias_file =
+        File.open(File.join(@cdatadir, "name_aliases"), "w:us-ascii")
+      cp_aliases.each { |cp, aliases|
+        if aliases.length > 0xF
+          raise "update name_alias file format"
+        end
+        alias_file.write(format_codepoint(cp))
+        alias_file.write(aliases.length.to_s(16))
+        aliases.each { |al|
+          alias_file.write(al[1].to_s)
+          if al[0].length > 0xFF
+            raise "update name_alias file format"
+          end
+          alias_file.write(al[0].length.to_s(16).rjust(2, "0"))
+          alias_file.write(al[0])
+        }
+      }
+      alias_file.close
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -651,6 +689,7 @@ module UnicodeUtils
       compile_word_break_property
       compile_east_asian_width_property
       compile_property_value_aliases
+      compile_name_aliases
     end
 
     def format_codepoint(cp)

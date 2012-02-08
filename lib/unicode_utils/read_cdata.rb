@@ -16,6 +16,14 @@ module UnicodeUtils
       5 => :Narrow
     }.freeze
 
+    NAME_ALIAS_TYPE_TO_SYMBOL_MAP = {
+      1 => :correction,
+      2 => :control,
+      3 => :alternate,
+      4 => :figment,
+      5 => :abbreviation
+    }.freeze
+
     def self.open_cdata_file(filename, &block)
       File.open(File.join(CDATA_DIR, filename), "r:US-ASCII:-", &block)
     end
@@ -204,6 +212,30 @@ module UnicodeUtils
             parts[1].strip!
             map[parts[0].to_sym] = parts[1].to_sym
           }
+        end
+      }
+    end
+
+    def self.read_name_aliases(filename)
+      Hash.new.tap { |map|
+        open_cdata_file(filename) do |input|
+          cp_buffer = "x" * 6
+          cp_buffer.force_encoding(Encoding::US_ASCII)
+          ac_buffer = "x" * 1
+          ac_buffer.force_encoding(Encoding::US_ASCII)
+          at_buffer = "x" * 1
+          at_buffer.force_encoding(Encoding::US_ASCII)
+          al_buffer = "x" * 2
+          al_buffer.force_encoding(Encoding::US_ASCII)
+          while input.read(6, cp_buffer)
+            aliases = Array.new(input.read(1, ac_buffer).to_i(16))
+            0.upto(aliases.length - 1) { |i|
+              type = NAME_ALIAS_TYPE_TO_SYMBOL_MAP[input.read(1, at_buffer).to_i(16)]
+              name = input.read(input.read(2, al_buffer).to_i(16))
+              aliases[i] = NameAlias.new(name.freeze, type)
+            }
+            map[cp_buffer.to_i(16)] = aliases.freeze
+          end
         end
       }
     end

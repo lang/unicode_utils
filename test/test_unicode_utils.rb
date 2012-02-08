@@ -489,4 +489,35 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal nil, UnicodeUtils.codepoint_type(0x110000)
   end
 
+  def test_name_aliases
+    assert_equal [UnicodeUtils::NameAlias.new("NULL", :control),
+                  UnicodeUtils::NameAlias.new("NUL", :abbreviation)],
+                 UnicodeUtils.name_aliases(0x0)
+    assert_equal [UnicodeUtils::NameAlias.new("LATIN CAPITAL LETTER GHA", :correction)],
+                 UnicodeUtils.name_aliases(0x1a2)
+    assert_equal [UnicodeUtils::NameAlias.new("BYTE ORDER MARK", :alternate),
+                  UnicodeUtils::NameAlias.new("BOM", :abbreviation),
+                  UnicodeUtils::NameAlias.new("ZWNBSP", :abbreviation)],
+                 UnicodeUtils.name_aliases(0xfeff)
+    assert_equal [UnicodeUtils::NameAlias.new("PADDING CHARACTER", :figment),
+                  UnicodeUtils::NameAlias.new("PAD", :abbreviation)],
+                 UnicodeUtils.name_aliases(0x80)
+    assert_equal [UnicodeUtils::NameAlias.new("VS256", :abbreviation)],
+                 UnicodeUtils.name_aliases(0xe01ef)
+    assert_equal [UnicodeUtils::NameAlias.new("LINE FEED", :control),
+                  UnicodeUtils::NameAlias.new("NEW LINE", :control),
+                  UnicodeUtils::NameAlias.new("END OF LINE", :control),
+                  UnicodeUtils::NameAlias.new("LF", :abbreviation),
+                  UnicodeUtils::NameAlias.new("NL", :abbreviation),
+                  UnicodeUtils::NameAlias.new("EOL", :abbreviation)],
+                 UnicodeUtils.name_aliases(0xa)
+    assert_equal [UnicodeUtils::NameAlias.new("CHARACTER TABULATION", :control),
+                  UnicodeUtils::NameAlias.new("HORIZONTAL TABULATION", :control),
+                  UnicodeUtils::NameAlias.new("HT", :abbreviation),
+                  UnicodeUtils::NameAlias.new("TAB", :abbreviation)],
+                 UnicodeUtils.name_aliases("\t")
+    assert_equal [],
+                 UnicodeUtils.name_aliases("a")
+  end
+
 end

@@ -5,6 +5,7 @@ Updated to Unicode 6.1.0.
 New methods in UnicodeUtils:
 
 * codepoint_type
+* name_aliases
 
 == 1.2.2, 2011-11-27
 

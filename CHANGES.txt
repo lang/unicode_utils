@@ -6,6 +6,7 @@ New methods in UnicodeUtils:
 
 * codepoint_type
 * name_aliases
+* sid
 
 == 1.2.2, 2011-11-27
 

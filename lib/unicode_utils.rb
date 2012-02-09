@@ -40,6 +40,7 @@ require "unicode_utils/char_display_width"
 require "unicode_utils/debug"
 require "unicode_utils/codepoint_type"
 require "unicode_utils/name_aliases"
+require "unicode_utils/sid"
 
 # This version of UnicodeUtils implements algorithms as defined by
 # version 6.1.0 of the Unicode standard. Each public method is

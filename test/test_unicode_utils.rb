@@ -520,4 +520,20 @@ class TestUnicodeUtils < Test::Unit::TestCase
                  UnicodeUtils.name_aliases("a")
   end
 
+  def test_sid
+    assert_equal nil, UnicodeUtils.sid(-1)
+    assert_equal "NULL", UnicodeUtils.sid(0x0)
+    assert_equal "LATIN CAPITAL LETTER GHA", UnicodeUtils.sid(0x1a2)
+    assert_equal "LINE FEED", UnicodeUtils.sid(0xa)
+    assert_equal "PADDING CHARACTER", UnicodeUtils.sid(0x80)
+    assert_equal "BYTE ORDER MARK", UnicodeUtils.sid(0xfeff)
+    assert_equal "SPACE", UnicodeUtils.sid(0x20)
+    assert_equal "<reserved-0380>", UnicodeUtils.sid(0x380)
+    assert_equal "<surrogate-D800>", UnicodeUtils.sid(0xd800)
+    assert_equal "<private-use-F0000>", UnicodeUtils.sid(0xf0000)
+    assert_equal "<private-use-10FFFD>", UnicodeUtils.sid(0x10fffd)
+    assert_equal "<noncharacter-10FFFF>", UnicodeUtils.sid(UnicodeUtils::Codepoint::RANGE.end)
+    assert_equal nil, UnicodeUtils.sid(UnicodeUtils::Codepoint::RANGE.end + 1)
+  end
+
 end

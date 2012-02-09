@@ -29,6 +29,8 @@ module UnicodeUtils
   #    these code points is an empty string
   # 2. It returns nil for other non-graphic, non-format code points, the
   #    Unicode Name property for these code points is an empty string
+  #
+  # See also: UnicodeUtils.sid
   def char_name(char)
     # TODO: improve with code point labels, see section 4.8 in Unicode 6.0.0
     if char.kind_of?(Integer)

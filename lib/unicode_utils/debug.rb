@@ -3,7 +3,7 @@
 require "unicode_utils/display_width"
 require "unicode_utils/graphic_char_q"
 require "unicode_utils/char_display_width"
-require "unicode_utils/char_name"
+require "unicode_utils/sid"
 require "unicode_utils/general_category"
 
 module UnicodeUtils
@@ -17,7 +17,7 @@ module UnicodeUtils
   # Example:
   #
   #   $ ruby -r unicode_utils/u -e 'U.debug "良い一日"'
-  #    Char | Ordinal | Name                       | General Category | UTF-8
+  #    Char | Ordinal | Sid                        | General Category | UTF-8
   #   ------+---------+----------------------------+------------------+----------
   #    "良" |    826F | CJK UNIFIED IDEOGRAPH-826F | Other_Letter     | E8 89 AF
   #    "い" |    3044 | HIRAGANA LETTER I          | Other_Letter     | E3 81 84
@@ -59,8 +59,8 @@ module UnicodeUtils
       "Ordinal" => -> cp {
         cp.to_s(16).upcase.rjust(7)
       },
-      "Name" => -> cp {
-        UnicodeUtils.char_name(cp) || "N/A"
+      "Sid" => -> cp {
+        UnicodeUtils.sid(cp)
       },
       "General Category" => -> cp {
         UnicodeUtils.general_category(cp).to_s

@@ -421,18 +421,18 @@ class TestUnicodeUtils < Test::Unit::TestCase
     io = StringIO.new
     UnicodeUtils.debug("", io: io)
     assert_equal <<-'EOF', io.string
- Char | Ordinal | Name | General Category | UTF-8
-------+---------+------+------------------+-------
+ Char | Ordinal | Sid | General Category | UTF-8
+------+---------+-----+------------------+-------
     EOF
     io = StringIO.new
     UnicodeUtils.debug("一 \u{100000}\n", io: io)
     assert_equal <<-'EOF', io.string
- Char | Ordinal | Name                       | General Category | UTF-8
+ Char | Ordinal | Sid                        | General Category | UTF-8
 ------+---------+----------------------------+------------------+-------------
  "一" |    4E00 | CJK UNIFIED IDEOGRAPH-4E00 | Other_Letter     | E4 B8 80
  " "  |      20 | SPACE                      | Space_Separator  | 20
- N/A  |  100000 | N/A                        | Private_Use      | F4 80 80 80
- "\n" |       A | <control>                  | Control          | 0A
+ N/A  |  100000 | <private-use-100000>       | Private_Use      | F4 80 80 80
+ "\n" |       A | LINE FEED                  | Control          | 0A
     EOF
   end
 

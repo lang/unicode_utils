@@ -21,6 +21,14 @@ module UnicodeUtils
   #   require "unicode_utils/char_name"
   #   UnicodeUtils.char_name "ᾀ" => "GREEK SMALL LETTER ALPHA WITH PSILI AND YPOGEGRAMMENI"
   #   UnicodeUtils.char_name "\t" => "<control>"
+  #
+  # Note that this method deviates from the Unicode Name property in two
+  # points:
+  #
+  # 1. It returns "<control>" for control codes, the Unicode Name property for
+  #    these code points is an empty string
+  # 2. It returns nil for other non-graphic, non-format code points, the
+  #    Unicode Name property for these code points is an empty string
   def char_name(char)
     # TODO: improve with code point labels, see section 4.8 in Unicode 6.0.0
     if char.kind_of?(Integer)

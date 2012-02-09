@@ -1,0 +1,31 @@
+= Issues
+
+== codepoint_type
+
+The Unicode standard refers to "code point(s)", thus code_point_type
+would be a preferable method name.
+
+Possible course of action:
+* Rename codepoint_type to code_point_type
+* Add an alias codepoint_type with a deprecation notice
+* Consistently use "code point" instead of "codepoint" in docs
+
+Same problem with UnicodeUtils::Codepoint.
+
+== char_name
+
+Unfortunately deviates from the Unicode Name property.
+
+Possible course of action:
+* Add consistent way to access all Unicode properties
+  E.g. UnicodeUtils::General_Category[code_point],
+  UnicodeUtils::Name[code_point], ...
+* Deprecate char_name
+
+== Encoding of string property values
+
+The encoding of spring property values is currenctly undocumented.
+
+Possible course of action:
+* Use the same encoding for all string property values, preferably UTF-8
+* Document it

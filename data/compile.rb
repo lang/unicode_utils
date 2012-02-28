@@ -21,7 +21,7 @@ module UnicodeUtils
 
   end
 
-  Codepoint = Struct.new(:codepoint,
+  Codepoint = Struct.new(:code_point,
                          :name,
                          :general_category,
                          :decomposition_mapping,
@@ -31,14 +31,14 @@ module UnicodeUtils
 
   class SpecialCasing
 
-    attr_accessor :codepoint,
+    attr_accessor :code_point,
                   :uppercase_mapping,
                   :lowercase_mapping,
                   :titlecase_mapping,
                   :conditions
 
     def initialize
-      @codepoint = nil
+      @code_point = nil
       @uppercase_mapping = nil
       @lowercase_mapping = nil
       @titlecase_mapping = nil
@@ -48,19 +48,19 @@ module UnicodeUtils
     def has_lowercase?
       conditional? ||
         @lowercase_mapping.length != 1 ||
-        @lowercase_mapping.first != @codepoint
+        @lowercase_mapping.first != @code_point
     end
 
     def has_uppercase?
       conditional? ||
         @uppercase_mapping.length != 1 ||
-        @uppercase_mapping.first != @codepoint
+        @uppercase_mapping.first != @code_point
     end
 
     def has_titlecase?
       conditional? ||
         @titlecase_mapping.length != 1 ||
-        @titlecase_mapping.first != @codepoint
+        @titlecase_mapping.first != @code_point
     end
 
     def language
@@ -87,10 +87,10 @@ module UnicodeUtils
 
   end
 
-  Property = Struct.new(:codepoint,
+  Property = Struct.new(:code_point,
                         :property)
 
-  CasefoldMapping = Struct.new(:codepoint,
+  CasefoldMapping = Struct.new(:code_point,
                                :status,
                                :mapping)
 
@@ -103,7 +103,7 @@ module UnicodeUtils
       @cdatadir = File.join(@basedir, "cdata")
     end
 
-    def each_codepoint
+    def each_code_point
       data_fn = File.join(@datadir, "UnicodeData.txt")
       File.open(data_fn, "r:US-ASCII") do |io|
         io.each_line { |line|
@@ -116,7 +116,7 @@ module UnicodeUtils
     def parse_line(line)
       Codepoint.new.tap { |cp|
         fields = line.chomp.split(";")
-        cp.codepoint = fields[0].to_i(16)
+        cp.code_point = fields[0].to_i(16)
         cp.name = fields[1]
         cp.general_category = fields[2]
         unless fields[5].empty?
@@ -155,7 +155,7 @@ module UnicodeUtils
     def parse_special_casing_line(line)
       SpecialCasing.new.tap { |sc|
         fields = line.split(";").map(&:strip)
-        sc.codepoint = fields[0].to_i(16)
+        sc.code_point = fields[0].to_i(16)
         sc.lowercase_mapping = fields[1].split(" ").map { |x| x.to_i(16) }
         sc.titlecase_mapping = fields[2].split(" ").map { |x| x.to_i(16) }
         sc.uppercase_mapping = fields[3].split(" ").map { |x| x.to_i(16) }
@@ -173,7 +173,7 @@ module UnicodeUtils
         each_significant_line(input) { |line|
           fields = line.split(";").map(&:strip)
           property = fields[1]
-          if fields[0] =~ /^([\dA-F]+)\.{2}([\dA-F]+)$/ # codepoint-range?
+          if fields[0] =~ /^([\dA-F]+)\.{2}([\dA-F]+)$/ # code_point-range?
             range = Range.new($1.to_i(16), $2.to_i(16))
             if opts[:flatten_ranges]
               range.each { |cp| yield Property.new(cp, property) }
@@ -224,32 +224,32 @@ module UnicodeUtils
       begin
         current_range_name = nil
         current_range_first = nil
-        each_codepoint { |cp|
+        each_code_point { |cp|
           if cp.simple_uppercase_mapping
-            uc_file.write(format_codepoint(cp.codepoint))
-            uc_file.write(format_codepoint(cp.simple_uppercase_mapping))
+            uc_file.write(format_code_point(cp.code_point))
+            uc_file.write(format_code_point(cp.simple_uppercase_mapping))
           end
           if cp.simple_lowercase_mapping
-            lc_file.write(format_codepoint(cp.codepoint))
-            lc_file.write(format_codepoint(cp.simple_lowercase_mapping))
+            lc_file.write(format_code_point(cp.code_point))
+            lc_file.write(format_code_point(cp.simple_lowercase_mapping))
           end
           if cp.simple_titlecase_mapping
-            tc_file.write(format_codepoint(cp.codepoint))
-            tc_file.write(format_codepoint(cp.simple_titlecase_mapping))
+            tc_file.write(format_code_point(cp.code_point))
+            tc_file.write(format_code_point(cp.simple_titlecase_mapping))
           end
           if cp.general_category == "Lt"
-            cat_set_titlecase_file.write(format_codepoint(cp.codepoint))
+            cat_set_titlecase_file.write(format_code_point(cp.code_point))
           end
           if cp.name =~ /^<([^,]+), (First|Last)>$/
             case $2
             when "First"
               raise "range error" if current_range_name || current_range_first
               current_range_name = $1
-              current_range_first = cp.codepoint
+              current_range_first = cp.code_point
             when "Last"
               raise "range error" if current_range_name != $1
-              general_category_ranges_file.write(format_codepoint(current_range_first))
-              general_category_ranges_file.write(format_codepoint(cp.codepoint))
+              general_category_ranges_file.write(format_code_point(current_range_first))
+              general_category_ranges_file.write(format_code_point(cp.code_point))
               raise cp.general_category unless cp.general_category.bytesize == 2
               general_category_ranges_file.write(cp.general_category)
               current_range_name = nil
@@ -257,23 +257,23 @@ module UnicodeUtils
             else raise $2
             end
           else
-            name_file.write(format_codepoint(cp.codepoint))
+            name_file.write(format_code_point(cp.code_point))
             name_file.puts(cp.name)
             raise cp.general_category unless cp.general_category.bytesize == 2
-            general_category_per_cp_file.write(format_codepoint(cp.codepoint))
+            general_category_per_cp_file.write(format_code_point(cp.code_point))
             general_category_per_cp_file.write(cp.general_category)
           end
           if cp.decomposition_mapping
             if cp.decomposition_mapping.canonical?
-              canonical_dm_file.write(format_codepoint(cp.codepoint))
+              canonical_dm_file.write(format_code_point(cp.code_point))
               cp.decomposition_mapping.mapping.each { |c|
-                canonical_dm_file.write(format_codepoint(c))
+                canonical_dm_file.write(format_code_point(c))
               }
               canonical_dm_file.write("x" * 6) # end of entry marker
             elsif cp.decomposition_mapping.compatibility?
-              compatibility_dm_file.write(format_codepoint(cp.codepoint))
+              compatibility_dm_file.write(format_code_point(cp.code_point))
               cp.decomposition_mapping.mapping.each { |c|
-                compatibility_dm_file.write(format_codepoint(c))
+                compatibility_dm_file.write(format_code_point(c))
               }
               compatibility_dm_file.write("x" * 6) # end of entry marker
             end
@@ -306,12 +306,12 @@ module UnicodeUtils
       begin
         each_special_casing { |sc|
           if sc.conditional?
-            # format: codepoint;[mapped_codepoint1,...];[language_id];[context]
+            # format: code_point;[mapped_code_point1,...];[language_id];[context]
             if sc.has_uppercase?
-              cond_uc_file.write(format_codepoint(sc.codepoint))
+              cond_uc_file.write(format_code_point(sc.code_point))
               cond_uc_file.write(";")
               cond_uc_file.write(
-                sc.uppercase_mapping.map { |c| format_codepoint(c) }.join(","))
+                sc.uppercase_mapping.map { |c| format_code_point(c) }.join(","))
               cond_uc_file.write(";")
               cond_uc_file.write(sc.language || "")
               cond_uc_file.write(";")
@@ -319,10 +319,10 @@ module UnicodeUtils
               cond_uc_file.puts
             end
             if sc.has_lowercase?
-              cond_lc_file.write(format_codepoint(sc.codepoint))
+              cond_lc_file.write(format_code_point(sc.code_point))
               cond_lc_file.write(";")
               cond_lc_file.write(
-                sc.lowercase_mapping.map { |c| format_codepoint(c) }.join(","))
+                sc.lowercase_mapping.map { |c| format_code_point(c) }.join(","))
               cond_lc_file.write(";")
               cond_lc_file.write(sc.language || "")
               cond_lc_file.write(";")
@@ -330,10 +330,10 @@ module UnicodeUtils
               cond_lc_file.puts
             end
             if sc.has_titlecase?
-              cond_tc_file.write(format_codepoint(sc.codepoint))
+              cond_tc_file.write(format_code_point(sc.code_point))
               cond_tc_file.write(";")
               cond_tc_file.write(
-                sc.titlecase_mapping.map { |c| format_codepoint(c) }.join(","))
+                sc.titlecase_mapping.map { |c| format_code_point(c) }.join(","))
               cond_tc_file.write(";")
               cond_tc_file.write(sc.language || "")
               cond_tc_file.write(";")
@@ -343,25 +343,25 @@ module UnicodeUtils
           else
             if sc.has_uppercase?
               uc = sc.uppercase_mapping
-              uc_file.write(format_codepoint(sc.codepoint))
+              uc_file.write(format_code_point(sc.code_point))
               uc.each { |cp|
-                uc_file.write(format_codepoint(cp))
+                uc_file.write(format_code_point(cp))
               }
               uc_file.write("x" * 6) # end of entry marker
             end
             if sc.has_lowercase?
               lc = sc.lowercase_mapping
-              lc_file.write(format_codepoint(sc.codepoint))
+              lc_file.write(format_code_point(sc.code_point))
               lc.each { |cp|
-                lc_file.write(format_codepoint(cp))
+                lc_file.write(format_code_point(cp))
               }
               lc_file.write("x" * 6)
             end
             if sc.has_titlecase?
               tc = sc.titlecase_mapping
-              tc_file.write(format_codepoint(sc.codepoint))
+              tc_file.write(format_code_point(sc.code_point))
               tc.each { |cp|
-                tc_file.write(format_codepoint(cp))
+                tc_file.write(format_code_point(cp))
               }
               tc_file.write("x" * 6)
             end
@@ -390,11 +390,11 @@ module UnicodeUtils
         each_property("DerivedCoreProperties.txt") { |dcp|
           case dcp.property
           when "Uppercase"
-            uc_file.write(format_codepoint(dcp.codepoint))
+            uc_file.write(format_code_point(dcp.code_point))
           when "Lowercase"
-            lc_file.write(format_codepoint(dcp.codepoint))
+            lc_file.write(format_code_point(dcp.code_point))
           when "Default_Ignorable_Code_Point"
-            di_file.write(format_codepoint(dcp.codepoint))
+            di_file.write(format_code_point(dcp.code_point))
           end
         }
       ensure
@@ -429,12 +429,12 @@ module UnicodeUtils
       File.open(path, "w:US-ASCII") do |output|
         each_property("WordBreakProperty.txt") { |prop|
           if prop.property == "MidLetter"
-            output.write(format_codepoint(prop.codepoint))
+            output.write(format_code_point(prop.code_point))
           end
         }
-        each_codepoint { |cp|
+        each_code_point { |cp|
           if cp.general_category =~ /^(Mn|Me|Cf|Lm|Sk)$/
-            output.write(format_codepoint(cp.codepoint))
+            output.write(format_code_point(cp.code_point))
           end
         }
       end
@@ -446,7 +446,7 @@ module UnicodeUtils
         each_property("DerivedCombiningClass.txt") { |prop|
           class_int = prop.property.to_i
           next if class_int == 0 # default value
-          output.write(format_codepoint(prop.codepoint))
+          output.write(format_code_point(prop.code_point))
           # class_int is a value in range 0..255
           # two hex-digits are enough
           output.write(sprintf("%02x", class_int))
@@ -459,7 +459,7 @@ module UnicodeUtils
       File.open(path, "w:US-ASCII") do |output|
         each_property("PropList.txt") { |prop|
           if prop.property == "Soft_Dotted"
-            output.write(format_codepoint(prop.codepoint))
+            output.write(format_code_point(prop.code_point))
           end
         }
       end
@@ -470,7 +470,7 @@ module UnicodeUtils
       File.open(path, "w:US-ASCII") do |output|
         each_property("Jamo.txt") { |prop|
           if prop.property
-            output.write(format_codepoint(prop.codepoint))
+            output.write(format_code_point(prop.code_point))
             output.puts(prop.property)
           end
         }
@@ -482,7 +482,7 @@ module UnicodeUtils
       File.open(path, "w:US-ASCII") do |output|
         each_property("DerivedNormalizationProps.txt") { |prop|
           if prop.property == "Full_Composition_Exclusion"
-            output.write(format_codepoint(prop.codepoint))
+            output.write(format_code_point(prop.code_point))
           end
         }
       end
@@ -500,16 +500,16 @@ module UnicodeUtils
           case mapping.status
           when "C"
             raise unless mapping.mapping.size == 1
-            c_file.write(format_codepoint(mapping.codepoint))
-            c_file.write(format_codepoint(mapping.mapping.first))
+            c_file.write(format_code_point(mapping.code_point))
+            c_file.write(format_code_point(mapping.mapping.first))
           when "S"
             raise unless mapping.mapping.size == 1
-            s_file.write(format_codepoint(mapping.codepoint))
-            s_file.write(format_codepoint(mapping.mapping.first))
+            s_file.write(format_code_point(mapping.code_point))
+            s_file.write(format_code_point(mapping.mapping.first))
           when "F"
-            f_file.write(format_codepoint(mapping.codepoint))
+            f_file.write(format_code_point(mapping.code_point))
             mapping.mapping.each { |cp|
-              f_file.write(format_codepoint(cp))
+              f_file.write(format_code_point(cp))
             }
             f_file.write("x" * 6) # end of entry marker
           when "T"
@@ -543,7 +543,7 @@ module UnicodeUtils
             raise("unknown property value #{prop.property}")
           digit = i.to_s(16)
           raise unless digit.length == 1
-          output.write(format_codepoint(prop.codepoint))
+          output.write(format_code_point(prop.code_point))
           output.write(digit)
         }
       end
@@ -569,7 +569,7 @@ module UnicodeUtils
             raise("unknown property value #{prop.property}")
           digit = i.to_s(16)
           raise unless digit.length == 1
-          output.write(format_codepoint(prop.codepoint))
+          output.write(format_code_point(prop.code_point))
           output.write(digit)
         }
       end
@@ -594,14 +594,14 @@ module UnicodeUtils
         next if prop.property == "N"
         i = props[prop.property] ||
           raise("unknown property value #{prop.property}")
-        if prop.codepoint.kind_of?(Range)
+        if prop.code_point.kind_of?(Range)
           range_props << prop
         else
-          per_cp_file.write(format_codepoint(prop.codepoint))
+          per_cp_file.write(format_code_point(prop.code_point))
           per_cp_file.write(i.to_s(16))
         end
       }
-      range_props.sort_by! { |rp| rp.codepoint.begin }
+      range_props.sort_by! { |rp| rp.code_point.begin }
       # try to join ranges
       range_props2 = []
       range_props.each { |rp|
@@ -609,10 +609,10 @@ module UnicodeUtils
           range_props2 << rp
         else
           previous = range_props2.last
-          if previous.codepoint.end.succ == rp.codepoint.begin &&
+          if previous.code_point.end.succ == rp.code_point.begin &&
               previous.property == rp.property
-            previous.codepoint =
-              Range.new(previous.codepoint.begin, rp.codepoint.end)
+            previous.code_point =
+              Range.new(previous.code_point.begin, rp.code_point.end)
           else
             range_props2 << rp
           end
@@ -622,14 +622,14 @@ module UnicodeUtils
         i = props[rp.property] ||
           raise("unknown property value #{prop.property}")
         # flatten small ranges
-        if (rp.codepoint.end - rp.codepoint.begin) <= 100
-          rp.codepoint.begin.upto(rp.codepoint.end) { |cp|
-            per_cp_file.write(format_codepoint(cp))
+        if (rp.code_point.end - rp.code_point.begin) <= 100
+          rp.code_point.begin.upto(rp.code_point.end) { |cp|
+            per_cp_file.write(format_code_point(cp))
             per_cp_file.write(i.to_s(16))
           }
         else
-          range_file.write(format_codepoint(rp.codepoint.begin))
-          range_file.write(format_codepoint(rp.codepoint.end))
+          range_file.write(format_code_point(rp.code_point.begin))
+          range_file.write(format_code_point(rp.code_point.end))
           range_file.write(i.to_s(16))
         end
       }
@@ -661,7 +661,7 @@ module UnicodeUtils
         if aliases.length > 0xF
           raise "update name_alias file format"
         end
-        alias_file.write(format_codepoint(cp))
+        alias_file.write(format_code_point(cp))
         alias_file.write(aliases.length.to_s(16))
         aliases.each { |al|
           alias_file.write(al[1].to_s)
@@ -692,7 +692,7 @@ module UnicodeUtils
       compile_name_aliases
     end
 
-    def format_codepoint(cp)
+    def format_code_point(cp)
       sprintf("%06x", cp)
     end
 

@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
 
 require "unicode_utils/name_aliases"
-require "unicode_utils/codepoint_type"
+require "unicode_utils/code_point_type"
 
 module UnicodeUtils
 
@@ -54,7 +54,7 @@ module UnicodeUtils
     s = CP_PREFERRED_ALIAS_STRING_MAP[code_point] and return s
     cn = UnicodeUtils.char_name(code_point)
     return cn if cn && cn !~ /\A(\<|\z)/
-    ct = UnicodeUtils.codepoint_type(code_point) or return nil
+    ct = UnicodeUtils.code_point_type(code_point) or return nil
     ts = ct.to_s.downcase.gsub('_', '-')
     "<#{ts}-#{code_point.to_s(16).upcase.rjust(4, '0')}>"
   end

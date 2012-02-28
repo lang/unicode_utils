@@ -21,7 +21,7 @@ module UnicodeUtils
 
   end
 
-  Codepoint = Struct.new(:code_point,
+  CodePoint = Struct.new(:code_point,
                          :name,
                          :general_category,
                          :decomposition_mapping,
@@ -114,7 +114,7 @@ module UnicodeUtils
     end
 
     def parse_line(line)
-      Codepoint.new.tap { |cp|
+      CodePoint.new.tap { |cp|
         fields = line.chomp.split(";")
         cp.code_point = fields[0].to_i(16)
         cp.name = fields[1]

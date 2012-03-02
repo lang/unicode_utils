@@ -1,16 +1,16 @@
 = Issues
 
-== codepoint_type
+== "code point" vs. "codepoint"
 
-The Unicode standard refers to "code point(s)", thus code_point_type
-would be a preferable method name.
+The Unicode standard consistently uses "code point". On the other
+hand, Ruby's String class has an "each_codepoint" method.
 
-Possible course of action:
-* Rename codepoint_type to code_point_type
-* Add an alias codepoint_type with a deprecation notice
-* Consistently use "code point" instead of "codepoint" in docs
+Beginning with version 1.3.0, UnicodeUtils will use "code point"
+and the related Ruby symbol names "code_point", "CODE_POINT" and
+"CodePoint" throughout.
 
-Same problem with UnicodeUtils::Codepoint.
+The only exception is the "UnicodeUtils::Codepoint" class, which
+predates UnicodeUtils 1.3.0.
 
 == char_name
 

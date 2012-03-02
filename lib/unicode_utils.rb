@@ -38,10 +38,9 @@ require "unicode_utils/general_category"
 require "unicode_utils/char_type"
 require "unicode_utils/char_display_width"
 require "unicode_utils/debug"
-require "unicode_utils/codepoint_type"
+require "unicode_utils/code_point_type"
 require "unicode_utils/name_aliases"
 require "unicode_utils/sid"
-require "unicode_utils/code_point_type"
 
 # This version of UnicodeUtils implements algorithms as defined by
 # version 6.1.0 of the Unicode standard. Each public method is
@@ -59,7 +58,7 @@ require "unicode_utils/code_point_type"
 #
 # If a method takes a character as argument (usually named +char+),
 # that argument can be an integer or a string (in which case the
-# first codepoint counts) or any other object that responds to +ord+
+# first code point counts) or any other object that responds to +ord+
 # by returning an integer.
 #
 # All methods are non-destructive, string return values are in the
@@ -79,6 +78,6 @@ require "unicode_utils/code_point_type"
 # UnicodeUtils.each_grapheme:: grapheme boundaries
 # UnicodeUtils.each_word:: word boundaries
 # UnicodeUtils.char_name:: character names
-# UnicodeUtils.grep:: find codepoints by character name
+# UnicodeUtils.grep:: find code points by character name
 module UnicodeUtils
 end

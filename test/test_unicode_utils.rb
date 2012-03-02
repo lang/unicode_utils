@@ -436,10 +436,6 @@ class TestUnicodeUtils < Test::Unit::TestCase
     EOF
   end
 
-  def test_codepoint_type
-    assert_equal :Graphic, UnicodeUtils.codepoint_type("A")
-  end
-
   def test_code_point_type
     assert_equal :Graphic, UnicodeUtils.code_point_type("A")
     assert_equal :Graphic, UnicodeUtils.code_point_type("a")

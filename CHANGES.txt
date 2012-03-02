@@ -4,7 +4,7 @@ Updated to Unicode 6.1.0.
 
 New methods in UnicodeUtils:
 
-* codepoint_type
+* code_point_type
 * name_aliases
 * sid
 

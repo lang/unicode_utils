@@ -32,7 +32,7 @@ module UnicodeUtils
   # Get the code point type of the given +integer+ (must be instance
   # of Integer) as defined by the Unicode standard.
   #
-  # If +integer+ is a codepoint (anything in
+  # If +integer+ is a code point (anything in
   # UnicodeUtils::Codepoint::RANGE), returns one of the following
   # symbols:
   #
@@ -50,14 +50,14 @@ module UnicodeUtils
   #
   # Following is a paraphrased excerpt:
   #
-  # +Surrogate+, +Noncharacter+ and +Reserved+ codepoints are not
-  # assigned to an _abstract character_. All other codepoints are
+  # +Surrogate+, +Noncharacter+ and +Reserved+ code points are not
+  # assigned to an _abstract character_. All other code points are
   # assigned to an abstract character.
   #
-  # +Reserved+ codepoints are also called _Undesignated_ codepoints,
-  # all others are _Designated_ codepoints.
+  # +Reserved+ code points are also called _Undesignated_ code points,
+  # all others are _Designated_ code points.
   #
-  # Returns nil if +integer+ is not a codepoint.
+  # Returns nil if +integer+ is not a code point.
   def code_point_type(integer)
     cpt = GENERAL_CATEGORY_CODE_POINT_TYPE[UnicodeUtils.gc(integer)]
     if false == cpt

@@ -20,7 +20,7 @@ module UnicodeUtils
   #   require "unicode_utils/char_type"
   #   UnicodeUtils.char_type("1") # => :Number
   #
-  # Always returns a symbol when char is in the Unicode codepoint
+  # Always returns a symbol when char is in the Unicode code point
   # range.
   #
   # See also: UnicodeUtils.general_category

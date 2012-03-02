@@ -10,8 +10,8 @@ module UnicodeUtils
 
   # Get the normative Unicode name of the given character.
   #
-  # Private Use codepoints have no name, this function returns nil for
-  # such codepoints.
+  # Private Use code points have no name, this function returns nil for
+  # such code points.
   #
   # All control characters have the special name "<control>". All
   # other characters have a unique name.

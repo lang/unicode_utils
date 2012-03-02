@@ -4,13 +4,13 @@ require "unicode_utils/char_name"
 
 module UnicodeUtils
 
-  # A Codepoint instance represents a single Unicode codepoint.
+  # A Codepoint instance represents a single Unicode code point.
   #
   #   UnicodeUtils::Codepoint.new(0x20ac) => #<U+20AC "€" EURO SIGN utf8:e2,82,ac>
   class Codepoint
 
     # The Unicode codespace. Any integer in this range is a Unicode
-    # codepoint.
+    # code point.
     RANGE = 0..0x10FFFF
 
     # Create a Codepoint instance that wraps the given Integer. +int+
@@ -34,21 +34,21 @@ module UnicodeUtils
       sprintf('U+%04X', @int)
     end
 
-    # Get the normative Unicode name of this codepoint.
+    # Get the normative Unicode name of this code point.
     #
     # See also: UnicodeUtils.char_name
     def name
       UnicodeUtils.char_name(@int)
     end
 
-    # Convert this codepoint to an UTF-8 encoded string. Returns a new
+    # Convert this code point to an UTF-8 encoded string. Returns a new
     # string on each call and thus it is allowed to mutate the return
     # value.
     def to_s
       @int.chr(Encoding::UTF_8)
     end
 
-    # Get the bytes used to encode this codepoint in UTF-8,
+    # Get the bytes used to encode this code point in UTF-8,
     # hex-formatted.
     #
     #   Codepoint.new(0xe4).hexbytes => "c3,a4"

@@ -5,7 +5,7 @@ require "unicode_utils/read_cdata"
 module UnicodeUtils
 
   PROP_DEFAULT_IGNORABLE_SET =
-    Impl.read_codepoint_set("prop_set_default_ignorable") # :nodoc:
+    Impl.read_code_point_set("prop_set_default_ignorable") # :nodoc:
 
   # True if the given character has the Unicode property
   # Default_Ingorable_Code_Point (see section 5.3 in Unicode 6.0.0).

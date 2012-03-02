@@ -9,7 +9,7 @@ module UnicodeUtils
   module Impl # :nodoc:all
     
     COMPOSITION_EXCLUSION_SET =
-      Impl.read_codepoint_set("composition_exclusion_set")
+      Impl.read_code_point_set("composition_exclusion_set")
 
     CANONICAL_COMPOSITION_MAP = Hash.new.tap do |m|
       CANONICAL_DECOMPOSITION_MAP.each_pair { |comp, decomp|

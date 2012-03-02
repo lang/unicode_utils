@@ -28,7 +28,7 @@ module UnicodeUtils
       File.open(File.join(CDATA_DIR, filename), "r:US-ASCII:-", &block)
     end
 
-    def self.read_codepoint_set(filename)
+    def self.read_code_point_set(filename)
       Hash.new.tap { |set|
         open_cdata_file(filename) do |input|
           buffer = "x" * 6

@@ -4,7 +4,7 @@ require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 
-  TITLECASE_LETTER_SET = Impl.read_codepoint_set("cat_set_titlecase") # :nodoc:
+  TITLECASE_LETTER_SET = Impl.read_code_point_set("cat_set_titlecase") # :nodoc:
 
   # True if the given character has the General_Category
   # Titlecase_Letter (Lt).

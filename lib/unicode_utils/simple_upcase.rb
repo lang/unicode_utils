@@ -4,7 +4,7 @@ require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 
-  SIMPLE_UPCASE_MAP = Impl.read_codepoint_map("simple_uc_map") # :nodoc:
+  SIMPLE_UPCASE_MAP = Impl.read_code_point_map("simple_uc_map") # :nodoc:
 
   # Map each code point in +str+ that has a single code point
   # uppercase-mapping to that uppercase mapping. The returned string

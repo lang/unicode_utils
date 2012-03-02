@@ -4,7 +4,7 @@ require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 
-  SIMPLE_DOWNCASE_MAP = Impl.read_codepoint_map("simple_lc_map") # :nodoc:
+  SIMPLE_DOWNCASE_MAP = Impl.read_code_point_map("simple_lc_map") # :nodoc:
 
   # Map each code point in +str+ that has a single code point
   # lowercase-mapping to that lowercase mapping. The returned string

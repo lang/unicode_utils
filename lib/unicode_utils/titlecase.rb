@@ -8,7 +8,7 @@ require "unicode_utils/downcase"
 
 module UnicodeUtils
 
-  SIMPLE_TITLECASE_MAP = Impl.read_codepoint_map("simple_tc_map") # :nodoc:
+  SIMPLE_TITLECASE_MAP = Impl.read_code_point_map("simple_tc_map") # :nodoc:
   SPECIAL_TITLECASE_MAP = Impl.read_multivalued_map("special_tc_map") # :nodoc:
 
   # Convert the first cased character after each word boundary to

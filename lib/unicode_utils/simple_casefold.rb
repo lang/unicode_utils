@@ -4,9 +4,9 @@ require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 
-  CASEFOLD_C_MAP = Impl.read_codepoint_map("casefold_c_map") # :nodoc:
+  CASEFOLD_C_MAP = Impl.read_code_point_map("casefold_c_map") # :nodoc:
 
-  CASEFOLD_S_MAP = Impl.read_codepoint_map("casefold_s_map") # :nodoc:
+  CASEFOLD_S_MAP = Impl.read_code_point_map("casefold_s_map") # :nodoc:
 
   # Perform simple case folding. Contrary to full case folding, this
   # uses only one to one mappings, so that the length of the returned

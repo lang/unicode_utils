@@ -40,7 +40,7 @@ module UnicodeUtils
       }
     end
 
-    def self.read_codepoint_map(filename)
+    def self.read_code_point_map(filename)
       Hash.new.tap { |map|
         open_cdata_file(filename) do |input|
           buffer = "x" * 6

@@ -10,10 +10,10 @@ module UnicodeUtils
   EAST_ASIAN_WIDTH_RANGES =
     Impl.read_east_asian_width_ranges("east_asian_width_property_ranges") # :nodoc:
 
-  # Returns the default with of the given codepoint as described in
+  # Returns the default with of the given code point as described in
   # "UAX #11: East Asian Width" (http://unicode.org/reports/tr11/).
   #
-  # Each codepoint is mapped to one of the following six symbols:
+  # Each code point is mapped to one of the following six symbols:
   # :Neutral, :Ambiguous, :Halfwidth, :Wide, :Fullwidth, :Narrow.
   def east_asian_width(char)
     cp = char.ord

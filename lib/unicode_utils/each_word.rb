@@ -4,7 +4,7 @@ require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 
-  # Maps codepoints to integer codes. For the integer code to property
+  # Maps code points to integer codes. For the integer code to property
   # mapping, see #compile_word_break_property in data/compile.rb.
   WORD_BREAK_MAP =
     Impl.read_hexdigit_map("word_break_property") # :nodoc:

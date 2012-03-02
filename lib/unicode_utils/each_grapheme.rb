@@ -4,14 +4,14 @@ require "unicode_utils/read_cdata"
 
 module UnicodeUtils
 
-  # Maps codepoints to integer codes. For the integer code to property
+  # Maps code points to integer codes. For the integer code to property
   # mapping, see #compile_grapheme_break_property in data/compile.rb.
   GRAPHEME_CLUSTER_BREAK_MAP =
     Impl.read_hexdigit_map("grapheme_break_property") # :nodoc:
 
   # Iterate over the grapheme clusters that make up +str+. A grapheme
   # cluster is a user perceived character (the basic unit of a writing
-  # system for a language) and consists of one or more codepoints.
+  # system for a language) and consists of one or more code points.
   #
   # This method uses the default Unicode algorithm for extended
   # grapheme clusters.

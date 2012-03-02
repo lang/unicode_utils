@@ -21,7 +21,7 @@ module UnicodeUtils
   #   require "unicode_utils/gc"
   #   UnicodeUtils.gc("A") # => :Lu (Letter, uppercase)
   #
-  # Returns nil for ordinals outside the Unicode codepoint range, a
+  # Returns nil for ordinals outside the Unicode code point range, a
   # two letter symbol otherwise.
   #
   # See also: UnicodeUtils.general_category, UnicodeUtils.char_type

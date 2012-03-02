@@ -12,7 +12,7 @@ module UnicodeUtils
   # Get the compatibility decomposition of the given string, also
   # called Normalization Form KD or short NFKD.
   #
-  # Compatibility decomposition decomposes more codepoints than
+  # Compatibility decomposition decomposes more code points than
   # canonical decomposition and contrary to Normalization Form D and
   # C, this normalization can alter how a string is displayed.
   #

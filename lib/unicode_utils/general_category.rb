@@ -15,7 +15,7 @@ module UnicodeUtils
   #   require "unicode_utils/general_category"
   #   UnicodeUtils.general_category("A") # => :Uppercase_Letter
   #
-  # Returns a symbol if char is in the Unicode codepoint range, nil
+  # Returns a symbol if char is in the Unicode code point range, nil
   # otherwise.
   #
   # See also: UnicodeUtils.gc, UnicodeUtils.char_type

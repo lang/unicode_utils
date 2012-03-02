@@ -18,8 +18,8 @@ module UnicodeUtils
 
   # Get the width of +str+ when displayed with a fixed pitch font.
   #
-  # Counts codepoints, where codepoints with an east asian width of
-  # +Wide+ or +Fullwidth+ count for two, non-graphic codepoints (e.g.
+  # Counts code points, where code points with an east asian width of
+  # +Wide+ or +Fullwidth+ count for two, non-graphic code points (e.g.
   # control characters, including newline!) and non-spacing marks
   # count for zero and all others count for one.
   #
@@ -33,7 +33,7 @@ module UnicodeUtils
   #   "a\u{308}".length => 2
   #   UnicodeUtils.display_width("a\u{308}") => 1
   #
-  # Unicode assigns some reserved codepoints an east asian width of
+  # Unicode assigns some reserved code points an east asian width of
   # +Wide+. Some systems correctly display a double width replacement
   # character, others not.
   #

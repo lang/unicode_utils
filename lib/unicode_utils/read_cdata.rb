@@ -112,7 +112,7 @@ module UnicodeUtils
       }
     end
 
-    # Read a map whose keys are codepoints (6 hexgdigits, converted to
+    # Read a map whose keys are code points (6 hexgdigits, converted to
     # integer) and whose values are single hexdigits (converted to
     # integer).
     def self.read_hexdigit_map(filename)
@@ -130,7 +130,7 @@ module UnicodeUtils
     end
 
     # Returns a list (array) of pairs (two element Arrays) of Range
-    # (codepoints) and associated integer value.
+    # (code points) and associated integer value.
     def self.read_range_to_hexdigit_list(filename)
       Array.new.tap { |list|
         open_cdata_file(filename) do |input|

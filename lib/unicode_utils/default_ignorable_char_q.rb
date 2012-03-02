@@ -11,7 +11,7 @@ module UnicodeUtils
   # Default_Ingorable_Code_Point (see section 5.3 in Unicode 6.0.0).
   #
   # When a system (e.g. font) can't display a default ignorable
-  # codepoint, it is allowed to simply ignore, i.e. skip it (as
+  # code point, it is allowed to simply ignore, i.e. skip it (as
   # opposed to other characters, which must at least be displayed with
   # a replacement character).
   def default_ignorable_char?(char)

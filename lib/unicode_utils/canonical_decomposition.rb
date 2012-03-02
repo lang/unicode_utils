@@ -13,8 +13,8 @@ module UnicodeUtils
   # Normalization Form D or short NFD.
   #
   # The Unicode standard has multiple representations for some
-  # characters. One representation as a single codepoint and other
-  # representation(s) as a combination of multiple codepoints. This
+  # characters. One representation as a single code point and other
+  # representation(s) as a combination of multiple code points. This
   # function "decomposes" these characters in +str+ into the latter
   # representation.
   #

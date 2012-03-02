@@ -6,7 +6,7 @@ module UnicodeUtils
 
   SIMPLE_UPCASE_MAP = Impl.read_codepoint_map("simple_uc_map") # :nodoc:
 
-  # Map each codepoint in +str+ that has a single codepoint
+  # Map each code point in +str+ that has a single code point
   # uppercase-mapping to that uppercase mapping. The returned string
   # has the same length as the original string.
   #

@@ -6,7 +6,7 @@ module UnicodeUtils
 
   # Get the width of +char+ when displayed with a fixed pitch font.
   #
-  # Some codepoints (especially from east asian scripts) take the
+  # Some code points (especially from east asian scripts) take the
   # width of two characters, while others have no width.
   #
   # Examples:
@@ -17,7 +17,7 @@ module UnicodeUtils
   #   UnicodeUtils.char_display_width("a")   # => 1
   #
   # Performs the same logic as UnicodeUtils.display_width, but for a
-  # single codepoint.
+  # single code point.
   def char_display_width(char)
     cp = char.ord
     # copied from display_width, keep in sync!

@@ -8,7 +8,7 @@ require "unicode_utils/general_category"
 
 module UnicodeUtils
 
-  # Print a table with detailed information about each codepoint in
+  # Print a table with detailed information about each code point in
   # +str+. +opts+ can have the following keys:
   #
   # +:io+:: An IO compatible object. Receives the output.

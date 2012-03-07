@@ -38,7 +38,7 @@ end
 desc "Publish doc/ on unicode-utils.rubyfore.org. " +
      "Note: scp will prompt for rubyforge password."
 task "publish-doc" => "doc" do
-    sh "scp -r doc/* langi@rubyforge.org:/var/www/gforge-projects/unicode-utils/"
+    sh "scp -i ~/.ssh/id_rsa_s0 -r doc/* langi@rubyforge.org:/var/www/gforge-projects/unicode-utils/"
 end
 
 desc "Compile Unicode data files from data/ to cdata/."

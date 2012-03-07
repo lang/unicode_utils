@@ -8,6 +8,10 @@ New methods in UnicodeUtils:
 * name_aliases
 * sid
 
+New constants in UnicodeUtils:
+
+* UNICODE_VERSION
+
 == 1.2.2, 2011-11-27
 
 New methods in UnicodeUtils:

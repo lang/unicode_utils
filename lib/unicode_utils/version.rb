@@ -14,4 +14,10 @@ module UnicodeUtils
   # - Pre-release versions append more info after a dash.
   VERSION = "1.3.0-alpha"
 
+  # The version of Unicode implemented by this version of UnicodeUtils.
+  #
+  #   require "unicode_utils/version"
+  #   puts "Unicode #{UnicodeUtils::UNICODE_VERSION}"
+  UNICODE_VERSION = "6.1.0"
+
 end

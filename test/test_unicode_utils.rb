@@ -8,6 +8,10 @@ require "unicode_utils"
 # Fast tests for allmost all UnicodeUtils functions.
 class TestUnicodeUtils < Test::Unit::TestCase
 
+  def test_unicode_version
+    assert_match /\A\d+\.\d+\.\d+\z/, UnicodeUtils::UNICODE_VERSION
+  end
+
   def test_name
     assert_equal "LATIN SMALL LETTER F", UnicodeUtils.char_name("f")
     assert_equal Encoding::US_ASCII, UnicodeUtils.char_name("f").encoding

@@ -12,7 +12,7 @@ module UnicodeUtils
   # - New features or non-bugfix improvals cause a change in MINOR
   # - Bugfixes increase only PATCHLEVEL.
   # - Pre-release versions append more info after a dash.
-  VERSION = "1.3.0-alpha"
+  VERSION = "1.3.0"
 
   # The version of Unicode implemented by this version of UnicodeUtils.
   #

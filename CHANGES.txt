@@ -1,4 +1,4 @@
-== 1.3.0, in progress
+== 1.3.0, 2012-03-07
 
 Updated to Unicode 6.1.0.
 
@@ -6,7 +6,7 @@ New methods in UnicodeUtils:
 
 * code_point_type
 * name_aliases
-* sid
+* sid (string identifier)
 
 New constants in UnicodeUtils:
 

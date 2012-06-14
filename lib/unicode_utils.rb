@@ -41,6 +41,7 @@ require "unicode_utils/debug"
 require "unicode_utils/code_point_type"
 require "unicode_utils/name_aliases"
 require "unicode_utils/sid"
+require "unicode_utils/white_space_q"
 
 # This version of UnicodeUtils implements algorithms as defined by
 # version 6.1.0 of the Unicode standard. Each public method is

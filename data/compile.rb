@@ -675,6 +675,17 @@ module UnicodeUtils
       alias_file.close
     end
 
+    def compile_white_space_set
+      path = File.join(@cdatadir, "white_space_set")
+      File.open(path, "w:US-ASCII") do |output|
+        each_property("PropList.txt") { |prop|
+          if prop.property == "White_Space"
+            output.write(format_code_point(prop.code_point))
+          end
+        }
+      end
+    end
+
     def run
       compile_unicode_data
       compile_special_casing
@@ -690,6 +701,7 @@ module UnicodeUtils
       compile_east_asian_width_property
       compile_property_value_aliases
       compile_name_aliases
+      compile_white_space_set
     end
 
     def format_code_point(cp)

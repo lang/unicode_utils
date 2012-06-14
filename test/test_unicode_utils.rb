@@ -540,4 +540,21 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal nil, UnicodeUtils.sid(UnicodeUtils::Codepoint::RANGE.end + 1)
   end
 
+  def test_white_space?
+    assert_equal true, UnicodeUtils.white_space?(" ")
+    assert_equal true, UnicodeUtils.white_space?("\n")
+    assert_equal true, UnicodeUtils.white_space?("\r")
+    assert_equal true, UnicodeUtils.white_space?("\t")
+    assert_equal true, UnicodeUtils.white_space?(0xa0)
+    assert_equal true, UnicodeUtils.white_space?(0x180e)
+    assert_equal true, UnicodeUtils.white_space?(0x2000)
+    assert_equal true, UnicodeUtils.white_space?(0x2009)
+    assert_equal true, UnicodeUtils.white_space?(0x200a)
+    assert_equal true, UnicodeUtils.white_space?(0x2028)
+    assert_equal true, UnicodeUtils.white_space?(0x2029)
+    assert_equal true, UnicodeUtils.white_space?(0x3000)
+    assert_equal false, UnicodeUtils.white_space?("a")
+    assert_equal false, UnicodeUtils.white_space?("_")
+  end
+
 end

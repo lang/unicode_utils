@@ -438,6 +438,13 @@ class TestUnicodeUtils < Test::Unit::TestCase
  N/A  |  100000 | <private-use-100000>       | Private_Use      | F4 80 80 80
  "\n" |       A | LINE FEED                  | Control          | 0A
     EOF
+    io = StringIO.new
+    UnicodeUtils.debug(0xd800, io: io)
+    assert_equal <<-'EOF', io.string
+ Char | Ordinal | Sid              | General Category | UTF-8
+------+---------+------------------+------------------+-------
+ N/A  |    D800 | <surrogate-D800> | Surrogate        | N/A
+    EOF
   end
 
   def test_code_point_type

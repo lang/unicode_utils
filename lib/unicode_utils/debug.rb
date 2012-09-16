@@ -13,8 +13,11 @@ module UnicodeUtils
   #
   # +:io+:: An IO compatible object. Receives the output.
   #         Defaults to <tt>$stdout</tt>.
+  #
+  # +str+ may also be an Integer, in which case it is interpreted as a
+  # single code point that must be in UnicodeUtils::Codepoint::RANGE.
   # 
-  # Example:
+  # Examples:
   #
   #   $ ruby -r unicode_utils/u -e 'U.debug "良い一日"'
   #    Char | Ordinal | Sid                        | General Category | UTF-8
@@ -24,14 +27,23 @@ module UnicodeUtils
   #    "一" |    4E00 | CJK UNIFIED IDEOGRAPH-4E00 | Other_Letter     | E4 B8 80
   #    "日" |    65E5 | CJK UNIFIED IDEOGRAPH-65E5 | Other_Letter     | E6 97 A5
   #
+  #   $ ruby -r unicode_utils/u -e 'U.debug 0xd800'
+  #    Char | Ordinal | Sid              | General Category | UTF-8
+  #   ------+---------+------------------+------------------+-------
+  #    N/A  |    D800 | <surrogate-D800> | Surrogate        | N/A
+  #
   # The output is purely informal and may change even in minor
   # releases.
   def debug(str, opts = {})
     io = opts[:io] || $stdout
     table = [Impl::DEBUG_COLUMNS.keys]
-    str.each_codepoint { |cp|
-      table << Impl::DEBUG_COLUMNS.values.map { |f| f.call(cp) }
-    }
+    if str.kind_of?(Integer)
+      table << Impl::DEBUG_COLUMNS.values.map { |f| f.call(str) }
+    else
+      str.each_codepoint { |cp|
+        table << Impl::DEBUG_COLUMNS.values.map { |f| f.call(cp) }
+      }
+    end
     Impl.print_table(table, io)
     nil
   end
@@ -66,7 +78,11 @@ module UnicodeUtils
         UnicodeUtils.general_category(cp).to_s
       },
       "UTF-8" => -> cp {
-        cp.chr(Encoding::UTF_8).bytes.map { |b| sprintf("%02X", b) }.join(" ")
+        begin
+          cp.chr(Encoding::UTF_8).bytes.map { |b| sprintf("%02X", b) }.join(" ")
+        rescue RangeError # surrogate code points are not valid in utf-8
+          "N/A"
+        end
       }
     }
 

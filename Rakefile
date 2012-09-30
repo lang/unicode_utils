@@ -32,7 +32,7 @@ end
 
 desc "Run rdoc to generate html documentation."
 task "doc" do
-  sh "rdoc#{suffix} -o doc --charset=UTF-8 --title=UnicodeUtils --main=README.rdoc lib README.txt INSTALL.txt CHANGES.txt LICENSE.txt"
+  sh "rdoc#{suffix} -o doc --charset=UTF-8 --title=UnicodeUtils --main=README.rdoc lib README.rdoc INSTALL.txt CHANGES.txt LICENSE.txt"
 end
 
 desc "Publish doc/ on unicode-utils.rubyfore.org. " +

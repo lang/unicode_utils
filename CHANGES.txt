@@ -6,7 +6,7 @@ Updated to Unicode 6.2.0.
 
 New methods in UnicodeUtils:
 
-* white_space?
+* white_space_char?
 
 All tests pass with jruby-1.7.0.RC1. Not all tests pass with
 MRI 1.9.3p194 due to unexptected behaviour of String#<< with

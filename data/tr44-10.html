@@ -1,19 +1,14 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-
-       "http://www.w3.org/TR/html4/loose.dtd"> 
-
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta http-equiv="Content-Language" content="en-us">
 <title>UAX #44: Unicode Character Database</title>
 
 <!-- WEB ONLY -->
-<link rel="stylesheet" type="text/css" href="../reports-web.css">
+<link rel="stylesheet" type="text/css" href="tr44-10_files/reports-web.css">
 <style type="text/css">
-<!--
-th           { background-color: #CCFFCC }
--->
+th                     { background-color: #CCFFCC }
+td.lightgray           { background-color: #E4E4E4 }
 </style>
 <!-- BOOK ONLY 
 <link rel="stylesheet" type="text/css" href="../reports-book.css"> -->
@@ -21,16 +16,16 @@ th           { background-color: #CCFFCC }
 
 </head>
 <body><div class="book"><!-- WEB ONLY--><div class="web-only">
-<table class="header" cellspacing="0" cellpadding="0" width="100%">
-  <tr>
-    <td class="icon"><a href="http://www.unicode.org">
-    <img align="middle" alt="[Unicode]" border="0" src="../logo60s2.gif" width="34" height="33"></a>&nbsp;&nbsp;
+<table class="header" cellpadding="0" cellspacing="0" width="100%">
+  <tbody><tr>
+    <td class="icon"><a href="http://www.unicode.org/">
+    <img alt="[Unicode]" src="tr44-10_files/logo60s2.gif" height="33" border="0" width="34" align="middle"></a>&nbsp;&nbsp;
     <a class="bar" href="http://www.unicode.org/reports/">Technical Reports</a></td>
   </tr>
   <tr>
     <td class="gray">&nbsp;</td>
   </tr>
-</table>
+</tbody></table>
 </div> 
 <!-- END WEB ONLY -->
 <div class="body">
@@ -42,9 +37,9 @@ th           { background-color: #CCFFCC }
   <!-- START WEB ONLY -->
   <div class="web-only">
   <table border="1" cellpadding="2" width="90%">
-    <tr>
+    <tbody><tr>
       <td valign="top" width="20%">Version</td>
-      <td valign="top">Unicode 6.1.0</td>
+      <td valign="top">Unicode 6.2.0</td>
     </tr>
     <tr>
       <td valign="top">Editors</td>
@@ -53,18 +48,18 @@ th           { background-color: #CCFFCC }
     </tr>
     <tr>
       <td valign="top">Date</td>
-      <td valign="top">2012-01-23</td>
+      <td valign="top">2012-09-11</td>
     </tr>
     <tr>
       <td valign="top">This Version</td>
       <td valign="top">
-      		<a href="http://www.unicode.org/reports/tr44/tr44-8.html">http://www.unicode.org/reports/tr44/tr44-8.html</a>
+      		<a href="http://www.unicode.org/reports/tr44/tr44-10.html">http://www.unicode.org/reports/tr44/tr44-10.html</a>
       </td>
     </tr>
     <tr>
       <td valign="top">Previous Version</td>
       <td valign="top">
-      		<a href="http://www.unicode.org/reports/tr44/tr44-6.html">http://www.unicode.org/reports/tr44/tr44-6.html</a>
+      		<a href="http://www.unicode.org/reports/tr44/tr44-8.html">http://www.unicode.org/reports/tr44/tr44-8.html</a>
       </td>
     </tr>
     <tr>
@@ -77,9 +72,9 @@ th           { background-color: #CCFFCC }
     </tr>
     <tr>
       <td valign="top">Revision</td>
-      <td valign="top"><a href="#Modifications">8</a></td>
+      <td valign="top"><a href="#Modifications">10</a></td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   <!-- END WEB ONLY -->
  <h4 class="summary">Summary</h4>
@@ -104,7 +99,7 @@ th           { background-color: #CCFFCC }
 	parties, and has been approved for publication by the Unicode Consortium. 
 	This is a stable document and may be used as reference material or cited as 
 	a normative reference by other specifications.</i></p>
-        <!-- END APPROVED -->
+          <!-- END APPROVED -->
   <blockquote>
     <p><i><b>A Unicode Standard Annex (UAX)</b> forms an integral part of the 
 	Unicode Standard, but is published online as a separate document. The 
@@ -113,12 +108,12 @@ th           { background-color: #CCFFCC }
 	of the Unicode Standard. The version number of a UAX document corresponds to 
 	the version of the Unicode Standard of which it forms a part.</i></p>
   </blockquote>
-  <p><i>Please submit corrigenda and other comments with the online reporting form [<a href="../tr41/tr41-9.html#Feedback">Feedback</a>]. 
+  <p><i>Please submit corrigenda and other comments with the online reporting form [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Feedback">Feedback</a>]. 
   Related information that is useful in understanding this annex is found in
-  Unicode Standard Annex #41, “<a href="../tr41/tr41-9.html">Common References for Unicode Standard Annexes</a>.” For the latest version of the Unicode Standard, see [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]. 
-  For a list of current Unicode Technical Reports, see [<a href="../tr41/tr41-9.html#Reports">Reports</a>]. For more 
-  information about versions of the Unicode Standard, see [<a href="../tr41/tr41-9.html#Versions">Versions</a>].
-  For any errata which may apply to this annex, see [<a href="../tr41/tr41-9.html#Errata">Errata</a>].</i></p>
+  Unicode Standard Annex #41, “<a href="http://www.unicode.org/reports/tr41/tr41-11.html">Common References for Unicode Standard Annexes</a>.” For the latest version of the Unicode Standard, see [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]. 
+  For a list of current Unicode Technical Reports, see [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Reports">Reports</a>]. For more 
+  information about versions of the Unicode Standard, see [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Versions">Versions</a>].
+  For any errata which may apply to this annex, see [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Errata">Errata</a>].</i></p>
   </div>
   <!-- END WEB ONLY -->
   <h4 class="contents">Contents</h4>
@@ -137,8 +132,9 @@ th           { background-color: #CCFFCC }
 		<li>3.3 <a href="#NamesList">NamesList.html</a></li>
 		<li>3.4 <a href="#StandardizedVariants">StandardizedVariants.html</a></li>
 		<li>3.5 <a href="#Unihan">Unihan and UAX #38</a></li>
-		<li>3.6 <a href="#Data_File_Comments">Data File Comments</a></li>
-		<li>3.7 <a href="#Obsolete">Obsolete Documentation Files</a></li>
+		<li>3.6 <a href="#USource">U-Source Ideographs and UAX #45</a></li>
+		<li>3.7 <a href="#Data_File_Comments">Data File Comments</a></li>
+		<li>3.8 <a href="#Obsolete">Obsolete Documentation Files</a></li>
 	</ul></li>
 	<li>4 <a href="#UCD_Files">UCD Files</a>
 	<ul class="toc">
@@ -183,14 +179,14 @@ th           { background-color: #CCFFCC }
     the data in the other files in the Unicode Character Database, and relies on the notation and 
     definitions supplied in <a href="http://www.unicode.org/standard/standard.html">The Unicode 
     Standard</a>. All chapter references are to Version 
-    6.0.0 of the standard unless otherwise 
+    6.2.0 of the standard unless otherwise 
     indicated.</i></p>
   </blockquote>
   <h2>1 <a name="Introduction">Introduction</a></h2>
   
   <p>The Unicode Standard is far more than a simple encoding of characters.
   The standard also associates a rich set of semantics with each encoded
-  character&#x2014;properties that
+  character—properties that
   are required for interoperability and correct behavior in
   implementations, as well as for Unicode conformance. 
   These semantics are cataloged in the Unicode Character Database (UCD), a collection of data files 
@@ -203,8 +199,8 @@ th           { background-color: #CCFFCC }
   about character properties and their use is contained in the
   Unicode Standard and its annexes. In particular, implementers should familiarize themselves
   with the formal definitions and conformance requirements for properties detailed
-  in <i>Section 3.5, Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]
-  and with the material in <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</p>
+  in <i>Section 3.5, Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]
+  and with the material in <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</p>
   
   <p>The latest version of the UCD is always located on the Unicode 
   Web site at:</p>
@@ -212,9 +208,9 @@ th           { background-color: #CCFFCC }
   <a href="http://www.unicode.org/Public/UNIDATA/">http://www.unicode.org/Public/UNIDATA/</a>
   </blockquote>
   <p>The specific files for the UCD associated with this version of 
-  the Unicode Standard (6.1.0) are located at:</p>
+  the Unicode Standard (6.2.0) are located at:</p>
   <blockquote>
-  <a href="http://www.unicode.org/Public/6.1.0/">http://www.unicode.org/Public/6.1.0/</a>
+  <a href="http://www.unicode.org/Public/6.2.0/">http://www.unicode.org/Public/6.2.0/</a>
   </blockquote>
   <p>Stable, archived versions of the UCD associated with all earlier 
   versions of the Unicode Standard can be accessed from: </p>
@@ -236,13 +232,13 @@ Algorithm, Unicode Normalization, and Unicode Casefolding. The data files also
 contain additional informative and provisional character property information.</p>
 
 <p>Each specification of a Unicode algorithm, whether specified in the text of 
-[<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] or in one of the Unicode 
+[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] or in one of the Unicode 
 Standard Annexes, designates which data file(s) in the UCD are needed to 
 provide normative property information required by that algorithm.</p>
 
 <p>For information on the meaning and application of the terms, 
 <i>normative</i>, <i>informative</i>, and <i>provisional</i>, see <i>Section 3.5, 
-Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</p>
+Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</p>
 
 <p>For information about the applicable terms of use for the
 UCD, see the Unicode <a href="http://www.unicode.org/copyright.html">Terms of Use</a>.</p>
@@ -296,8 +292,7 @@ as set additions and/or subtractions of various other property
 values. For example:</p>
 
 <blockquote>
-<pre>
-# Derived Property: ID_Start
+<pre># Derived Property: ID_Start
 #  Characters that can start an identifier.
 #  Generated from:
 #      Lu + Ll + Lt + Lm + Lo + Nl
@@ -335,7 +330,7 @@ unassigned. For example, the default value of a binary
 Unicode character property is always "N".</p>
 
 <p>For the formal discussion of default values, see D26 in
-<i>Section 3.5, Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+<i>Section 3.5, Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
 For conventions related to default values in various data files
 of the UCD and for documentation regarding the particular default values of
 individual Unicode character properties, see <a href="#Default_Values">Default Values</a>.</p>
@@ -350,14 +345,14 @@ that version. URLs pointing to that version's directory are also
 stable and will be maintained in perpetuity.</p>
 
 <p>Any errors discovered for a released version of the UCD
-are noted in [<a href="../tr41/tr41-9.html#Errata">Errata</a>],
+are noted in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Errata">Errata</a>],
 and if appropriate will be corrected in a <i>subsequent</i>
 version of the UCD.</p>
 
 <p>Stability guarantees constraining how Unicode character
 properties can (or cannot) change between releases of the UCD
 are documented in the Unicode Consortium Stability
-Policies [<a href="../tr41/tr41-9.html#Stability">Stability</a>].</p>
+Policies [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Stability">Stability</a>].</p>
 
 <h4>2.3.1 <a name="Allowed_Changes">Changes to Properties Between Releases</a></h4>
 
@@ -379,6 +374,11 @@ The properties for some of these characters may change as further information be
 available or as implementations turn up problems in the initial property assignments.
 As far as possible, any readjustment of property values based
 on growing implementation experience is made to be compatible with established practice.</p>
+
+<p>All changes to normative or informative property values, to the status
+or type of a property, or to property or property value aliases, must be approved by
+an explicit decision taken by the Unicode Technical Committee. Changes to provisional
+property values are subject to less stringent oversight.</p>
 
 <p>Occasionally, a character property value is changed to prevent incorrect generalizations
 about a character's use based on its nominal property values. For example, U+200B ZERO
@@ -422,7 +422,7 @@ this version of the Unicode Standard.</p>
   <div align="center">
   
   <table>
-   <tr>
+   <tbody><tr>
       <th>Property Name</th>
       <th>Deprecation Version</th>
       <th>Reason</th>
@@ -467,10 +467,10 @@ this version of the Unicode Standard.</p>
       <td>6.0.0</td>
       <td>Supplanted in usage by <a href="#NFKC_Casefold">NFKC_Casefold</a>; otherwise not useful</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
-<h4>2.3.3 <a name="Stabilized_Properties">Stabilized Properties</a></h4>
+<h4>2.3.4 <a name="Stabilized_Properties">Stabilized Properties</a></h4>
 
 <p>Another possibility is that an obsolete property may be
 declared to be <i>stabilized</i>. Such a determination does not indicate that
@@ -488,7 +488,7 @@ this version of the Unicode Standard.</p>
   <div align="center">
   
   <table>
-   <tr>
+   <tbody><tr>
       <th>Property Name</th>
       <th>Stabilization Version</th>
     </tr>
@@ -500,7 +500,7 @@ this version of the Unicode Standard.</p>
       <td><a href="#ISO_Comment">ISO_Comment</a></td>
       <td>6.0.0</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
 <h2>3 <a name="Documentation_Files">Documentation</a></h2>
@@ -514,12 +514,12 @@ contained within the UCD.</p>
 
   <p>The formal definitions related to character properties used
   by the Unicode Standard are documented in 
-  <i>Section 3.5, Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+  <i>Section 3.5, Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
   Understanding those definitions and related terminology is
   essential to the appropriate use of Unicode character properties.</p>
 
   <p>See <i>Section 4.1, Unicode Character Database</i>, in 
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] for a general 
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] for a general 
   discussion of the UCD and its use in defining properties. The
   rest of Chapter 4 provides important explanations regarding
   the meaning and use of various normative character properties.</p>
@@ -528,7 +528,7 @@ contained within the UCD.</p>
 
   <p>For a general discussion of the property model which underlies
   the definitions associated with the UCD, see 
-  Unicode Technical Report #23, "The Unicode Character Property Model" [<a href="../tr41/tr41-9.html#UTR23">UTR23</a>].
+  Unicode Technical Report #23, "The Unicode Character Property Model" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UTR23">UTR23</a>].
   That technical report is informative, but over the years various
   content from it has been incorporated into normative portions
   of the Unicode Standard, particularly for the definitions in
@@ -542,7 +542,7 @@ contained within the UCD.</p>
 <p>NamesList.html formally describes the format of the NamesList.txt data file in BNF.
 That data file is used to drive the printing 
 of the Unicode code charts and names list. See also <i>Section 17.1, 
-Character Names List</i>, in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] 
+Character Names List</i>, in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] 
 for a detailed discussion of the conventions used in the Unicode names list as
 formatted for printing.</p>
 
@@ -555,7 +555,7 @@ StandardizedVariants.txt, which defines those sequences normatively.</p>
 <h3>3.5 <a name="Unihan">Unihan and UAX #38</a></h3>
 
 <p>Unicode Standard Annex #38, "Unicode Han Database (Unihan)" 
-[<a href="../tr41/tr41-9.html#UAX38">UAX38</a>] describes 
+[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>] describes 
 the format and content of the Unihan Database, which collects together all property information 
 for CJK Unified Ideographs. That annex also specifies in detail
 which of the Unihan character properties are normative,
@@ -574,11 +574,17 @@ other sources to establish mapping tables for those character sets.</p>
 released for each version of the Unicode Standard as a collection of Unihan data
 files in the UCD. Because of their large size, these data files are released only as
 a zipped file, Unihan.zip. The details of the particular data files in Unihan.zip
-and the CJK properties each one contains are provided in [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>].
+and the CJK properties each one contains are provided in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>].
 For versions of the UCD prior to Version 5.2.0, all of the CJK properties were
 listed together in a very large, single file, Unihan.txt.</p>
 
-<h3>3.6 <a name="Data_File_Comments">Data File Comments</a></h3>
+<h3>3.6 <a name="USource">U-Source Ideographs and UAX #45</a></h3>
+
+<p>Unicode Standard Annex #45, "Unicode Han Database (Unihan)" 
+[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX45">UAX45</a>] describes the format of USourceData.txt,
+which lists all of the information for U-Source ideographs.</p>
+
+<h3>3.7 <a name="Data_File_Comments">Data File Comments</a></h3>
 
 <p>In addition to the specific documentation files for the UCD, individual data 
 files often contain extensive header comments describing their content and any 
@@ -592,14 +598,14 @@ a statement of a derivation in a comment field and the actual
 listing of the derived property, the list is considered to be definitive.
 See <a href="#Simple_Derived">Simple and Derived Properties</a>.</p>
 
-<h3>3.7 <a name="Obsolete">Obsolete Documentation Files</a></h3>
+<h3>3.8 <a name="Obsolete">Obsolete Documentation Files</a></h3>
 
 <p>UCD.html was formerly the primary documentation file for the UCD. As of Version 5.2.0, its
 content has been wholly incorporated into this document.</p>
 
 <p>Unihan.html was formerly the primary documentation file for 
 the Unihan Database. As of Version 5.1.0, its
-content has been wholly incorporated into [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>].</p>
+content has been wholly incorporated into [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>].</p>
 
 <p>Versions of the Unicode Standard 
 prior to Version 4.0.0 contained small, focused
@@ -617,13 +623,13 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
 
   <p>Each version of the UCD is released in a separate, numbered directory
   under the <i>Public</i> directory on the Unicode Web site. The content of that
-  directory is complete for that release. It is also stable&#x2014;once released,
+  directory is complete for that release. It is also stable—once released,
   it will be archived permanently in that directory, unchanged, at a stable URL.</p>
   
   <p>The specific files for the UCD associated with this version of 
-  the Unicode Standard (6.1.0) are located at:</p>
+  the Unicode Standard (6.2.0) are located at:</p>
   <blockquote>
-  <a href="http://www.unicode.org/Public/6.1.0/">http://www.unicode.org/Public/6.1.0/</a>
+  <a href="http://www.unicode.org/Public/6.2.0/">http://www.unicode.org/Public/6.2.0/</a>
   </blockquote>
 
 <h4>4.1.1 <a name="UCD_Proper">UCD Files Proper</a></h4>
@@ -643,11 +649,11 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
 	documentation regarding those data files and their content.</p> 
 
    <p>A number of auxiliary properties are specified in files in the <i>auxiliary</i>
-	 subdirectory of the <i>ucd</i> subdirectory. In Version 6.1.0 it contains 
+	 subdirectory of the <i>ucd</i> subdirectory. In Version 6.2.0 it contains 
     data files specifying properties associated with 
-    Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="../tr41/tr41-9.html#UAX29">UAX29</a>]
+    Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>]
     and with
-    Unicode Standard Annex #14, "Unicode Line Breaking Algorithm" [<a href="../tr41/tr41-9.html#UAX14">UAX14</a>],
+    Unicode Standard Annex #14, "Unicode Line Breaking Algorithm" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX14">UAX14</a>],
     as well as test data for those algorithms.
     See <a href="#Segmentation_Test_Files">Segmentation Test Files and Documentation</a>
     for more information about the test data.</p>
@@ -729,7 +735,7 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
     However, no leading or trailing spaces
     are allowed in any field of UnicodeData.txt.</li>
     <li>The Unihan data files in the UCD have a separate format, using tab characters
-    instead of semicolons to separate fields. See [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>]
+    instead of semicolons to separate fields. See [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>]
     for the detailed specification of the format of the Unihan data files.</li>
   </ul>
 
@@ -737,8 +743,8 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
 
   <ul>
     <li>Code points are expressed as hexadecimal numbers with four to six digits. 
-    They are written without the &quot;U+&quot; prefix in
-    all data files except the Unihan data files. The Unihan data files use the &quot;U+&quot; prefix for
+    They are written without the "U+" prefix in
+    all data files except the Unihan data files. The Unihan data files use the "U+" prefix for
     all Unicode code points, to distinguish them from other decimal and hexadecimal
     numerical references occurring in their data fields.</li>
     <li>When a data field contains a sequence of code points, spaces separate
@@ -749,12 +755,11 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
 <h4>4.2.3 <a name="Code_Point_Ranges">Code Point Ranges</a></h4>
 
   <ul>
-    <li>A range of code points is specified by the form &quot;X..Y&quot;.</li> 
+    <li>A range of code points is specified by the form "X..Y".</li> 
     <li>Each code point in a range has the 
     associated property value specified on a data file. For example (from Blocks.txt):
     <blockquote>
-      <pre>
-0000..007F; Basic Latin
+      <pre>0000..007F; Basic Latin
 0080..00FF; Latin-1 Supplement
       </pre>
     </blockquote>
@@ -762,30 +767,29 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
 
     <li>For backward compatibility, ranges in the file UnicodeData.txt 
     are specified by entries for the 
-    start and end characters of the range, rather than by the form &quot;X..Y&quot;. 
+    start and end characters of the range, rather than by the form "X..Y". 
     The start character is indicated by a range identifier, followed by a comma
-    and the string &quot;First&quot;, in angle brackets. This entry takes the
+    and the string "First", in angle brackets. This entry takes the
     place of a regular character name in field 1 for that line.
     The end character is indicated on the next line with the same range identifier,
-    followed by a comma and the string &quot;Last&quot;, in angle brackets:
+    followed by a comma and the string "Last", in angle brackets:
  
     <blockquote>
-      <pre>
-4E00;&lt;CJK Ideograph, First&gt;;Lo;0;L;;;;;N;;;;;
+      <pre>4E00;&lt;CJK Ideograph, First&gt;;Lo;0;L;;;;;N;;;;;
 9FC3;&lt;CJK Ideograph, Last&gt;;Lo;0;L;;;;;N;;;;;
       </pre>
     </blockquote>
     For character ranges using this convention, the names of all characters in the range 
     are algorithmically derivable.  
-    See <i>Section 4.8, Name&mdash;Normative</i> 
-    in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] for more information on 
+    See <i>Section 4.8, Name—Normative</i> 
+    in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] for more information on 
     derivation of character names for such ranges.</li>
   </ul>
 
 <h4>4.2.4 <a name="Comments">Comments</a></h4>
 
   <ul>
-    <li>U+0023 NUMBER SIGN (&quot;#&quot;) is used to indicate comments: all 
+    <li>U+0023 NUMBER SIGN ("#") is used to indicate comments: all 
     characters from the number sign to the end 
     of the line are considered part of the comment, and are disregarded when parsing data.</li>
     <li>In many files, the comments on data 
@@ -800,7 +804,7 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
     <li>The printing of the General_Category value is suppressed in instances where
     it would be redundant, as for DerivedGeneralCategory.txt, in which the value
     of the property value in the data field is already the General_Category value.</li>
-    <li>The symbol &quot;L&amp;&quot; 
+    <li>The symbol "L&amp;" 
     indicates characters of General_Category Lu, Ll, or Lt (uppercase, lowercase,
     or titlecase letter). For example:
     <blockquote>
@@ -810,7 +814,7 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
     the derived LC value for the General_Category property, as documented in 
     PropertyValueAliases.txt.</li>
     <li>When the data line contains a range of code points, this common format
-    for a comment also indicates a range of character names, separated by &quot;..&quot;, as
+    for a comment also indicates a range of character names, separated by "..", as
     illustrated here:
     <blockquote>
       <pre>00BC..00BE ; numeric # No [3] VULGAR FRACTION ONE QUARTER..VULGAR FRACTION THREE QUARTERS</pre>
@@ -842,9 +846,9 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
     </blockquote>
     </li>
     <li>Code point labels use one of the tags as documented in
-    <i>Section 4.8, Name&mdash;Normative</i> 
-    in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] and as shown in <i>Table 3</i>, 
-    followed by &quot;-&quot; and the code point expressed in hexadecimal. The
+    <i>Section 4.8, Name—Normative</i> 
+    in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] and as shown in <i>Table 3</i>, 
+    followed by "-" and the code point expressed in hexadecimal. The
     entire label is then enclosed in angle brackets.</li>
   </ul>
   
@@ -852,7 +856,7 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
   <div align="center">
   
   <table>
-   <tr>
+   <tbody><tr>
       <th>Tag</th>
       <th>General_Category</th>
       <th>Note</th>
@@ -882,7 +886,7 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
       <td>Cs</td>
       <td>&nbsp;</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
 <p>&nbsp;</p>
@@ -894,8 +898,7 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
     of the property and the third field specifies the property value. For example (from
     DerivedNormalizationProps.txt):
     <blockquote>
-      <pre>
-03D2  ; FC_NFKC; 03C5           # L&amp;  GREEK UPSILON WITH HOOK SYMBOL
+      <pre>03D2  ; FC_NFKC; 03C5           # L&amp;  GREEK UPSILON WITH HOOK SYMBOL
 03D3  ; FC_NFKC; 03CD           # L&amp;  GREEK UPSILON WITH ACUTE AND HOOK SYMBOL
       </pre>
     </blockquote>
@@ -906,11 +909,10 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
 
   <ul>
     <li>For binary properties, the second field specifies the name of the applicable property, with 
-    the implied value of the property being &quot;True&quot;. Only the ranges of characters with the binary 
-    property value of &quot;Y&quot; (= True) are listed. For example (from PropList.txt):
+    the implied value of the property being "True". Only the ranges of characters with the binary 
+    property value of "Y" (= True) are listed. For example (from PropList.txt):
     <blockquote>
-      <pre>
-1680       ; White_Space # Zs      OGHAM SPACE MARK
+      <pre>1680       ; White_Space # Zs      OGHAM SPACE MARK
 180E       ; White_Space # Zs      MONGOLIAN VOWEL SEPARATOR
 2000..200A ; White_Space # Zs [11] EN QUAD..HAIR SPACE
       </pre>
@@ -922,14 +924,13 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
 
   <ul>
     <li>When a data file defines a property which may take multiple values for a single code
-    point, the multiple values are expressed in a space-delimited list. For example (from Script_Extensions.txt):
+    point, the multiple values are expressed in a space-delimited list. For example (from ScriptExtensions.txt):
     <blockquote>
-      <pre>
-0640          ; Arab Mand Syrc # Lm       ARABIC TATWEEL
+      <pre>0640          ; Arab Mand Syrc # Lm       ARABIC TATWEEL
       </pre>
     </blockquote>
     </li>
-    <li>In some cases&#x2014;but not all&#x2014;the order of multiple elements in a space-delimited
+    <li>In some cases—but not all—the order of multiple elements in a space-delimited
     list may be significant. When the order of multiple elements is significant, it is documented
     along with the property itself. For example (from Unihan_Readings.txt), for the tag kMandarin,
     when there are two values for a code point, the first value is used to
@@ -953,14 +954,13 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
     such as the Unicode Name property, the default value is a null
     string.</li>
     
-    <li>For binary properties, the default value is always &quot;N&quot; (= False)
+    <li>For binary properties, the default value is always "N" (= False)
     and is always omitted.</li>
     
     <li>For enumerated and catalog properties, the default value is listed in a comment. For 
     example (from Scripts.txt):
     <blockquote>
-      <pre>
-#  All code points not explicitly listed for Script
+      <pre>#  All code points not explicitly listed for Script
 #  have the value Unknown (Zzzz).
       </pre>
     </blockquote>
@@ -971,10 +971,9 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
     See <i>Table 4</i>.</li>
     
     <li>Default values may also be listed in specially formatted comment lines,
-    using the keyword &quot;@missing&quot;. For example:
+    using the keyword "@missing". For example:
     <blockquote>
-      <pre>
-# @missing: 0000..10FFFF; Unknown
+      <pre># @missing: 0000..10FFFF; Unknown
       </pre>
     </blockquote>
     </li>
@@ -994,7 +993,7 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>Property Name</th>
       <th>Default Value</th>
     </tr>
@@ -1038,18 +1037,18 @@ DerivedProperties.html, which were later consolidated into UCD.html.</p>
       <td>Script</td>
       <td>Unknown (= Zzzz)</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
   <p>Default values for the Unicode character property
   <a href="#Bidi_Class">Bidi_Class</a> are complex. See  
-  Unicode Standard Annex #9, "The Unicode Bidirectional Algorithm" [<a href="../tr41/tr41-9.html#UAX9">UAX9</a>]
+  Unicode Standard Annex #9, "The Unicode Bidirectional Algorithm" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX9">UAX9</a>]
   and DerivedBidiClass.txt for more details.</p>
 
   <p>Default values for the <a href="#East_Asian_Width">East_Asian_Width</a>
   property are also complex. This property defaults to Neutral for most code points, but defaults to Wide
   for unassigned code points in blocks associated with CJK ideographs. See Unicode Standard Annex #11, "East Asian Width"
-  [<a href="../tr41/tr41-9.html#UAX11">UAX11</a>] and DerivedEastAsianWidth.txt for more details.</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX11">UAX11</a>] and DerivedEastAsianWidth.txt for more details.</p>
     
 <h4>4.2.10 <a name="Empty_Fields">Empty Fields</a></h4>
 
@@ -1058,8 +1057,7 @@ field in a data line for a code point is empty, that indicates that the property
 the default value for that code point. For example:</p>
 
     <blockquote>
-      <pre>
-0022;QUOTATION MARK;Po;0;ON;;;;;N;;;;;
+      <pre>0022;QUOTATION MARK;Po;0;ON;;;;;N;;;;;
       </pre>
     </blockquote>
     
@@ -1078,8 +1076,7 @@ point, to the same single code point, or to no code point at all (an empty strin
 the data file DerivedNormalizationProps.txt:</p>
 
     <blockquote>
-      <pre>
-00AA          ; NFKC_CF; 0061           # Lo       FEMININE ORDINAL INDICATOR
+      <pre>00AA          ; NFKC_CF; 0061           # Lo       FEMININE ORDINAL INDICATOR
 00AD          ; NFKC_CF;                # Cf       SOFT HYPHEN
 00AF          ; NFKC_CF; 0020 0304      # Sk       MACRON
       </pre>
@@ -1087,7 +1084,7 @@ the data file DerivedNormalizationProps.txt:</p>
     
 <p>The empty field for U+00AD indicates that the property NFKC_Casefold maps SOFT HYPHEN
 to an empty string. By contrast, the absence of the entry for U+00AE in the data file indicates
-that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the default value.</p>
+that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself—the default value.</p>
 
     
 <h4>4.2.11 <a name="Text_Encoding">Text Encoding</a></h4>
@@ -1096,9 +1093,10 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
     <li>The data files use UTF-8. Unless otherwise noted, non-ASCII characters only 
     appear in comments.</li>
     <li>The Unihan data files in the UCD make extensive use of UTF-8 in data fields.
-    (See [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>] for details.)</li>
-    <li>For legacy reasons, NamesList.txt is exceptional; it
-    is encoded in Latin-1. See <a href="#NamesList">NamesList.html</a></li>
+    (See [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>] for details.)</li>
+    <li>For legacy reasons, NamesList.txt was exceptional; it was encoded 
+    in Latin-1 prior to Unicode 6.2. For
+    Unicode 6.2 and later, the encoding is UTF-8. See <a href="#NamesList">NamesList.html</a></li>
     <li>Segmentation test data files, such as WordBreakTest.txt, make
     use of non-ASCII (UTF-8) characters as delimiters for data fields.</li>
   </ul>
@@ -1117,10 +1115,9 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
 
   <ul>
     <li>In some test data files, segments of the test data are distinguished by a line 
-    starting with an &quot;@&quot; sign. For example (from NormalizationTest.txt):
+    starting with an "@" sign. For example (from NormalizationTest.txt):
     <blockquote>
-      <pre>
-@Part1 # Character by character test
+      <pre>@Part1 # Character by character test
       </pre>
     </blockquote>
     </li>
@@ -1141,7 +1138,7 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
     consisting of an index entry string, and field 1 a code point. Index.txt is used to
     maintain the <a href="http://www.unicode.org/charts/charindex.html">
     Unicode Character Name Index</a>.</li>
-    <li>The various segmentation test data files make use of &quot;#&quot; to delimit comments,
+    <li>The various segmentation test data files make use of "#" to delimit comments,
     but have distinct conventions for their data fields. See the documentation
     in their header sections for details of the data field formats for
     those files.</li>
@@ -1150,7 +1147,7 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
     algorithmically derivable character names such as CJK UNIFIED IDEOGRAPH-4E00,
     so as to allow for name sharing in more compact representations of the data.
     See Unicode Standard Annex #42, "Unicode Character Database in XML" 
-    [<a href="../tr41/tr41-9.html#UAX42">UAX42</a>] for details.</li>  
+    [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX42">UAX42</a>] for details.</li>  
   </ul>
 
 <h3>4.3 <a name="File_List">File List</a></h3>
@@ -1184,7 +1181,7 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
   
   <p class="caption"><a name="UCD_Files_Table"></a>Table 5. Files in the UCD</p>
   <table>
-    <tr>
+    <tbody><tr>
       <th>File Name</th>
       <th>Reference</th>
       <th align="center">Status</th>
@@ -1192,10 +1189,23 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
     </tr>
     <tr>
       <td>CJKRadicals.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX38">UAX38</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>]</td>
       <td align="center">I</td>
       <td>List of Unified CJK Ideographs and CJK Radicals that correspond to
           specific radical numbers used in the CJK radical stroke counts.</td>
+    </tr>
+    <tr>
+      <td>USourceData.txt</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX45">UAX45</a>]</td>
+      <td align="center">N</td>
+      <td>The list of formal references for U-Source ideographs, together with data regarding
+          their status and sources.</td>
+    </tr>
+    <tr>
+      <td>USourceGlyphs.pdf</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX45">UAX45</a>]</td>
+      <td align="center">I</td>
+      <td>A table containing a representative glyph for each U-Source ideograph.</td>
     </tr>
     <tr>
       <td>EmojiSources.txt</td>
@@ -1224,12 +1234,6 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
       <td>Documents the format of NamesList.txt. </td>
     </tr>
     <tr>
-      <td>ScriptExtensions.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX24">UAX24</a>]</td>
-      <td align="center">P</td>
-      <td>Contains data about characters that are used in multiple scripts.</td>
-    </tr>
-    <tr>
       <td>StandardizedVariants.txt</td>
       <td>Chapter&nbsp;16</td>
       <td align="center">N</td>
@@ -1246,17 +1250,17 @@ that the property NFKC_Casefold maps U+00AE REGISTERED SIGN to itself&#x2014;the
     </tr>
     <tr>
       <td>NamedSequences.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX34">UAX34</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX34">UAX34</a>]</td>
       <td align="center">N</td>
       <td>Lists the names for all approved named sequences.</td>
     </tr>
     <tr>
       <td>NamedSequencesProv.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX34">UAX34</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX34">UAX34</a>]</td>
       <td align="center">P</td>
       <td>Lists the names for all provisional named sequences.</td>
     </tr>
-    </table>
+    </tbody></table>
     
 <p>For more information about these files and their use, see the referenced annexes or 
 chapters of Unicode Standard.</p>
@@ -1298,7 +1302,7 @@ various individual data files of the UCD.</p>
 
 <h4>4.5.1 <a name="UAX42_doc">UAX #42</a></h4>
 
-<p>Unicode Standard Annex #42, "Unicode Character Database in XML" [<a href="../tr41/tr41-9.html#UAX42">UAX42</a>] 
+<p>Unicode Standard Annex #42, "Unicode Character Database in XML" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX42">UAX42</a>] 
 defines an XML schema 
 which is used to incorporate all of the Unicode character property information 
 into the XML version of the UCD. See that annex for details of the
@@ -1315,7 +1319,7 @@ more compact representations.</p>
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>File Name</th>
       <th>CJK</th>
       <th>non-CJK</th>
@@ -1350,12 +1354,12 @@ more compact representations.</p>
       <td>x</td>
       <td>&nbsp;</td>
     </tr>
-    </table>
+    </tbody></table>
     </div>
     
     <p>The "flat" file versions simply list all attributes with no
     particular compression. The "grouped" file versions apply the
-    grouping mechanism described in [<a href="../tr41/tr41-9.html#UAX42">UAX42</a>]
+    grouping mechanism described in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX42">UAX42</a>]
     to cut down on the size of the data files.</p>
 
 <h2>5 <a name="Properties">Properties</a></h2>
@@ -1371,7 +1375,7 @@ more compact representations.</p>
   excluding most of those specific to the Unihan
   data files. For a comparable
   index of CJK character properties, see Unicode Standard Annex #38, "Unicode Han Database (Unihan)" 
-  [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>].</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>].</p>
   
   <p>The properties are roughly organized into groups 
   based on their usage. This grouping is primarily for documentation convenience and 
@@ -1385,7 +1389,7 @@ more compact representations.</p>
   <p class="caption"><a name="Property_Index_Table"></a>Table 7. Property Index by Scope of Use</p>
   <div align="center">
   <table>
-    <tr>
+    <tbody><tr>
       <th width="33%">General</th>
       <th width="33%">Normalization</th>
       <th width="33%">CJK</th>
@@ -1513,47 +1517,47 @@ more compact representations.</p>
     <tr>
       <td><a href="#Simple_Uppercase_Mapping">Simple_Uppercase_Mapping</a></td>
       <td><a href="#Word_Break">Word_Break</a></td>
-      <td class="medgray"><a href="#Other_Alphabetic">Other_Alphabetic</a></td>
+      <td class="lightgray"><a href="#Other_Alphabetic">Other_Alphabetic</a></td>
     </tr>
     <tr>
       <td><a href="#Simple_Case_Folding">Simple_Case_Folding</a></td>
       <td><a href="#East_Asian_Width">East_Asian_Width</a></td>
-      <td class="medgray"><a href="#Other_Default_Ignorable_Code_Point">Other_Default_Ignorable_Code_Point</a></td>
+      <td class="lightgray"><a href="#Other_Default_Ignorable_Code_Point">Other_Default_Ignorable_Code_Point</a></td>
     </tr>
     <tr>
       <td><a href="#Soft_Dotted">Soft_Dotted</a></td>
       <th>Bidirectional</th>
-      <td class="medgray"><a href="#Other_Grapheme_Extend">Other_Grapheme_Extend</a></td>
+      <td class="lightgray"><a href="#Other_Grapheme_Extend">Other_Grapheme_Extend</a></td>
     </tr>
     <tr>
       <td><a href="#Cased">Cased</a></td>
       <td><a href="#Bidi_Class">Bidi_Class</a></td>
-      <td class="medgray"><a href="#Other_ID_Start">Other_ID_Start</a></td>
+      <td class="lightgray"><a href="#Other_ID_Start">Other_ID_Start</a></td>
     </tr>
     <tr>
       <td><a href="#Case_Ignorable">Case_Ignorable</a></td>
       <td><a href="#Bidi_Control">Bidi_Control</a></td>
-      <td class="medgray"><a href="#Other_ID_Continue">Other_ID_Continue</a></td>
+      <td class="lightgray"><a href="#Other_ID_Continue">Other_ID_Continue</a></td>
     </tr>
     <tr>
       <td><a href="#CWL">Changes_When_Lowercased</a></td>
       <td><a href="#Bidi_Mirrored">Bidi_Mirrored</a></td>
-      <td class="medgray"><a href="#Other_Lowercase">Other_Lowercase</a></td>
+      <td class="lightgray"><a href="#Other_Lowercase">Other_Lowercase</a></td>
     </tr>
     <tr>
       <td><a href="#CWU">Changes_When_Uppercased</a></td>
       <td><a href="#Bidi_Mirroring_Glyph">Bidi_Mirroring_Glyph</a></td>
-      <td class="medgray"><a href="#Other_Math">Other_Math</a></td>
+      <td class="lightgray"><a href="#Other_Math">Other_Math</a></td>
     </tr>
     <tr>
       <td><a href="#CWT">Changes_When_Titlecased</a></td>
       <th>Identifiers</th>
-      <td class="medgray"><a href="#Other_Uppercase">Other_Uppercase</a></td>
+      <td class="lightgray"><a href="#Other_Uppercase">Other_Uppercase</a></td>
     </tr>
     <tr>
       <td><a href="#CWCF">Changes_When_Casefolded</a></td>
       <td><a href="#ID_Continue">ID_Continue</a></td>
-      <td class="medgray"><a href="#Jamo_Short_Name">Jamo_Short_Name</a></td>
+      <td class="lightgray"><a href="#Jamo_Short_Name">Jamo_Short_Name</a></td>
     </tr>
     <tr>
       <td><a href="#CWCM">Changes_When_Casemapped</a></td>
@@ -1585,7 +1589,7 @@ more compact representations.</p>
       <td>&nbsp;</td>
       <td>&nbsp;</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   <p>&nbsp;</p>
 
@@ -1623,7 +1627,7 @@ more compact representations.</p>
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>Property Type</th>
       <th>Symbol</th>
       <th>Examples</th>
@@ -1658,7 +1662,7 @@ more compact representations.</p>
       <td>M</td>
       <td>Name, Jamo_Short_Name</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
 
   <ul>  
@@ -1681,7 +1685,7 @@ more compact representations.</p>
   the <a href="#Script_Extensions">Script_Extensions</a> property, 
   and the Unicode_Radical_Stroke property (a combination of numeric values)
   documented in Unicode Standard Annex #38, "Unicode Han Database (Unihan)" 
-  [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>].</li>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>].</li>
   </ul>
   
   <p><b>Third Column.</b> This column indicates the 
@@ -1719,8 +1723,8 @@ more compact representations.</p>
 
   <p class="caption"><a name="Property_List_Table"></a>Table 9. Property Table</p>
   <table>
-    <tr>
-      <th valign="top" align="LEFT" colspan="4">
+    <tbody><tr>
+      <th colspan="4" valign="top" align="LEFT">
       <a name="ArabicShaping.txt">ArabicShaping.txt</a></th>
     </tr>
     <tr>
@@ -1729,17 +1733,17 @@ more compact representations.</p>
       <td>E</td>
       <td align="center">N</td>
       <td>Basic Arabic and Syriac character shaping properties, such as initial, medial and final 
-      shapes. See <i>Section 8.2, Arabic</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+      shapes. See <i>Section 8.2, Arabic</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
       </td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="BidiMirroring.txt">BidiMirroring.txt</a></th>
     </tr>
     <tr>
       <td><a name="Bidi_Mirroring_Glyph">Bidi_Mirroring_Glyph</a></td>
-      <td>S</td>
+      <td>M</td>
       <td align="center">I</td>
       <td>Informative mapping for substituting characters in an implementation of bidirectional mirroring.
       This maps a subset of characters with the Bidi_Mirrored property to other
@@ -1749,12 +1753,12 @@ more compact representations.</p>
       exists whose glyph is appropriate for character-based glyph mirroring.
       Implementations must then use other mechanisms to implement mirroring of those
       characters for the Unicode Bidirectional Algorithm. 
-      See Unicode Standard Annex #9:" The Unicode Bidirectional Algorithm" [<a href="../tr41/tr41-9.html#UAX9">UAX9</a>]. Do not 
+      See Unicode Standard Annex #9:" The Unicode Bidirectional Algorithm" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX9">UAX9</a>]. Do not 
       confuse this property with the <a href="#Bidi_Mirrored">Bidi_Mirrored</a> property itself.</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="Blocks.txt">Blocks.txt</a></th>
     </tr>
     <tr>
@@ -1763,11 +1767,11 @@ more compact representations.</p>
       <td align="center">N</td>
       <td>List of block names, which are arbitrary names for ranges of code 
 		points. See
-		the code charts in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</td>
+		the code charts in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="CompositionExclusions.txt">CompositionExclusions.txt</a></th>
     </tr>
     <tr>
@@ -1775,12 +1779,12 @@ more compact representations.</p>
       <td>B</td>
       <td align="center">N</td>
       <td>
-      A property used in normalization. See Unicode Standard Annex #15: "Unicode Normalization Forms" [<a href="../tr41/tr41-9.html#UAX15">UAX15</a>]. 
+      A property used in normalization. See Unicode Standard Annex #15: "Unicode Normalization Forms" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX15">UAX15</a>]. 
       Unlike other files, CompositionExclusions.txt simply lists the relevant code points.</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="CaseFolding.txt">CaseFolding.txt</a></th>
     </tr>
     <tr>
@@ -1791,12 +1795,12 @@ more compact representations.</p>
       <td>Mapping from characters to their case-folded forms. This is an informative file containing 
       normative derived properties.
       <p><i>Derived from UnicodeData and SpecialCasing.</i>
-      <p><b>Note: </b>The case foldings are omitted in the data file if they are 
-      the same as the code point itself.</td>
+      </p><p><b>Note: </b>The case foldings are omitted in the data file if they are 
+      the same as the code point itself.</p></td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="DerivedAge.txt">DerivedAge.txt</a></th>
     </tr>
     <tr>
@@ -1811,16 +1815,16 @@ more compact representations.</p>
       can be derived by analysis
       of successive versions of the UCD, and Age is not used normatively in
       the specification of any Unicode algorithm.
-      <p><b>Note:</b> When using the Age property in regular expressions,
-      an expression such as &quot;\p{age=3.0}&quot; matches all of the code
-      points assigned in Version 3.0&mdash;that is, all the code points with
+      </p><p><b>Note:</b> When using the Age property in regular expressions,
+      an expression such as "\p{age=3.0}" matches all of the code
+      points assigned in Version 3.0—that is, all the code points with
       a value <i>less than</i> or equal to 3.0 for the Age property. For more
-      information, see Unicode Technical Standard #18, "Unicode Regular Expressions" [<a href="../tr41/tr41-9.html#UTS18">UTS18</a>].
-      </td>
+      information, see Unicode Technical Standard #18, "Unicode Regular Expressions" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UTS18">UTS18</a>].
+      </p></td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="EastAsianWidth.txt">EastAsianWidth.txt</a></th>
     </tr>
     <tr>
@@ -1828,22 +1832,22 @@ more compact representations.</p>
       <td>E</td>
       <td align="center">I</td>
       <td>Properties for determining the choice of wide versus narrow glyphs in East Asian contexts. 
-      Property values are described in Unicode Standard Annex #11, "East Asian Width" [<a href="../tr41/tr41-9.html#UAX11">UAX11</a>].</td>
+      Property values are described in Unicode Standard Annex #11, "East Asian Width" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX11">UAX11</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="HangulSyllableType.txt">HangulSyllableType.txt</a></th>
     </tr>
     <tr>
       <td valign="top"><a name="Hangul_Syllable_Type">Hangul_Syllable_Type</a></td>
       <td valign="top" align="center">E</td>
       <td valign="top" align="center">N</td>
-      <td valign="top">The values L, V, T, LV, and LVT used in <i>Chapter 3, Conformance</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</td>
+      <td valign="top">The values L, V, T, LV, and LVT used in <i>Chapter 3, Conformance</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="IndicMatraCategory.txt">IndicMatraCategory.txt</a></th>
     </tr>
     <tr>
@@ -1854,7 +1858,7 @@ more compact representations.</p>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="IndicSyllabicCategory.txt">IndicSyllabicCategory.txt</a></th>
     </tr>
     <tr>
@@ -1865,7 +1869,7 @@ more compact representations.</p>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="Jamo.txt">Jamo.txt</a></th>
     </tr>
     <tr>
@@ -1873,11 +1877,11 @@ more compact representations.</p>
       <td valign="top" align="center">M</td>
       <td valign="top" align="center">C</td>
       <td valign="top">The Hangul Syllable names are derived from the Jamo Short 
-		Names, as described in <i>Chapter 3, Conformance</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</td>
+		Names, as described in <i>Chapter 3, Conformance</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="LineBreak.txt">LineBreak.txt</a></th>
     </tr>
     <tr>
@@ -1885,44 +1889,44 @@ more compact representations.</p>
       <td>E</td>
       <td align="center">N</td>
       <td>Properties for line breaking. For more information, see Unicode Standard Annex #14, "Unicode Line Breaking 
-      Algorithm" [<a href="../tr41/tr41-9.html#UAX14">UAX14</a>].</td>
+      Algorithm" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX14">UAX14</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="GraphemeBreakProperty.txt">GraphemeBreakProperty.txt</a></th>
     </tr>
     <tr>
       <td><a name="Grapheme_Cluster_Break">Grapheme_Cluster_Break</a></td>
       <td>E</td>
       <td align="center">I</td>
-      <td>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="../tr41/tr41-9.html#UAX29">UAX29</a>]</td>
+      <td>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>]</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="SentenceBreakProperty.txt">SentenceBreakProperty.txt</a></th>
     </tr>
     <tr>
       <td><a name="Sentence_Break">Sentence_Break</a></td>
       <td>E</td>
       <td align="center">I</td>
-      <td>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="../tr41/tr41-9.html#UAX29">UAX29</a>]</td>
+      <td>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>]</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="WordBreakProperty.txt">WordBreakProperty.txt</a></th>
     </tr>
     <tr>
       <td><a name="Word_Break">Word_Break</a></td>
       <td>E</td>
       <td align="center">I</td>
-      <td>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="../tr41/tr41-9.html#UAX29">UAX29</a>]</td>
+      <td>See Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>]</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="NameAliases.txt">NameAliases.txt</a></th>
     </tr>
     <tr>
@@ -1931,13 +1935,13 @@ more compact representations.</p>
       <td valign="top" align="center">N</td>
       <td valign="top">Normative formal aliases for characters with erroneous 
 names, for control characters and some format characters,
-and for character abbreviations, as described in <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]. 
+and for character abbreviations, as described in <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]. 
 The aliases tagged with the type "correction" exactly match the formal 
 aliases published in the Unicode Standard code charts.</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="NormalizationCorrections.txt">NormalizationCorrections.txt</a></th>
     </tr>
     <tr>
@@ -1947,11 +1951,11 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">NormalizationCorrections lists code point differences for <i>
       <a href="http://www.unicode.org/versions/corrigenda.html">Normalization Corrigenda</a>. </i>
       For more information, see Unicode Standard Annex #15, "Unicode Normalization Forms" 
-      [<a href="../tr41/tr41-9.html#UAX15">UAX15</a>].</td>
+      [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX15">UAX15</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="Scripts.txt">Scripts.txt</a></th>
     </tr>
     <tr>
@@ -1960,24 +1964,24 @@ aliases published in the Unicode Standard code charts.</td>
       <td align="center">I</td>
       <td>Script values for use in regular expressions and elsewhere. 
       For more information, see Unicode Standard Annex 
-      #24, "Unicode Script Property" [<a href="../tr41/tr41-9.html#UAX24">UAX24</a>].</td>
+      #24, "Unicode Script Property" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX24">UAX24</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="ScriptExtensions.txt">ScriptExtensions.txt</a></th>
     </tr>
     <tr>
       <td><a name="Script_Extensions">Script_Extensions</a></td>
       <td>M</td>
-      <td align="center">P</td>
+      <td align="center">I</td>
       <td>Enumerated sets of Script values for use in regular expressions and elsewhere. 
       For more information, see Unicode Standard Annex 
-      #24, "Unicode Script Property" [<a href="../tr41/tr41-9.html#UAX24">UAX24</a>].</td>
+      #24, "Unicode Script Property" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX24">UAX24</a>].</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="SpecialCasing.txt">SpecialCasing.txt</a></th>
     </tr>
     <tr>
@@ -1992,9 +1996,9 @@ aliases published in the Unicode Standard code charts.</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="Unihan.txt">Unihan</a> data files (for more 
-      information, see [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>])</th>
+      information, see [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>])</th>
     </tr>
     <tr>
       <td><a name="Numeric_Type_Han">Numeric_Type</a><br>
@@ -2006,7 +2010,7 @@ aliases published in the Unicode Standard code charts.</td>
       Numeric_Type=Numeric, and the Numeric_Value indicated
       in those tags.
       <p>Most characters have these numeric properties based on values from UnicodeData.txt. 
-      See <a href="#Numeric_Type">Numeric_Type</a>.</td>
+      See <a href="#Numeric_Type">Numeric_Type</a>.</p></td>
     </tr>
     <tr>
       <td><a name="Unicode_Radical_Stroke">Unicode_Radical_Stroke</a></td>
@@ -2017,7 +2021,7 @@ aliases published in the Unicode Standard code charts.</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="DerivedCoreProperties.txt">DerivedCoreProperties.txt</a></th>
     </tr>
     <tr>
@@ -2025,14 +2029,14 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">B</td>
       <td valign="top">I</td>
       <td valign="top">Characters with the Lowercase property. For more information, see
-      <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Ll + <a href="#Other_Lowercase">Other_Lowercase</a></i></td>
+      <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].<p><i>Generated from: Ll + <a href="#Other_Lowercase">Other_Lowercase</a></i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Uppercase">Uppercase</a></td>
       <td valign="top">B</td>
       <td valign="top">I</td>
       <td valign="top">Characters with the Uppercase property. For more information, see
-      <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Lu + <a href="#Other_Lowercase">Other_Uppercase</a></i></td>
+      <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].<p><i>Generated from: Lu + <a href="#Other_Lowercase">Other_Uppercase</a></i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Cased">Cased</a></td>
@@ -2041,8 +2045,8 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">Characters which are considered to be either uppercase, lowercase
       or titlecase characters. This property is not identical to the
       Changes_When_Casemapped property. For more information, see D135 in <i>Section 3.13, Default Case
-      Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: <a href="#Lowercase">Lowercase</a> + <a href="#Uppercase">Uppercase</a> + Lt</i></td>
+      Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
+      <p><i>Generated from: <a href="#Lowercase">Lowercase</a> + <a href="#Uppercase">Uppercase</a> + Lt</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Case_Ignorable">Case_Ignorable</a></td>
@@ -2050,9 +2054,9 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">I</td>
       <td valign="top">Characters which are ignored for casing purposes. For more 
       information, see D136 in <i>Section 3.13, Default Case
-      Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+      Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
       <p><i>Generated from: Mn + Me + Cf + Lm + Sk + <a href="#Word_Break">Word_Break</a>=MidLetter +
-      <a href="#Word_Break">Word_Break</a>=MidNumLet</i></td>
+      <a href="#Word_Break">Word_Break</a>=MidNumLet</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="CWL">Changes_When_Lowercased</a></td>
@@ -2060,8 +2064,8 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">I</td>
       <td valign="top">Characters whose normalized forms are not stable under a toLowercase
       mapping. For more information, see D139 in <i>Section 3.13, Default Case
-      Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: toLowercase(toNFD(X)) != toNFD(X)</i></td>
+      Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
+      <p><i>Generated from: toLowercase(toNFD(X)) != toNFD(X)</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="CWU">Changes_When_Uppercased</a></td>
@@ -2069,8 +2073,8 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">I</td>
       <td valign="top">Characters whose normalized forms are not stable under a toUppercase
       mapping. For more information, see D140 in <i>Section 3.13, Default Case
-      Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: toUppercase(toNFD(X)) != toNFD(X)</i></td>
+      Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
+      <p><i>Generated from: toUppercase(toNFD(X)) != toNFD(X)</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="CWT">Changes_When_Titlecased</a></td>
@@ -2078,8 +2082,8 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">I</td>
       <td valign="top">Characters whose normalized forms are not stable under a toTitlecase
       mapping. For more information, see D141 in <i>Section 3.13, Default Case
-      Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: toTitlecase(toNFD(X)) != toNFD(X)</i></td>
+      Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
+      <p><i>Generated from: toTitlecase(toNFD(X)) != toNFD(X)</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="CWCF">Changes_When_Casefolded</a></td>
@@ -2087,8 +2091,8 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">I</td>
       <td valign="top">Characters whose normalized forms are not stable under case
       folding. For more information, see D142 in <i>Section 3.13, Default Case
-      Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
-      <p><i>Generated from: toCasefold(toNFD(X)) != toNFD(X)</i></td>
+      Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
+      <p><i>Generated from: toCasefold(toNFD(X)) != toNFD(X)</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="CWCM">Changes_When_Casemapped</a></td>
@@ -2096,18 +2100,18 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">I</td>
       <td valign="top">Characters which may change when they undergo case mapping. 
       For more information, see D143 in <i>Section 3.13, Default Case
-      Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+      Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
       <p><i>Generated from: Changes_When_Lowercased(X) or Changes_When_Uppercased(X) or
-      Changes_When_Titlecased(X)</i></td>
+      Changes_When_Titlecased(X)</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Alphabetic">Alphabetic</a></td>
       <td valign="top">B</td>
       <td valign="top">I</td>
       <td valign="top">Characters with the Alphabetic property. For more information, see
-      <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+      <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
       <p><i>Generated from: Lu + Ll + Lt + Lm + 
-      Lo + Nl + <a href="#Other_Alphabetic">Other_Alphabetic</a></i></td>
+      Lo + Nl + <a href="#Other_Alphabetic">Other_Alphabetic</a></i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Default_Ignorable_Code_Point">
@@ -2120,7 +2124,7 @@ aliases published in the Unicode Standard code charts.</td>
       characters when not otherwise supported. For more information, see the FAQ
 		<a href="http://www.unicode.org/faq/unsup_char.html">Display of Unsupported Characters</a>, 
 		and <i>Section 5.21, Default Ignorable Code Points</i>
-      in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+      in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
       
       <p><i>Generated from<br>
                 <a href="#Other_Default_Ignorable_Code_Point">Other_Default_Ignorable_Code_Point</a><br>
@@ -2128,29 +2132,29 @@ aliases published in the Unicode Standard code charts.</td>
 		+ Variation_Selector<br>
 		- White_Space<br>
 		- FFF9..FFFB (annotation characters)<br>
-		- 0600..0604, 06DD, 070F, 110BD (exceptional Cf characters that should be visible)</i></td>
+		- 0600..0604, 06DD, 070F, 110BD (exceptional Cf characters that should be visible)</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Grapheme_Base">Grapheme_Base</a></td>
       <td valign="top">B</td>
       <td valign="top">N</td>
       <td valign="top">Property used together with the definition of Standard Korean Syllable
-      Block to define "Grapheme base". See D58 in <i>Chapter 3, Conformance</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]. 
+      Block to define "Grapheme base". See D58 in <i>Chapter 3, Conformance</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]. 
       <p><i>Generated from: [0..10FFFF] - Cc - Cf - Cs - Co - Cn - Zl - Zp -
       <a href="#Grapheme_Extend">Grapheme_Extend</a></i>
-      <p><b>Note:</b> Grapheme_Base is a property of individual characters. That usage contrasts
+      </p><p><b>Note:</b> Grapheme_Base is a property of individual characters. That usage contrasts
       with "grapheme base", which is an attribute of Unicode strings; a grapheme base may consist
-      of a Korean syllable which is itself represented by a sequence of conjoining jamos.</td>
+      of a Korean syllable which is itself represented by a sequence of conjoining jamos.</p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Grapheme_Extend">Grapheme_Extend</a></td>
       <td valign="top">B</td>
       <td valign="top">N</td>
       <td valign="top">Property used 
-      to define "Grapheme extender". See D59 in <i>Chapter 3, Conformance</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]. 
+      to define "Grapheme extender". See D59 in <i>Chapter 3, Conformance</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]. 
       <p><i>Generated from:  Me + Mn + <a href="#Other_Grapheme_Extend">Other_Grapheme_Extend</a></i></p>
       <p><b>Note:</b> The set of characters for which Grapheme_Extend=Yes is equivalent to
-      the set of characters for which Grapheme_Cluster_Break=Extend.</td>
+      the set of characters for which Grapheme_Cluster_Break=Extend.</p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Grapheme_Link">Grapheme_Link</a>
@@ -2158,21 +2162,21 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">B</td>
       <td valign="top">I</td>
       <td valign="top">Formerly proposed for programmatic determination of grapheme cluster boundaries.
-      <p><i>Generated from: Canonical_Combining_Class=Virama</i></td>
+      <p><i>Generated from: Canonical_Combining_Class=Virama</i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Math">Math</a></td>
       <td valign="top">B</td>
       <td valign="top">I</td>
       <td valign="top">Characters with the Math property. For more information, see
-      <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].<p><i>Generated from: Sm + <a href="#Other_Math">Other_Math</a></i></td>
+      <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].<p><i>Generated from: Sm + <a href="#Other_Math">Other_Math</a></i></p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="ID_Start">ID_Start</a></td>
       <td valign="top">B</td>
       <td valign="top">I</td>
-      <td valign="top" rowspan="4">Used to determine programming identifiers, as described 
-      in Unicode Standard Annex #31, "Unicode Identifier and Pattern Syntax" [<a href="../tr41/tr41-9.html#UAX31">UAX31</a>].</td>
+      <td rowspan="4" valign="top">Used to determine programming identifiers, as described 
+      in Unicode Standard Annex #31, "Unicode Identifier and Pattern Syntax" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX31">UAX31</a>].</td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="ID_Continue">ID_Continue</a></td>
@@ -2191,7 +2195,7 @@ aliases published in the Unicode Standard code charts.</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="DerivedNormalizationProps.txt">DerivedNormalizationProps.txt</a></th>
     </tr>
     <tr>
@@ -2242,9 +2246,9 @@ aliases published in the Unicode Standard code charts.</td>
       matching of strings interpreted as identifiers. (Abbreviated name: NFKC_CF)
       <p>For the definition of the related string
       transform toNFKC_Casefold() based on this mapping, see <i>Section 3.13, Default
-      Case Algorithms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</p>
+      Case Algorithms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</p>
       <p>The mapping is listed in Field 2.
-      </td>
+      </p></td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="CWKCF">Changes_When_NFKC_Casefolded</a></td>
@@ -2253,11 +2257,11 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">Characters which are not identical to their NFKC_Casefold
       mapping. 
       <p><i>Generated from: (cp != NFKC_CaseFold(cp))</i>
-      </td>
+      </p></td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="PropList.txt">PropList.txt</a></th>
     </tr>
     <tr>
@@ -2271,7 +2275,7 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top" align="center">B</td>
       <td valign="top">N</td>
       <td valign="top">Format control characters which have specific functions in the 
-      Unicode Bidirectional Algorithm [<a href="../tr41/tr41-9.html#UAX9">UAX9</a>].</td>
+      Unicode Bidirectional Algorithm [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX9">UAX9</a>].</td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Dash">Dash</a></td>
@@ -2416,8 +2420,8 @@ aliases published in the Unicode Standard code charts.</td>
       <td><a name="Pattern_Syntax">Pattern_Syntax</a></td>
       <td valign="top">B</td>
       <td valign="top">N</td>
-      <td valign="top" rowspan="2">Used for pattern syntax as described in Unicode Standard Annex #31, "Unicode Identifier 
-      and Pattern Syntax" [<a href="../tr41/tr41-9.html#UAX31">UAX31</a>].</td>
+      <td rowspan="2" valign="top">Used for pattern syntax as described in Unicode Standard Annex #31, "Unicode Identifier 
+      and Pattern Syntax" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX31">UAX31</a>].</td>
     </tr>
     <tr>
       <td><a name="Pattern_White_Space">Pattern_White_Space</a></td>
@@ -2440,7 +2444,7 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top" align="left"><a name="Soft_Dotted">Soft_Dotted</a></td>
       <td valign="top" align="center">B</td>
       <td valign="top">N</td>
-      <td valign="top">Characters with a &quot;soft dot&quot;, like <i>i</i> or <i>j</i>. An accent placed on 
+      <td valign="top">Characters with a "soft dot", like <i>i</i> or <i>j</i>. An accent placed on 
       these characters causes the dot to disappear. An explicit <i>dot above</i> can be added where 
       required, such as in Lithuanian.</td>
     </tr>
@@ -2448,7 +2452,7 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top" align="left"><a name="STerm">STerm</a></td>
       <td valign="top">B</td>
       <td valign="top">I</td>
-      <td valign="top">Sentence Terminal. Used in Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="../tr41/tr41-9.html#UAX29">UAX29</a>].</td>
+      <td valign="top">Sentence Terminal. Used in Unicode Standard Annex #29, "Unicode Text Segmentation" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>].</td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="Terminal_Punctuation">Terminal_Punctuation</a></td>
@@ -2474,8 +2478,8 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">Indicates characters that are Variation Selectors. For 
       details on the behavior of these characters, see 
       <a href="#StandardizedVariants">StandardizedVariants.html</a>,
-      <i>Section 16.4, Variation Selectors</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>],
-      and Unicode Standard Annex #37, "Unicode Ideographic Variation Database" [<a href="../tr41/tr41-9.html#UTS37">UTS37</a>].</td>
+      <i>Section 16.4, Variation Selectors</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>],
+      and Unicode Standard Annex #37, "Unicode Ideographic Variation Database" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UTS37">UTS37</a>].</td>
     </tr>
     <tr>
       <td valign="top" align="left"><a name="White_Space">White_Space</a></td>
@@ -2483,7 +2487,7 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">N</td>
       <td valign="top">Spaces, separator characters and 
       other control characters which should be treated by 
-      programming languages as &quot;white space&quot; for the purpose of parsing elements.
+      programming languages as "white space" for the purpose of parsing elements.
       See also <a href="#Line_Break">Line_Break</a>, 
       <a href="#Grapheme_Cluster_Break">Grapheme_Cluster_Break</a>, 
       <a href="#Sentence_Break">Sentence_Break</a>,
@@ -2493,7 +2497,7 @@ aliases published in the Unicode Standard code charts.</td>
     </tr>
     
     <tr>
-      <th valign="top" align="LEFT" colspan="4">
+      <th colspan="4" valign="top" align="LEFT">
       <a name="UnicodeData.txt">UnicodeData.txt</a></th>
     </tr>
     <tr>
@@ -2530,9 +2534,9 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">(4) These are the categories required by the Unicode Bidirectional Algorithm. 
       For the property values, see <a href="#Bidi_Class_Values">Bidirectional Class 
       Values</a>. For more information, see Unicode Standard Annex #9, "The Unicode Bidirectional Algorithm" 
-      [<a href="../tr41/tr41-9.html#UAX9">UAX9</a>].<p>
+      [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX9">UAX9</a>].<p>
       The default property values depend on the code point, and are explained in
-      DerivedBidiClass.txt</td>
+      DerivedBidiClass.txt</p></td>
     </tr>
     <tr>
       <td valign="top"><a name="Decomposition_Type">Decomposition_Type</a><br>
@@ -2547,7 +2551,7 @@ aliases published in the Unicode Standard code charts.</td>
       </td>
     </tr>
     <tr>
-      <td valign="top" rowspan="3"><a name="Numeric_Type">Numeric_Type</a><br>
+      <td rowspan="3" valign="top"><a name="Numeric_Type">Numeric_Type</a><br>
       <a name="Numeric_Value">Numeric_Value</a></td>
       <td valign="top" align="center">E<br>
       N</td>
@@ -2559,7 +2563,7 @@ aliases published in the Unicode Standard code charts.</td>
       Characters with the property value Numeric_Type=Decimal are
       restricted to digits which can be used in a decimal radix positional numeral system and
       which are encoded in the standard in a contiguous ascending range 0..9. See the discussion of
-      <i>decimal digits</i> in <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</td>
+      <i>decimal digits</i> in <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</td>
     </tr>
     <tr>
       <td valign="top" align="center">E<br>
@@ -2579,28 +2583,30 @@ aliases published in the Unicode Standard code charts.</td>
       property value Numeric_Type=Numeric, then the 
       Numeric_Value of that character is represented with a positive or 
       negative integer or rational number in this field, and
-      fields 6 and 7 are null. This includes fractions such as, for example, &quot;1/5&quot; for 
+      fields 6 and 7 are null. This includes fractions such as, for example, "1/5" for 
       U+2155 VULGAR FRACTION ONE FIFTH.
       <p>Some characters have these properties based on values from the Unihan data files. See
-      <a href="#Numeric_Type_Han">Numeric_Type, Han</a>.</td>
+      <a href="#Numeric_Type_Han">Numeric_Type, Han</a>.</p></td>
     </tr>
     <tr>
       <td valign="top"><a name="Bidi_Mirrored">Bidi_Mirrored</a></td>
       <td valign="top" align="center">B</td>
       <td valign="top" align="center">N</td>
-      <td valign="top">(9) If the character is a &quot;mirrored&quot; character in 
-      bidirectional text, this field has the value &quot;Y&quot;; otherwise &quot;N&quot;.  
-      See <i>Section 4.7, Bidi Mirrored&#x2014;Normative</i> of [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]. <i>Do not confuse this with 
+      <td valign="top">(9) If the character is a "mirrored" character in 
+      bidirectional text, this field has the value "Y"; otherwise "N".  
+      See <i>Section 4.7, Bidi Mirrored—Normative</i> of [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]. <i>Do not confuse this with 
       the <a href="#Bidi_Mirroring_Glyph">Bidi_Mirroring_Glyph</a> property.</i></td>
     </tr>
     <tr>
-      <td valign="top"><a name="Unicode_1_Name">Unicode_1_Name</a></td>
+      <td valign="top"><a name="Unicode_1_Name">Unicode_1_Name</a>
+      (<a href="#Obsolete_Properties">Obsolete</a> as of 6.2.0)</td>
       <td valign="top" align="center">M</td>
       <td valign="top" align="center">I</td>
-      <td valign="top">(10) Old name as published in Unicode 1.0. This name is only 
-      provided when it is significantly different from the current name for the character. The value 
-      of field 10 for control characters does not always match the Unicode 1.0 names. Instead, field 
-      10 contains ISO 6429 names for control functions, for printing in the code charts.</td>
+      <td valign="top">(10) Old name as published in Unicode 1.0 or
+      ISO 6429 names for control functions. This field is empty unless it is significantly 
+      different from the current name for the character. 
+      No longer used in code chart production. See <a href="#Name_Alias">Name_Alias</a>.
+      </td>
     </tr>
     <tr>
       <td valign="top"><a name="ISO_Comment">ISO_Comment</a>
@@ -2641,9 +2647,9 @@ aliases published in the Unicode Standard code charts.</td>
       <td valign="top">(14) Simple titlecase mapping (single character result).
       <p><b>Note:</b> If this
       field is null, then the Simple_Titlecase_Mapping is the same as the
-      Simple_Uppercase_Mapping for this character.</td>
+      Simple_Uppercase_Mapping for this character.</p></td>
     </tr>
-  </table>
+  </tbody></table>
 
   <p>&nbsp;</p>
 
@@ -2664,7 +2670,7 @@ aliases published in the Unicode Standard code charts.</td>
   <p class="caption"><a name="Extracted_Properties_Table"></a>Table 10. Extracted Properties</p>
   <div align="center">
   <table>
-    <tr>
+    <tbody><tr>
       <th>File</th>
       <th>Status</th>
       <th>Property</th>
@@ -2736,7 +2742,7 @@ aliases published in the Unicode Standard code charts.</td>
       <td>Numeric_Value</td>
       <td>UnicodeData.txt, field 8</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
   <p>For the extraction of Decomposition_Type, characters with canonical
@@ -2779,12 +2785,12 @@ aliases published in the Unicode Standard code charts.</td>
   is then listed in
   <a href="#DerivedCoreProperties.txt">DerivedCoreProperties.txt</a>.
   
-  <p><a href="#Jamo_Short_Name">Jamo_Short_Name</a> is an unusual contributory
+  </p><p><a href="#Jamo_Short_Name">Jamo_Short_Name</a> is an unusual contributory
   property, both in terms of its name and how it is used. It is defined in
   its own property file, Jamo.txt, and is used to derive the Name
   property value for Hangul syllable characters, according to the rules
   spelled out in <i>Section 3.12, Conjoining Jamo Behavior</i> in
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</p>
   
   <p><i>Contributory</i> is considered to be a distinct status for a Unicode
   character property. Contributory properties are neither <i>normative</i> nor
@@ -2801,7 +2807,7 @@ aliases published in the Unicode Standard code charts.</td>
 <h3>5.6 <a name="Casemapping">Case and Case Mapping</a></h3>
 
   <p>Case for bicameral scripts and case mapping of characters are
-  complicated topics in the Unicode Standard&#x2014;both because of
+  complicated topics in the Unicode Standard—both because of
   their inherent algorithmic complexity and because of the number of characters
   and special edge cases involved.</p>
   
@@ -2810,7 +2816,7 @@ aliases published in the Unicode Standard code charts.</td>
   as explaining which case-related properties are defined in the UCD.</p>
   
   <p><i>Section 3.13, Default Case Algorithms</i> in
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]
   provides formal definitions for a number of case-related concepts (<i>cased</i>,
   <i>case-ignorable</i>,&nbsp;...), for
   case conversion (<i>toUppercase(X)</i>,&nbsp;...), and for case detection
@@ -2818,11 +2824,11 @@ aliases published in the Unicode Standard code charts.</td>
   of caseless matching for the standard, taking normalization
   into account.</p>
   
-  <p><i>Section 4.2, Case&#x2014;Normative</i> in
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]
+  <p><i>Section 4.2, Case—Normative</i> in
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]
   introduces case and case mapping properties. <i>Table 4-1, Sources
   for Case Mapping Information</i> 
-  in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] describes the kind of case-related
+  in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] describes the kind of case-related
   information that is available in various data files of the UCD.
   <i>Table 11</i> lists those data files again, giving the
   explicit list of case-related properties defined in each. 
@@ -2832,7 +2838,7 @@ aliases published in the Unicode Standard code charts.</td>
   <p class="caption"><a name="Case_Properties_Table"></a>Table 11. UCD Files and Case Properties</p>
   <div align="center">
   <table>
-    <tr>
+    <tbody><tr>
       <th>File Name</th>
       <th>Case Properties</th>
     </tr>
@@ -2877,7 +2883,7 @@ aliases published in the Unicode Standard code charts.</td>
           <a href="#Other_Uppercase">Other_Uppercase</a>,
           <a href="#Other_Lowercase">Other_Lowercase</a></td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
     
   <p>For compatibility with existing parsers, UnicodeData.txt only 
@@ -2888,7 +2894,7 @@ aliases published in the Unicode Standard code charts.</td>
   SpecialCasing.txt, expressed as separate properties.</p>
 
   <p><i>Section 5.18, Case Mappings</i>, in
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]
   discusses various implementation issues for handling case,
   including language-specific case mapping, as for Greek and
   for Turkish. That section also describes case folding in particular detail.</p>
@@ -2909,13 +2915,13 @@ aliases published in the Unicode Standard code charts.</td>
   <p>Caseless matching is of particular concern for a number of text
   processing algorithms, so is also discussed at some length
   in Unicode Standard Annex #31, "Unicode Identifier and Pattern Syntax" 
-  [<a href="../tr41/tr41-9.html#UAX31">UAX31</a>] and
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX31">UAX31</a>] and
   in Unicode Technical Standard #10, "Unicode Collation Algorithm"
-  [<a href="../tr41/tr41-9.html#UTS10">UTS10</a>].</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UTS10">UTS10</a>].</p>
   
   <p>Further information about locale-specific casing conventions
   can be found in the Unicode Common Locale Data Repository 
-  [<a href="../tr41/tr41-9.html#CLDR">CLDR</a>].</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#CLDR">CLDR</a>].</p>
   
   <h3>5.7 <a name="Property_Values">Property Value Lists</a></h3>
 
@@ -2924,10 +2930,10 @@ aliases published in the Unicode Standard code charts.</td>
   are documented in other, topically-specific annexes; for example, 
   the Line_Break property values are documented in
   Unicode Standard Annex #14, "Unicode Line Breaking Algorithm"
-  [<a href="../tr41/tr41-9.html#UAX14">UAX14</a>] and the
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX14">UAX14</a>] and the
   various segmentation-related property values are documented in
   Unicode Standard Annex #29, "Unicode Text Segmentation"
-  [<a href="../tr41/tr41-9.html#UAX29">UAX29</a>].</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>].</p>
   
 <h4>5.7.1 <a name="General_Category_Values">General Category Values</a></h4>
   
@@ -2953,7 +2959,7 @@ aliases published in the Unicode Standard code charts.</td>
   character.</p>
   
   <p>For more information about the General_Category
-  property, see <i>Chapter 4, Character Properties</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</p>
+  property, see <i>Chapter 4, Character Properties</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</p>
 
   <p>The values in the General_Category field in UnicodeData.txt
   make use of the short, abbreviated property value aliases
@@ -2966,7 +2972,7 @@ aliases published in the Unicode Standard code charts.</td>
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>Abbr</th>
       <th>Long</th>
       <th>Description</th>
@@ -3161,7 +3167,7 @@ aliases published in the Unicode Standard code charts.</td>
       <td>Other</td>
       <td>Cc | Cf | Cs | Co | Cn</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
   <p>Note that the value gc=Cn does not actually
@@ -3201,7 +3207,7 @@ aliases published in the Unicode Standard code charts.</td>
   of General_Category values do not occur in UnicodeData.txt, which instead
   always specifies the enumerated subtype for the General_Category of a character.</p>
   
-    <p>The symbol &quot;L&amp;&quot; is a label used to stand for any
+    <p>The symbol "L&amp;" is a label used to stand for any
     combination of uppercase, lowercase or titlecase letters 
     (Lu, Ll, or Lt), in the first part of comments in the data files of the UCD.
     It is equivalent to gc=LC, but is only a label in comments, and is
@@ -3213,9 +3219,9 @@ aliases published in the Unicode Standard code charts.</td>
     the Unicode Line Breaking Algorithm, and Unicode Text Segmentation. 
     Also, implementations will usually assign 
     behavior to certain line breaking control 
-    characters&#x2014;most notably U+000D and U+000A (CR and LF)&#x2014;according to platform conventions. 
+    characters—most notably U+000D and U+000A (CR and LF)—according to platform conventions. 
     See <i>Section 5.8, Newline Guidelines</i> in 
-    [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] for more information.</p>
+    [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] for more information.</p>
   
 <h4>5.7.2 <a name="Bidi_Class_Values">Bidirectional Class Values</a></h4>
   
@@ -3230,7 +3236,7 @@ aliases published in the Unicode Standard code charts.</td>
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>Abbr</th>
       <th>Long</th>
       <th>Description</th>
@@ -3330,11 +3336,11 @@ aliases published in the Unicode Standard code charts.</td>
       <td>Other_Neutral</td>
       <td>most other symbols and punctuation marks</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
   <p>Please refer to Unicode Standard Annex #9, "The Unicode Bidirectional Algorithm"
-  [<a href="../tr41/tr41-9.html#UAX9">UAX9</a>] for 
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX9">UAX9</a>] for 
   an an explanation of the significance 
   of these values when formatting bidirectional text.</p>
   
@@ -3377,7 +3383,7 @@ aliases published in the Unicode Standard code charts.</td>
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>Tag</th>
       <th>Description</th>
     </tr>
@@ -3445,15 +3451,15 @@ aliases published in the Unicode Standard code charts.</td>
       <td>&lt;compat&gt;</td>
       <td>Otherwise unspecified compatibility character</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
   <p><b>Note: </b>There is a difference between decomposition and the 
   Decomposition_Mapping property. The 
   Decomposition_Mapping property is a string property whose
-  values (mappings) are defined in UnicodeData.txt, while the decomposition (also termed &quot;full 
-  decomposition&quot;) is defined in <i>Section 3.7, Decomposition</i> in
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>] to use those mappings <i>recursively.</i></p>
+  values (mappings) are defined in UnicodeData.txt, while the decomposition (also termed "full 
+  decomposition") is defined in <i>Section 3.7, Decomposition</i> in
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>] to use those mappings <i>recursively.</i></p>
   
   <ul>
     <li>The canonical decomposition is formed by recursively applying the canonical mappings, then 
@@ -3471,7 +3477,7 @@ aliases published in the Unicode Standard code charts.</td>
   
   <p>The normalization of Hangul conjoining jamos and of Hangul syllables depends on algorithmic
   mapping, as specified in <i>Section 3.12, Conjoining Jamo Behavior</i> in 
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
   That algorithm specifies the full decomposition of all precomposed Hangul syllables, but
   effectively it is equivalent to the recursive application of pairwise decomposition
   mappings, as for all other Unicode characters. Formally, the Decomposition_Mapping
@@ -3501,7 +3507,7 @@ aliases published in the Unicode Standard code charts.</td>
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>Value</th>
       <th>Long</th>
       <th>Description</th>
@@ -3641,7 +3647,7 @@ aliases published in the Unicode Standard code charts.</td>
       <td>Iota_Subscript</td>
       <td>Greek iota subscript only</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
       <p>Some of the Canonical_Combining_Class values in the table are not currently used 
@@ -3685,13 +3691,13 @@ aliases published in the Unicode Standard code charts.</td>
     it does <i>not</i> refer to any issues of visual reordering of glyphs
     involved in display and rendering. See "Canonical Ordering
     Algorithm" in <i>Section 3.11, 
-    Normalization Forms</i> in [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].</p>
+    Normalization Forms</i> in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].</p>
   
   
 <h4>5.7.5 <a name="Decompositions_and_Normalization">Decompositions and Normalization</a></h4>
   
   <p>Decomposition is specified in <i>Chapter 3, Conformance</i> of 
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>].
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>].
   That chapter also
   specifies the interaction between decomposition and normalization.</p>
   
@@ -3699,7 +3705,7 @@ aliases published in the Unicode Standard code charts.</td>
   the "Quick_Check" properties. These are defined to enable various optimizations
   for implementations of normalization, as explained in 
   <i>Section 9, Detecting Normalization Forms</i>, in Unicode Standard Annex #15, "Unicode Normalization Forms"
-  [<a href="../tr41/tr41-9.html#UAX15">UAX15</a>].
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX15">UAX15</a>].
   The values for the four Quick_Check properties for all code points are listed in
   DerivedNormalizationProps.txt. The interpretations of the possible property values
   are summarized in <i>Table 16</i>.</p>
@@ -3708,7 +3714,7 @@ aliases published in the Unicode Standard code charts.</td>
   <div align="center">
 
     <table>
-      <tr>
+      <tbody><tr>
         <th>Property</th>
         <th>Value</th>
         <th>Description</th>
@@ -3728,7 +3734,7 @@ aliases published in the Unicode Standard code charts.</td>
         <td>Yes</td>
         <td>All other characters. This is the default value for Quick_Check properties.</td>
       </tr>
-    </table>
+    </tbody></table>
     </div>
 
 <p>&nbsp;</p>
@@ -3744,8 +3750,7 @@ zero or more romanized pronunciation strings. Thus, the Unihan
 Database contains an entry:</p>
 
 <blockquote>
-<pre>
-U+342B	kCantonese	gun3 hung1 zung1
+<pre>U+342B	kCantonese	gun3 hung1 zung1
 </pre>
 </blockquote>
 
@@ -3757,8 +3762,7 @@ consist of a set of one or more Script property values. Thus the
 property file ScriptExtensions.txt in the UCD contains an entry:</p>
 
 <blockquote>
-<pre>
-0640          ; Arab Mand Syrc # Lm       ARABIC TATWEEL
+<pre>0640          ; Arab Mand Syrc # Lm       ARABIC TATWEEL
 </pre>
 </blockquote>
 
@@ -3771,8 +3775,7 @@ constitute meaningful values of the property is relatively small, and could be e
 evaluated for any particular Unicode version. For example:</p>
 
 <blockquote>
-<pre>
-{{Arab, Syrc}, {Arab, Mand, Syrc}, {Arab, Syrc, Thaa}, {Hira, Kata}, ...}
+<pre>{{Arab, Syrc}, {Arab, Mand, Syrc}, {Arab, Syrc, Thaa}, {Hira, Kata}, ...}
 </pre>
 </blockquote>
 
@@ -3794,7 +3797,7 @@ sets of values, see Section 4.2.8 <a href="#Multiple_Values">Multiple Values for
 For considerations regarding validation of such
 properties, see Section 5.11.5 <a href="#Validation_of_Multivalued">Validation of Multivalued Properties</a>.
 See also Unicode Technical Standard #18, "Unicode Regular Expressions" 
-    [<a href="../tr41/tr41-9.html#UTS18">UTS18</a>] for a discussion of how to handle
+    [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UTS18">UTS18</a>] for a discussion of how to handle
     such properties when processing regular expressions.</p>
 
 <h3>5.8 <a name="Property_Aliases">Property and Property Value Aliases</a></h3>
@@ -3812,7 +3815,7 @@ See also Unicode Technical Standard #18, "Unicode Regular Expressions"
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>File Name</th>
       <th>Status</th>
       <th>Description</th>
@@ -3827,7 +3830,7 @@ See also Unicode Technical Standard #18, "Unicode Regular Expressions"
       <td>N</td>
       <td>Names and abbreviations for property values</td>
     </tr>
-  </table>
+  </tbody></table>
   </div>
   
   <p>Aliases are defined as ASCII-compatible identifiers, using only uppercase or
@@ -3865,7 +3868,7 @@ See also Unicode Technical Standard #18, "Unicode Regular Expressions"
   when referring to that
   property in this annex and elsewhere in the Unicode Standard.
   For example: "The Line_Break property is discussed in Unicode Standard Annex #14, "Unicode Line 
-  Breaking Algorithm" [<a href="../tr41/tr41-9.html#UAX14">UAX14</a>]."</p>
+  Breaking Algorithm" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX14">UAX14</a>]."</p>
   
   <p>The abbreviated symbolic name alias is short and less mnemonic,
   but is useful for expressions such as "lb=BA" in data or in other 
@@ -3893,7 +3896,7 @@ See also Unicode Technical Standard #18, "Unicode Regular Expressions"
   <div align="center">
 
 	<table>
-		<tr>
+		<tbody><tr>
 			<th>Long</th>
 			<th>Abbreviated</th>
 			<th>Other Aliases</th>
@@ -3908,7 +3911,7 @@ See also Unicode Technical Standard #18, "Unicode Regular Expressions"
 			<td>N</td>
 			<td>False, F</td>
 		</tr>
-	</table>
+	</tbody></table>
 	
    </div>
 
@@ -3930,8 +3933,7 @@ See also Unicode Technical Standard #18, "Unicode Regular Expressions"
   name alias for that numeric value. For example:</p>
   
   <blockquote>
-  <pre>
-ccc; 230; A    ; Above
+  <pre>ccc; 230; A    ; Above
 ccc; 232; AR   ; Above_Right
   </pre>
   </blockquote>
@@ -3987,8 +3989,8 @@ ccc; 232; AR   ; Above_Right
   
   <p><a name="UAX44-LM1"></a><i><b>UAX44-LM1.</b></i> Apply numeric equivalences.</p>
   <ul>
-    <li>&quot;01.00&quot; is equivalent to &quot;1&quot;.</li>
-    <li>&quot;1.666667&quot; in the UCD is a repeating fraction, and 
+    <li>"01.00" is equivalent to "1".</li>
+    <li>"1.666667" in the UCD is a repeating fraction, and 
     equivalent to "10/6" or "5/3".</li>
   </ul>
   
@@ -4001,11 +4003,11 @@ ccc; 232; AR   ; Above_Right
   character names by inserting underscores for spaces. For best results
   in comparing Unicode character names, use loose matching rule UAX44-LM2.</p>
   
-  <p><a name="UAX44-LM2"></a><i><b>UAX44-LM2.</b></i> Ignore case, whitespace, underscore (&#39;_&#39;), and all medial hyphens except the hyphen in 
+  <p><a name="UAX44-LM2"></a><i><b>UAX44-LM2.</b></i> Ignore case, whitespace, underscore ('_'), and all medial hyphens except the hyphen in 
   U+1180 HANGUL JUNGSEONG O-E.</p>
   <ul>
-    <li>&quot;zero-width space&quot; is equivalent to &quot;ZERO WIDTH SPACE&quot; or &quot;zerowidthspace&quot;</li>
-    <li>&quot;character -a&quot; is <i>not</i> equivalent to &quot;character a&quot;</li>
+    <li>"zero-width space" is equivalent to "ZERO WIDTH SPACE" or "zerowidthspace"</li>
+    <li>"character -a" is <i>not</i> equivalent to "character a"</li>
   </ul>
   
   <p>In this rule "medial hyphen" is to be construed as a hyphen
@@ -4038,12 +4040,12 @@ ccc; 232; AR   ; Above_Right
   <p>Loose matching rule UAX44-LM2 is also appropriate for matching
   character name aliases and the names of named character sequences, which share the
   namespace (and matching behavior) of Unicode character names. See <i>Section 4.8, Name</i> in 
-  [<a href="../tr41/tr41-9.html#Unicode">Unicode</a>]</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Unicode">Unicode</a>]</p>
   
   <p>Implementations of name matching should use extreme care when matching
   non-standard, alternative names for particular characters. The Name Uniqueness Policy
   in the Unicode Consortium Stability
-  Policies [<a href="../tr41/tr41-9.html#Stability">Stability</a>] guarantees that
+  Policies [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Stability">Stability</a>] guarantees that
   the Unicode Standard will never add a character whose name would match an existing
   encoded character, according to matching rule UAX44-LM2. However, any <i>other</i>
   name for a character might be used in the future.</p>
@@ -4066,10 +4068,10 @@ ccc; 232; AR   ; Above_Right
   <p>Property aliases and property value aliases are symbolic values. When
   comparing them, use loose matching rule UAX44-LM3.</p>
   
-  <p><a name="UAX44-LM3"></a><i><b>UAX44-LM3.</b></i> Ignore case, whitespace, underscore (&#39;_&#39;), 
+  <p><a name="UAX44-LM3"></a><i><b>UAX44-LM3.</b></i> Ignore case, whitespace, underscore ('_'), 
   hyphens, and any initial prefix string "is".</p>
   <ul>
-    <li>&quot;linebreak&quot; is equivalent to &quot;Line_Break&quot; or &quot;Line-break&quot;</li>
+    <li>"linebreak" is equivalent to "Line_Break" or "Line-break"</li>
     <li>"lb=BA" is equivalent to "lb=ba" or "LB=BA"</li>
     <li>"Script=Greek" is equivalent to "Script=isGreek" or "Script=Is_Greek"</li>
   </ul>
@@ -4110,7 +4112,7 @@ ccc; 232; AR   ; Above_Right
   property: \p{General_Category=L}. For more information about
   the use of property values in regular expressions and other environments,
   see <i>Section 1.2, Properties</i>, in Unicode Technical Standard #18,
-  "Unicode Regular Expressions" [<a href="../tr41/tr41-9.html#UTS18">UTS18</a>]</p>
+  "Unicode Regular Expressions" [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UTS18">UTS18</a>]</p>
 
 <h3>5.10 <a name="Invariants">Invariants</a></h3>
 
@@ -4120,7 +4122,7 @@ ccc; 232; AR   ; Above_Right
   a given property, except where the set of allowable values is fixed
   by the property type (such as for binary properties), or where the
   set of allowable values is subject to a provision of the Unicode
-  Character Encoding Stability Policy [<a href="../tr41/tr41-9.html#Stability">Stability</a>]. 
+  Character Encoding Stability Policy [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Stability">Stability</a>]. 
   Finally, a new version may also
   introduce new properties or new data files in the UCD.</p>
    
@@ -4134,7 +4136,7 @@ ccc; 232; AR   ; Above_Right
   <p>All formally guaranteed invariants for properties or property values 
   are described in
   the Unicode Character Encoding Stability Policy 
-  [<a href="../tr41/tr41-9.html#Stability">Stability</a>].
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Stability">Stability</a>].
   That policy and the list of invariants it enumerates are
   maintained outside the context of the Unicode Standard per se.
   They are not part of the standard, but rather are constraints
@@ -4153,7 +4155,7 @@ ccc; 232; AR   ; Above_Right
   of the character. The Canonical_Combining_Class and
   Decomposition_Mapping of a character are immutable, because of their
   importance to the stability of the Unicode Normalization Algorithm
-  [<a href="../tr41/tr41-9.html#UAX15">UAX15</a>].</p>
+  [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX15">UAX15</a>].</p>
   
   <p>The list of immutable character properties is shown in
   <i>Table 19</i>.</p>
@@ -4162,7 +4164,7 @@ ccc; 232; AR   ; Above_Right
   <div align="center">
 
   <table>
-      <tr>
+      <tbody><tr>
         <th>Property Name</th>
         <th>Abbr Name</th>
       </tr>
@@ -4190,7 +4192,7 @@ ccc; 232; AR   ; Above_Right
         <td>Pattern_White_Space</td>
         <td>Pat_WS</td>
       </tr>
-  </table>
+  </tbody></table>
   </div>
   
   <p>In some cases, a property is not immutable, but the list
@@ -4272,7 +4274,7 @@ ccc; 232; AR   ; Above_Right
       the chances of the actual number of values exceeding 128
       are remote at this point. There are implementation advantages 
       in restricting the number of internal class values to 
-      128&#x2014;for example, the ability to use signed bytes without 
+      128—for example, the ability to use signed bytes without 
       implicit widening to ints in Java.</p>
   
 <h3>5.11 <a name="Validation">Validation</a></h3>
@@ -4309,8 +4311,7 @@ ccc; 232; AR   ; Above_Right
   values.</p>
 
   <blockquote>  
-  <pre>
-# East_Asian_Width (ea)
+  <pre># East_Asian_Width (ea)
 
 ea ; A         ; Ambiguous
 ea ; F         ; Fullwidth
@@ -4324,8 +4325,7 @@ ea ; W         ; Wide
   <p>The resulting regular expression would then be:</p>
   
   <blockquote>
-  <pre>
-  /A|Ambiguous|F|Fullwidth|H|Halfwidth|N|Neutral|Na|Narrow|W|Wide/
+  <pre>  /A|Ambiguous|F|Fullwidth|H|Halfwidth|N|Neutral|Na|Narrow|W|Wide/
   </pre>
   </blockquote>
   
@@ -4333,8 +4333,7 @@ ea ; W         ; Wide
   expression can be precomputed simply as:</p>
   
    <blockquote>
-   <pre>
-  /N|No|F|False|Y|Yes|T|True/
+   <pre>  /N|No|F|False|Y|Yes|T|True/
   </pre>
   </blockquote>
   
@@ -4358,10 +4357,13 @@ ea ; W         ; Wide
   ccc values are represented by bytes, that additional value of 255 may be used
   by an implementation for other purposes.</p>
   
+  <p>The value 133 is reserved. No characters have that value. The property value alias
+  CCC133 is retained in accordance with the stability policy regarding property value aliases.</p>
+  
   <h4>5.11.3 <a name="Validation_of_Unihan">Unihan Properties</a></h4>
   
   <p>The validating regular expressions for each property tag defined
-  in the Unihan database are described in detail in [<a href="../tr41/tr41-9.html#UAX38">UAX38</a>].</p>
+  in the Unihan database are described in detail in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX38">UAX38</a>].</p>
 
   <h4>5.11.4 <a name="Validation_of_Other">Other Properties</a></h4>
   
@@ -4379,7 +4381,7 @@ ea ; W         ; Wide
   <div align="center">
 
 	<table>
-		<tr>
+		<tbody><tr>
 			<th>Variable</th>
 			<th>Value</th>
 			<th>Notes and Examples</th>
@@ -4464,20 +4466,20 @@ ea ; W         ; Wide
 			<td>($codePoints)?</td>
                         <td>space-delimited list of 0 to n code points</td>
 		</tr>
-        </table>
+        </tbody></table>
   </div>
   
   <p>The regular expressions listed in <i>Table 21</i> cover
   all the straightforward cases for other property values. For properties
   involving somewhat more irregular values, such as <a href="#Age">Age</a>,
   <a href="#ISO_Comment">ISO_Comment</a>, and <a href="#Unicode_1_Name">Unicode_1_Name</a>,
-  details for validation can be found in [<a href="../tr41/tr41-9.html#UAX42">UAX42</a>].</p>
+  details for validation can be found in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX42">UAX42</a>].</p>
   
   <p class="caption"><a name="Regular_Expressions_Table"></a>Table 21. Regular Expressions for Other Property Values</p>
   <div align="center">
 
 	<table>
-		<tr>
+		<tbody><tr>
 			<th>Abbr</th>
 			<th>Name</th>
 			<th colspan="2">Regex for Allowable Values</th>
@@ -4498,7 +4500,7 @@ ea ; W         ; Wide
 		<tr>
 			<td>blk</td>
 			<td>Block</td>
-			<td rowSpan="2" colspan="2">/$name2/</td>
+			<td rowspan="2" colspan="2">/$name2/</td>
 		</tr>
 		<tr>
 			<td>sc</td>
@@ -4507,9 +4509,9 @@ ea ; W         ; Wide
 		<tr>
 			<td>dm</td>
 			<td>Decomposition_Mapping</td>
-			<td rowSpan="2" colspan="2">
+			<td rowspan="2" colspan="2">
 			/$codePoints/</td>
-		<tr>
+		</tr><tr>
 			<td>FC_NFKC</td>
 			<td>FC_NFKC_Closure</td>
 		</tr>
@@ -4521,7 +4523,7 @@ ea ; W         ; Wide
 		<tr>
 			<td>cf</td>
 			<td>Case_Folding</td>
-			<td rowSpan="4" colspan="2">
+			<td rowspan="4" colspan="2">
 			/$codePoints/</td>
 		</tr>
 		<tr>
@@ -4540,7 +4542,7 @@ ea ; W         ; Wide
 		<tr>
 			<td>sfc</td>
 			<td>Simple_Case_Folding</td>
-			<td rowSpan="4" colspan="2">
+			<td rowspan="4" colspan="2">
 			/$codePoint/</td>
 		</tr>
 		<tr>
@@ -4583,7 +4585,7 @@ ea ; W         ; Wide
 			<td>Jamo_Short_Name</td>
 			<td colspan="2">/$shortName/</td>
 		</tr>
-	</table>
+	</tbody></table>
    </div>
 
 <blockquote>   
@@ -4614,7 +4616,7 @@ mean that a character or other feature is strongly discouraged from use.
 This should not, however, be taken as indicating that anything has been
 removed from the standard, nor that anything is <i>planned</i> for removal
 from the standard. Any such change is constrained by the
-Unicode Consortium Stability Policies [<a href="../tr41/tr41-9.html#Stability">Stability</a>].</p>
+Unicode Consortium Stability Policies [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#Stability">Stability</a>].</p>
 
 <p>For the Unicode Character Database, there are two important types
 of deprecation to be noted. First, an <i>encoded character</i> may be
@@ -4637,7 +4639,7 @@ Conformant implementations of Unicode processes such a Unicode normalization <i>
 handle even deprecated characters correctly.</p>
 
 <p>In the Unicode Character Database, a character property may
-also become strongly discouraged&#x2014;usually because it no longer
+also become strongly discouraged—usually because it no longer
 serves the purpose it was originally defined for. In such cases, the
 property is labelled "deprecated" in 
 <i>Table 9, <a href="#Property_List_Table">Property Table</a></i>.
@@ -4655,7 +4657,7 @@ distributed with this version of the UCD are listed in
   <div align="center">
 
   <table>
-    <tr>
+    <tbody><tr>
       <th>File Name</th>
       <th>Specification</th>
       <th>Status</th>
@@ -4663,41 +4665,41 @@ distributed with this version of the UCD are listed in
     </tr>
     <tr>
       <td>BidiTest.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX9">UAX9</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX9">UAX9</a>]</td>
       <td>N</td>
       <td>Unicode Bidirectional Algorithm</td>
     </tr>
     <tr>
       <td>NormalizationTest.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX15">UAX15</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX15">UAX15</a>]</td>
       <td>N</td>
       <td>Unicode Normalization Algorithm</td>
     </tr>
     <tr>
       <td>LineBreakTest.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX14">UAX14</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX14">UAX14</a>]</td>
       <td>N</td>
       <td>Unicode Line Breaking Algorithm</td>
     </tr>
     <tr>
       <td>GraphemeBreakTest.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX29">UAX29</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>]</td>
       <td>N</td>
       <td>Grapheme Cluster Boundary Determination</td>
     </tr>
     <tr>
       <td>WordBreakTest.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX29">UAX29</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>]</td>
       <td>N</td>
       <td>Word Boundary Determination</td>
     </tr>
     <tr>
       <td>SentenceBreakTest.txt</td>
-      <td>[<a href="../tr41/tr41-9.html#UAX29">UAX29</a>]</td>
+      <td>[<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>]</td>
       <td>N</td>
       <td>Sentence Boundary Determination</td>
     </tr>
-    </table>
+    </tbody></table>
     </div>
     
     <p>The normative status of these test files reflects their use to
@@ -4713,7 +4715,7 @@ distributed with this version of the UCD are listed in
 
   <p>This file contains data which can be used to test an implementation of the 
   Unicode Normalization Algorithm. 
-  (See [<a href="../tr41/tr41-9.html#UAX15">UAX15</a>].)</p>
+  (See [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX15">UAX15</a>].)</p>
   
   <p>The data file has a Unicode string in the first field (which may consist
   of just a single code point). The next four fields then specify the expected
@@ -4736,7 +4738,7 @@ distributed with this version of the UCD are listed in
 <p>LineBreakTest.txt, located in the auxiliary directory of the UCD, 
 contains data which can be used 
 to test an implementation of the Unicode Line Breaking Algorithm. 
-(See [<a href="../tr41/tr41-9.html#UAX14">UAX14</a>].) The header of
+(See [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX14">UAX14</a>].) The header of
 that file specifies the data format and the use of the test data to
 specify line break opportunities. Note that non-ASCII characters are used
 in this test data as field delimiters.</p>
@@ -4748,7 +4750,7 @@ documented listing of the rules.</p>
   <p>The Unicode text segmentation test data files are also located in the 
   auxiliary directory of the UCD. They 
   contain data which can be used to test an implementation of the segmentation 
-  algorithms specified in [<a href="../tr41/tr41-9.html#UAX29">UAX29</a>].
+  algorithms specified in [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX29">UAX29</a>].
   The headers of
   those file specify the data format and the use of the test data to
   specify text segmentation opportunities. Note that non-ASCII characters are used
@@ -4775,7 +4777,7 @@ documented listing of the rules.</p>
 
   <p>This file contains data which can be used to test an implementation of the 
   Unicode Bidirectional Algorithm. 
-  (See [<a href="../tr41/tr41-9.html#UAX9">UAX9</a>].)</p>
+  (See [<a href="http://www.unicode.org/reports/tr41/tr41-11.html#UAX9">UAX9</a>].)</p>
   
   <p>The data in BidiTest.txt is intended to exhaustively test
   all possible combinations of Bidi_Class values for strings of length four or less.
@@ -4795,7 +4797,7 @@ documented listing of the rules.</p>
 <h2>7 <a name="Change_History">UCD Change History</a></h2>
 
   <p>This section summarizes the recent
-  changes to the UCD&#x2014;including its documentation files&#x2014;and
+  changes to the UCD—including its documentation files—and
   is organized by Unicode versions.</p>
 
   <p>References in the change history
@@ -4803,6 +4805,113 @@ documented listing of the rules.</p>
   <a href="http://www.unicode.org/review/resolved.html">
   http://www.unicode.org/review/resolved.html</a> for more information about 
   each of those cases.</p>
+
+<h3><a name="Unicode_6.2.0" href="http://www.unicode.org/versions/components-6.2.0.html">Unicode 6.2.0</a></h3>
+
+<p><b>Changes in specific files:</b></p>
+
+<p>Appropriate data files were updated to include the single new
+character added in Unicode 6.2: U+20BA TURKISH LIRA SIGN.</p>
+
+<p>Note that changes to the Unihan Database portion of the UCD are not called out separately
+in detail here.</p>
+
+<ul>
+<li>UnicodeData.txt
+  <ul>
+  <li>Numeric values were given to four Cuneiform numeric characters, U+12432..U+12433, U+12456..U+12457.</li>
+  </ul>
+</li>
+<li>BidiMirroring.txt
+  <ul>
+  <li>The correct @missing line was added.</li>
+  </ul>
+</li><li>EastAsianWidth.txt
+  <ul>
+  <li>The eaw property values for a number of Hangul jamo were corrected from W to N.</li>
+  </ul>
+</li>
+<li>LineBreak.txt
+  <ul>
+  <li>Updated the Line_Break property value from lb=AL or lb=AI to lb=ID for 907 pictographic symbols. See the resolution of 
+      <a href="http://www.unicode.org/review/pri229/">PRI&nbsp;#229</a>.</li>
+  <li>Updated the Line_Break property value for regional indicator symbols to the new value lb=RI.</li>
+  </ul>
+</li>
+<li>PropertyValueAliases.txt
+  <ul>
+  <li>An alias CCC132 was added for ccc=132, and CCC133 was corrected to refer to the reserved value ccc=133.</li>
+  <li>Added aliases for new property values added to the Line_Break, Grapheme_Cluster_Break,
+  and Word_Break properties.</li>
+  </ul>
+</li>
+<li>Scripts.txt
+  <ul>
+  <li>The Script property value for U+065F ARABIC WAVY HAMZA BELOW was changed from Inherited to Arabic.</li>
+  </ul>
+</li>
+<li>ScriptExtensions.txt
+  <ul>
+  <li>The status of the Script_Extensions property was changed from provisional to informative.</li>
+  <li>The Script property value Takri was added to the set of Script property values for
+      the Script_Extensions property value of the Devanagari danda characters (U+0964 and U+0965).</li>
+  <li>A number of new Script_Extensions property values were added for Latin, Greek, Cyrillic, and
+      Devanagari characters with Script=Common or Script=Inherited. See the resolution of 
+      <a href="http://www.unicode.org/review/pri227/">PRI&nbsp;#227</a>.</li>
+  </ul>
+</li>
+<li>NameAliases.txt
+  <ul>
+  <li>A formal name alias of type "correction" was added for U+0709.</li>
+  </ul>
+</li>
+<li>NamesList.html
+  <ul>
+  <li>Documentation of support for UTF-8 as an encoding for the names list was added.</li>
+  <li>Documentation of new syntax for listing standardized variants in the names list was added.</li>
+  </ul>
+</li>
+<li>USourceData.txt
+  <ul>
+  <li>New for the UCD in this release. Updated from tr45-sourcedata-6.txt in the tr45 directory.</li>
+  </ul>
+</li>
+<li>USourceGlyphs.pdf
+  <ul>
+  <li>New for the UCD in this release. Updated from tr45-glyphs-6.pdf in the tr45 directory.</li>
+  </ul>
+</li>
+<li>GraphemeBreakProperty.txt
+  <ul>
+  <li>New property values were assigned to regional indicator symbols.</li>
+  </ul>
+</li>
+<li>WordBreakProperty.txt
+  <ul>
+  <li>New property values were assigned to regional indicator symbols.</li>
+  </ul>
+</li>
+<li>LineBreakTest.txt
+  <ul>
+  <li>The test cases were updated to reflect the addition of a new Line_Break property value and other changes to the algorithm.</li>
+  </ul>
+</li>
+<li>GraphemeBreakTest.txt, WordBreakTest.txt
+  <ul>
+  <li>The test cases were updated to reflect changes in property values and other changes to the algorithm.</li>
+  </ul>
+</li>
+<li>SentenceBreakTest.txt
+  <ul>
+  <li>A few test cases were added.</li>
+  </ul>
+</li>
+<li>LineBreakTest.html, GraphemeBreakTest.html, WordBreakTest.html
+  <ul>
+  <li>The documentation, break tables, and rule lists were updated.</li>
+  </ul>
+</li>
+</ul>
 
 <h3><a name="Unicode_6.1.0" href="http://www.unicode.org/versions/components-6.1.0.html">Unicode 6.1.0</a></h3>
 
@@ -4842,8 +4951,10 @@ traditional and simplified mapping values.</p>
 </li>
 <li>BidiMirroring.txt
   <ul>
-  <li>A note was added regarding the inconsistency between the statement regarding default values
-  in the header of this data file and the @missing line for Bidi_Mirroring_Glyph in PropertyValueAliases.txt. The inconsistency was
+  <li>A note was added regarding the inconsistency between the statement
+ regarding default values
+  in the header of this data file and the @missing line for 
+Bidi_Mirroring_Glyph in PropertyValueAliases.txt. The inconsistency was
   discovered too late to resolve in this version.</li>
   </ul>
 </li>
@@ -4968,114 +5079,6 @@ traditional and simplified mapping values.</p>
 </li>
 </ul>
 
-<h3><a name="Unicode_6.0.0" href="http://www.unicode.org/versions/components-6.0.0.html">Unicode 6.0.0</a></h3>
-
-<p><b>Changes in specific files:</b></p>
-
-<p>Appropriate data files were updated to include the 2,088 new
-characters added in Unicode 6.0. Two new provisional properties were added.
-Six older derived properties were deprecated.</p>
-
-<ul>
-<li>UnicodeData.txt
-  <ul>
-  <li>U+0CF1 and U+0CF2 were changed from gc=So to gc=Lo, and their Bidi_Class updated to L.</li>
-  <li>U+06DE was changed from gc=Me to gc=So, and its Bidi_Class updated to ON.</li>
-  <li>U+19DA was changed from gc=Nd to gc=No.</li>
-  <li>U+19DE and U+19DF were changed from gc=Po to gc=So.</li>
-  <li>U+2118 was changed from gc=So to gc=Sm.</li>
-  <li>The Bidi_Class for U+070F was changed from BN to AN.</li>
-  <li>Case mappings were added for U+0265, to map to the newly-encoded character U+A78D.</li>
-  </ul>
-</li>
-<li>ArabicShaping.txt
-  <ul>
-  <li>The Joining_Group for U+06C3 was changed from Hamza_On_Heh_Goal to Teh_Marbuta_Goal.</li>
-  </ul>
-</li>
-<li>LineBreak.txt
-  <ul>
-  <li>U+06DE was changed from lb=CM to lb=AL.</li>
-  <li>U+19DA was changed from lb=NU to lb=SA.</li>
-  </ul>
-</li>
-<li>PropList.txt
-  <ul>
-  <li>U+0673 was changed to Deprecated=True.</li>
-  <li>U+A9B3 was changed to Other_Alphabetic=False.</li>
-  <li>U+2107 was changed to Other_Math=True.</li>
-  <li>U+1735..U+1736, U+1AA8..U+1AAB, U+10A56..U+10A57 were changed to STerm=True.</li>
-  </ul>
-</li>
-<li>PropertyValueAliases.txt
-  <ul>
-  <li>Made Teh_Marbuta_Goal the preferred alias (long name) for the Joining_Group formerly known
-  as Hamza_On_Heh_Goal. Made Hamza_On_Heh_Goal a secondary alias.</li>
-  </ul>
-</li>
-<li>Scripts.txt
-  <ul>
-  <li>U+02EA..U+02EB were changed from Common to Bopomofo.</li>
-  <li>U+0600..U+0603 were changed from Common to Arabic.</li>
-  <li>U+0CF1..U+0CF2 were changed from Common to Kannada.</li>
-  <li>U+302E..U+302F were changed from Inherited to Hangul.</li>
-  </ul>
-</li>
-<li>DerivedNormalizationProps.txt
-  <ul>
-  <li>Added information indicating the deprecated status of FC_NFKC_Closure, Expands_On_NFC,
-  Expands_On_NFC, Expands_On_NFKC, and Expands_On_NFKD.</li>
-  </ul>
-</li>
-<li>NamedSequences.txt
-  <ul>
-  <li>A number of named sequences were updated from provisional to approved, and moved into this file.</li>
-  <li>BENGALI LETTER KHINYA</li>
-  <li>Several precomposed Hiragana and Katakana sequences from JIS X 0213.</li>
-  <li>Several precomposed Latin phonetic sequences and one contour tone bar from JIS X 0213.</li>
-  </ul>
-</li>
-<li>NamedSequencesProv.txt
-  <ul>
-  <li>Three provisional Sinhala consonant sign named sequences were added.</li>
-  </ul>
-</li>
-<li>BidiTest.txt
-  <ul>
-  <li>Removed the @Type lines in the file.</li>
-  <li>New test cases were added.</li>
-  </ul>
-</li>
-<li>LineBreakTest.txt
-  <ul>
-  <li>Fixed the tests so there is no break at the start of text for each test case.</li>
-  <li>New test cases were added.</li>
-  </ul>
-</li>
-<li>GraphemeBreakProperty.txt
-  <ul>
-  <li>Changed Thai and Lao right-side vowel signs from Extend to SpacingMark. This affected
-  U+0E30, U+0E32..U+0E33, U+0E45, U+0EB0, U+0EB2..U+0EB3, and was intended to revert the
-  behavior to that present in Unicode 5.0.</li>
-  </ul>
-</li>
-<li>IndicMatraCategory.txt
-  <ul>
-  <li>This new data file was added, defining the provisional property Indic_Matra_Category.</li>
-  </ul>
-</li>
-<li>IndicSyllabicCategory.txt
-  <ul>
-  <li>This new data file was added, defining the provisional property Indic_Syllabic_Category.</li>
-  </ul>
-</li>
-<li>ScriptExtensions.txt
-  <ul>
-  <li>This new provisional data file was added.</li>
-  </ul>
-</li>
-</ul>
-
 
 <h2 class="nonumber"><a name="Acknowledgments">Acknowledgments</a></h2>
 
@@ -5085,7 +5088,7 @@ Six older derived properties were deprecated.</p>
 	members of the UTC have participated in the review of the UCD
 	and its documentation.</p>
   <h2 class="nonumber"><a name="References">References</a></h2>
-	<p>For references for this annex, see Unicode Standard Annex #41, “<a href="../tr41/tr41-9.html">Common 
+	<p>For references for this annex, see Unicode Standard Annex #41, “<a href="http://www.unicode.org/reports/tr41/tr41-11.html">Common 
 	References for Unicode Standard Annexes</a>.”</p>
 	
    <h2 class="nonumber"><a name="Modifications">Modifications</a></h2>
@@ -5100,6 +5103,29 @@ Six older derived properties were deprecated.</p>
   <p>The following summarizes modifications from previous revisions of this 
 	annex.</p>
   
+  <h3>Revision 10 [KW]</h3>
+  <ul>
+    <li><b>Reissued</b> for Unicode 6.2.0.</li>
+    <li>Removed old UCD Change History entry for Unicode 6.0.0, and added new one for Unicode 6.2.0.</li>
+    <li>Updated status of <a href="#Script_Extensions">Script_Extensions</a> to informative.</li>
+    <li>Updated type of <a href="#Bidi_Mirroring_Glyph">Bidi_Mirroring_Glyph</a> 
+        from String to Miscellaneous.</li>
+    <li>Marked <a href="#Unicode_1_Name">Unicode_1_Name</a> as Obsolete and updated its documentation.</li>
+    <li>Added text indicating that the UTC must approve any change to normative or informative
+        property values, in Section 2.3.1 <a href="#Allowed_Changes">Changes to Properties Between Releases</a>.</li>
+    <li>Corrected numbering error for Section 2.3.4 <a href="#Stabilized_Properties">Stabilized Properties</a>.</li>
+    <li>Updated the note about NamesList.txt being encoded in Latin-1, because starting with Version 6.2.0, it
+        is encoded in UTF-8. See Section 4.2.11 <a href="#Text_Encoding">Text Encoding</a>.</li>
+    <li>Added indication that ccc=133 is reserved in Section 5.11.2
+        <a href="#Validation_of_CCC">Combining_Character_Class Property</a>.</li>
+    <li>Added Section 3.6 <a href="#USource">U-Source Ideographs and UAX #45</a>.</li>
+    <li>Added entries to <a href="#UCD_Files_Table">Table 5</a> for USourceData.txt and USourceGlyphs.pdf.</li>
+    <li>Removed entry for ScriptExtensions.txt from <a href="#UCD_Files_Table">Table 5</a>.</li>
+  </ul>
+  
+	<p>Revision 9 being a proposed update, only changes between versions 10 and 
+	8 are noted here.</p>
+
   <h3>Revision 8 [KW]</h3>
   <ul>
     <li><b>Reissued</b> for Unicode 6.1.0.</li>
@@ -5115,7 +5141,7 @@ Six older derived properties were deprecated.</p>
     <li>Added documentation of symbolic labels for fixed position canonical combining classes
     in <a href="#CCC_Values_Table">Table 15</a>.</li>
     <li>Updated wording regarding addition of new property values in Section 5.10 <a href="#Invariants">Invariants</a>.
-    <li>Corrected URL for the Resolved PRI page reference.</li>
+    </li><li>Corrected URL for the Resolved PRI page reference.</li>
     <li>Added a paragraph about aliases of the form "Ccc10" for fixed position classes
     in <a href="#Canonical_Combining_Class_Values">Canonical Combining Class Values</a>.</li>
     <li>Clarified the current status of the "n/a" metavalue for PropertyValueAliases.txt, in
@@ -5170,7 +5196,7 @@ Six older derived properties were deprecated.</p>
     <li>Added anchors to the matching rules.</li>
     <li>Updated the description fields for <a href="#FC_NFKC_Closure">FC_NFKC_Closure</a>
         and <a href="#NFKC_Casefold">NFKC_Casefold</a>.
-    <li>Added entries for EmojiSources.txt and ScriptExtensions.txt to <a href="#UCD_Files_Table">Table 5</a>.</li>
+    </li><li>Added entries for EmojiSources.txt and ScriptExtensions.txt to <a href="#UCD_Files_Table">Table 5</a>.</li>
     <li>Added entries for <a href="#Indic_Syllabic_Category">Indic_Syllabic_Category</a> and
         <a href="#Indic_Matra_Category">Indic_Matra_Category</a>.</li>
     <li>Added note clarifying that aliases are not provided for provisional properties in <a href="#Property_Aliases">Section 5.8</a>.</li>
@@ -5200,7 +5226,7 @@ Six older derived properties were deprecated.</p>
     <li>Centered tables.</li>
     <li>Added anchors and numbers to tables and adjusted text referencing tables accordingly.</li>
     <li>Added clarifications about exceptional format issues for Unihan data files.</li>
-    <li>Updated references to <i>Section 4.8, Name&mdash;Normative</i> for
+    <li>Updated references to <i>Section 4.8, Name—Normative</i> for
     derived names and for code point labels.</li>
     <li>Added mention of property aliases from Unihan data files to Section 5.6.1.</li>
     <li>Added documentation for new derived properties: Cased, Case_Ignorable, 
@@ -5243,10 +5269,11 @@ Six older derived properties were deprecated.</p>
   or arising out of the use of the information or programs contained or accompanying this technical 
   report. The Unicode <a href="http://www.unicode.org/copyright.html">Terms of Use</a> apply.</p>
   <p class="copyright">Unicode and the Unicode logo are trademarks of Unicode, Inc., and are 
-  registered in some jurisdictions.</div> <!-- web only -->
+  registered in some jurisdictions.</p></div> <!-- web only -->
   </div> <!-- body -->
   </div> <!-- book -->
 
-</body>
 
-</html>
+
+
+</body></html>

@@ -535,7 +535,8 @@ module UnicodeUtils
                "V" => 0x7,
                "T" => 0x8,
                "LV" => 0x9,
-               "LVT" => 0xA}
+               "LVT" => 0xA,
+               "Regional_Indicator" => 0xB}
       filename = File.join(@cdatadir, "grapheme_break_property")
       File.open(filename, "w:us-ascii") do |output|
         each_property("GraphemeBreakProperty.txt") { |prop|
@@ -561,7 +562,8 @@ module UnicodeUtils
                "MidNum" => 0x8,
                "MidNumLet" => 0x9,
                "Numeric" => 0xA,
-               "ExtendNumLet" => 0xB}
+               "ExtendNumLet" => 0xB,
+               "Regional_Indicator" => 0xC}
       filename = File.join(@cdatadir, "word_break_property")
       File.open(filename, "w:us-ascii") do |output|
         each_property("WordBreakProperty.txt") { |prop|

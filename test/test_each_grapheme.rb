@@ -48,7 +48,7 @@ class TestEachGrapheme < Test::Unit::TestCase
       UnicodeUtils.each_grapheme(grapheme_list.join) { |g| graphemes << g }
       assert_equal grapheme_list, graphemes
     }
-    assert_equal 288, c
+    assert_equal 348, c
   end
 
   def test_each_grapheme_utf16
@@ -62,7 +62,7 @@ class TestEachGrapheme < Test::Unit::TestCase
     # TODO: currently we skip the unpaired surrogates for UTF-16 also,
     # because current Ruby implementations raise an exception in
     # each_codepoint. Review this point with future implementations.
-    assert_equal 288, c
+    assert_equal 348, c
   end
 
 end

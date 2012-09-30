@@ -1,5 +1,7 @@
 == 1.4.0
 
+Updated to Unicode 6.2.0.
+
 * UnicodeUtils.debug accepts single Integer code point
 
 New methods in UnicodeUtils:

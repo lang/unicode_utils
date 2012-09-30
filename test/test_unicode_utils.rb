@@ -232,6 +232,8 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal :Neutral, UnicodeUtils.east_asian_width("\u{0}")
     assert_equal :Neutral, UnicodeUtils.east_asian_width("\u{10FFFF}")
     assert_equal :Neutral, UnicodeUtils.east_asian_width("\u{C5}")
+    # from Wide to Neutral in Unicode 6.2.0
+    assert_equal :Neutral, UnicodeUtils.east_asian_width(0x11A5)
     assert_equal :Ambiguous, UnicodeUtils.east_asian_width(0xA1)
     assert_equal :Ambiguous, UnicodeUtils.east_asian_width(0xE000)
     assert_equal :Ambiguous, UnicodeUtils.east_asian_width(0xF8FF)
@@ -240,7 +242,6 @@ class TestUnicodeUtils < Test::Unit::TestCase
     assert_equal :Halfwidth, UnicodeUtils.east_asian_width(0xFFA5)
     assert_equal :Halfwidth, UnicodeUtils.east_asian_width(0xFFEE)
     assert_equal :Wide, UnicodeUtils.east_asian_width(0xB116)
-    assert_equal :Wide, UnicodeUtils.east_asian_width(0x11A5)
     assert_equal :Wide, UnicodeUtils.east_asian_width(0x1100)
     assert_equal :Wide, UnicodeUtils.east_asian_width(0x2E94)
     assert_equal :Wide, UnicodeUtils.east_asian_width(0x3400)

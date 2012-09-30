@@ -109,6 +109,10 @@ module UnicodeUtils
       if ci0 == 0xB && (cs_i1 == 0x6 || cs_i1 == 0xA || cs_i1 == 0x5)
         return false
       end
+      # wb13c
+      if ci0 == 0xC && cs_i1 == 0xC
+        return false
+      end
       # break unless next char is Extend/Format
       cs_i1 != 0x3 && cs_i1 != 0x4
     end

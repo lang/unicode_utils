@@ -18,6 +18,6 @@ module UnicodeUtils
   #
   #   require "unicode_utils/version"
   #   puts "Unicode #{UnicodeUtils::UNICODE_VERSION}"
-  UNICODE_VERSION = "6.1.0"
+  UNICODE_VERSION = "6.2.0"
 
 end

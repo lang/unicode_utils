@@ -58,6 +58,8 @@ module UnicodeUtils
         # don't break hangul syllable
       elsif (c0_prop == 0xA || c0_prop == 0x8) && c_prop == 0x8
         # don't break hangul syllable
+      elsif c0_prop == 0xB && c_prop == 0xB
+        # don't break between regional indicator symbols
       elsif c_prop == 0x3
         # don't break before extending characters
       elsif c_prop == 0x5

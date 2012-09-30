@@ -440,11 +440,22 @@ class TestUnicodeUtils < Test::Unit::TestCase
     EOF
     io = StringIO.new
     UnicodeUtils.debug(0xd800, io: io)
-    assert_equal <<-'EOF', io.string
+    # Early Ruby 1.9 versions encoded surrogates in UTF-8,
+    # although the Unicode standard does not allow it.
+    begin
+      0xd800.chr('utf-8')
+      assert_equal <<-'EOF', io.string
+ Char | Ordinal | Sid              | General Category | UTF-8
+------+---------+------------------+------------------+----------
+ N/A  |    D800 | <surrogate-D800> | Surrogate        | ED A0 80
+      EOF
+    rescue RangeError
+      assert_equal <<-'EOF', io.string
  Char | Ordinal | Sid              | General Category | UTF-8
 ------+---------+------------------+------------------+-------
  N/A  |    D800 | <surrogate-D800> | Surrogate        | N/A
-    EOF
+      EOF
+    end
   end
 
   def test_code_point_type

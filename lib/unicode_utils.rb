@@ -44,7 +44,7 @@ require "unicode_utils/sid"
 require "unicode_utils/white_space_char_q"
 
 # This version of UnicodeUtils implements algorithms as defined by
-# version 6.1.0 of the Unicode standard. Each public method is
+# version 6.2.0 of the Unicode standard. Each public method is
 # declared as a +module_function+ of the UnicodeUtils module and
 # defined in a separate file under the +unicode_utils+ directory.
 #

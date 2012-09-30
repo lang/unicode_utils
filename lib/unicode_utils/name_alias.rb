@@ -8,7 +8,7 @@ module UnicodeUtils
     # The alias as string.
     attr_reader :name
 
-    # The type of alias as symbol. In Unicode 6.1.0 one of :correction,
+    # The type of alias as symbol. Currently one of :correction,
     # :control, :alternate, :figment, :abbreviation.
     attr_reader :type
 

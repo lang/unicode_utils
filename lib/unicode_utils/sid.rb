@@ -7,12 +7,12 @@ module UnicodeUtils
 
   CP_PREFERRED_ALIAS_STRING_MAP = Hash.new.tap do |map|
     NAME_ALIASES_MAP.each { |cp, aliases|
-      al =
+      found_alias =
         (aliases.find { |al| al.type == :correction } ||
          aliases.find { |al| al.type == :control } ||
          aliases.find { |al| al.type == :figment } ||
          aliases.find { |al| al.type == :alternate })
-      map[cp] = al.name if al
+      map[cp] = found_alias.name if found_alias
     }
   end #:nodoc:
 

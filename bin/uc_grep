@@ -1,0 +1,76 @@
+#!/usr/bin/env ruby
+
+lib = File.expand_path(File.dirname(__FILE__) + '/../lib')
+$LOAD_PATH.unshift(lib) if File.directory?(lib) && !$LOAD_PATH.include?(lib)
+
+require 'optparse'
+require 'unicode_utils/grep'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: #{$0} [options] NAME"
+
+  # Output style
+  opts.on("-o", "--out TYPE", [:full, :symbol],
+          "Output style (full, symbol); default: full") do |type|
+    options[:type] = type
+  end
+  # Use hunspell to suggest?
+  opts.on("-s", "--suggest", "Suggest results for misspelled words using hunspell; default: false") do |suggest|
+    options[:suggest] = suggest
+  end
+  # No argument, shows at tail.  This will print an options summary.
+  opts.on_tail("-h", "--help", "Show this message") do
+    puts opts
+    exit
+  end
+end.parse!
+
+raise "Run `#{$0} --help` for execution examples. Exiting…" if ARGV.size.zero?
+
+options[:type] ||= :full
+text = ARGV.first
+
+def print_results word, full=true
+  puts '='*40
+  puts "Trying #{word}…"
+  vars = UnicodeUtils.grep(/#{word}/)
+  unless vars.size.zero?
+    vars.each { |res|
+      full ? puts("⇒  [#{res.inspect}]") : print(" #{res} ")
+    }
+    puts
+  end
+  vars.size > 0
+end
+
+found = case options[:type]
+when :symbol
+  print_results text, false
+when :full
+  print_results text
+end
+
+if options[:suggest]
+  spellchecker = begin
+                   require 'Hunspell' 
+                 rescue LoadError
+                   false
+                 end
+  unless spellchecker
+    puts 'You seem to lack hunspell gem required for suggestive mode.'
+    puts 'Try to install libhunspell, libhunspell-dev and hunspell gem:'
+    puts '  $ sudo aptitude install libhunspell libhunspell-dev # Ubuntu example'
+    puts '  $ gem install hunspell'
+    exit 1
+  end
+
+  dict = `echo | hunspell -D 2>&1 | grep en_US`.split("\n").first || \
+         '/usr/share/hunspell/en_US'
+  sp = Hunspell.new("#{dict}.aff", "#{dict}.dic")
+  sp.suggest(text).each { |suggest|
+    print_results suggest, options[:type] != :symbol
+  }
+else
+  puts "No results… Try to use “-s” option for suggestions?" unless found
+end

@@ -30,6 +30,15 @@ task "gem" do
   mv gem_filename, "pkg"
 end
 
+desc "Update data/"
+task "update" do
+  cd 'data' do
+    sh 'wget -np -I /Public/UCD/latest/ucd/ -X /Public/UCD/latest/ucd/auxiliary/ -X /Public/UCD/latest/ucd/extracted -R "index.html*" -R "*.zip" -R "*.pdf" -mk http://www.unicode.org/Public/UCD/latest/ucd/'
+    sh 'mv www.unicode.org/Public/UCD/latest/ucd/* .'
+    sh 'rm -rf  www.unicode.org'
+  end
+end
+
 desc "Run rdoc to generate html documentation."
 task "doc" do
   sh "rdoc#{suffix} -o doc --charset=UTF-8 --title=UnicodeUtils --main=README.rdoc lib README.rdoc INSTALL.txt CHANGES.txt LICENSE.txt"

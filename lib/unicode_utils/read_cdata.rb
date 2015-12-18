@@ -177,9 +177,9 @@ module UnicodeUtils
         open_cdata_file(filename) do |input|
           cp_buffer = "x" * 6
           cp_buffer.force_encoding(Encoding::US_ASCII)
-          cat_buffer = "x" * 2
-          cat_buffer.force_encoding(Encoding::US_ASCII)
           while input.read(6, cp_buffer)
+            cat_buffer = "x" * 2
+            cat_buffer.force_encoding(Encoding::US_ASCII)
             map[cp_buffer.to_i(16)] = input.read(2, cat_buffer).to_sym
           end
         end
@@ -191,9 +191,9 @@ module UnicodeUtils
         open_cdata_file(filename) do |input|
           cp_buffer = "x" * 6
           cp_buffer.force_encoding(Encoding::US_ASCII)
-          cat_buffer = "x" * 2
-          cat_buffer.force_encoding(Encoding::US_ASCII)
           while input.read(6, cp_buffer)
+            cat_buffer = "x" * 2
+            cat_buffer.force_encoding(Encoding::US_ASCII)
             list << [
               Range.new(cp_buffer.to_i(16), input.read(6, cp_buffer).to_i(16)),
               input.read(2, cat_buffer).to_sym

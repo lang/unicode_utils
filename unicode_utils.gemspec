@@ -19,6 +19,7 @@ Gem::Specification.new do |g|
   g.required_ruby_version = ">= 1.9.1"
   g.author = "Stefan Lang"
   g.email = "langstefan@gmx.at"
+  g.license = "BSD-2"
   g.has_rdoc = true
   g.extra_rdoc_files = ["README.rdoc", "INSTALL.txt", "CHANGES.txt"]
   g.rdoc_options = ["--main=README.rdoc", "--charset=UTF-8"]

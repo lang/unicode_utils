@@ -9,7 +9,7 @@ Install with RubyGems:
 
     gem install unicode_utils
 
-Or get the source from Github: http://github.com/lang/unicode_utils
+Or get the source from GitHub: https://github.com/lang/unicode_utils
 and follow the instructions in INSTALL.txt.
 
 UnicodeUtils works with Ruby 1.9.1 or later.
@@ -17,7 +17,7 @@ UnicodeUtils works with Ruby 1.9.1 or later.
 == Synopsis
 
     require "unicode_utils/upcase"
-    
+
     UnicodeUtils.upcase("weiß") => "WEISS"
 
     UnicodeUtils.upcase("i", :tr) => "İ"
@@ -32,10 +32,8 @@ LICENSE.txt in the unicode_utils package for details.
 
 == Links
 
-Online documentation:: http://unicode-utils.rubyforge.org
-Source code:: http://github.com/lang/unicode_utils
-Rubyforge project:: http://rubyforge.org/projects/unicode-utils
-Home of the Unicode Consortium:: http://unicode.org
+Source code:: https://github.com/lang/unicode_utils
+Home of the Unicode Consortium:: http://unicode.org/
 
 == Who?
 

@@ -24,7 +24,7 @@ Possible course of action:
 
 == Encoding of string property values
 
-The encoding of spring property values is currenctly undocumented.
+The encoding of spring property values is currently undocumented.
 
 Possible course of action:
 * Use the same encoding for all string property values, preferably UTF-8

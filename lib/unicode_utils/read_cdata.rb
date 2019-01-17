@@ -72,10 +72,15 @@ module UnicodeUtils
     def self.read_names(filename)
       Hash.new.tap { |map|
         open_cdata_file(filename) do |input|
-          buffer = "x" * 6
-          buffer.force_encoding(Encoding::US_ASCII)
-          while input.read(6, buffer)
-            map[buffer.to_i(16)] = input.gets.tap { |x| x.chomp! }
+          line = ""
+          line.force_encoding(Encoding::US_ASCII)
+          buffer = input.gets
+          while buffer
+            line.replace(buffer)
+            keycode = line[0..5].to_i(16)
+            keyname = line[6..-1]
+            map[keycode] = keyname.tap { |x| x.chomp! }
+            buffer = input.gets
           end
         end
       }

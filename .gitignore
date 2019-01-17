@@ -7,3 +7,4 @@ Session.vim
 .test-result
 /coverage
 /aux
+.idea

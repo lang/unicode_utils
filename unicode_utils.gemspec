@@ -24,4 +24,5 @@ Gem::Specification.new do |g|
   g.rdoc_options = ["--main=README.rdoc", "--charset=UTF-8"]
   g.homepage = "http://github.com/lang/unicode_utils"
   g.rubyforge_project = "unicode-utils"
+  s.license = "BSD-2-Clause"
 end

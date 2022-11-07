@@ -34,7 +34,6 @@ module UnicodeUtils
   #   UnicodeUtils.each_grapheme("a\r\nb").count => 3
   def each_grapheme(str)
     return enum_for(__method__, str) unless block_given?
-    c0 = nil
     c0_prop = nil
     grapheme = String.new.force_encoding(str.encoding)
     str.each_codepoint { |c|
@@ -77,7 +76,6 @@ module UnicodeUtils
         grapheme = String.new.force_encoding(str.encoding)
       end
       grapheme << c
-      c0 = c
       c0_prop = c_prop
     }
     yield grapheme unless grapheme.empty?
